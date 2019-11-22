@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<formth:action ="@{/taikhoan}"th:object="${newtaikhoan}" method="post">
+		<p>
+			title:
+			<inputtype ="text"th:field="*{id}" />
+		</p>
+		<p>
+			title:
+			<inputtype ="text"th:field="*{email}" />
+		</p>
+		<p>
+			title:
+			<inputtype ="text"th:field="*{password}" />
+		</p>
+		<p>
+			title:
+			<inputtype ="text"th:field="*{role}" />
+		</p>
+		<p>
+			<buttontype ="submit"class="btn btn-success">Add
+			</button>
+		</p>
+		</form>
+</body>
+</html>

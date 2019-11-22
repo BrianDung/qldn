@@ -1,0 +1,16 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:each=" taikhoan : ${taikhoan}">
+		<span th:utext="${taikhoan.getId()}"></span> <span
+			th:utext="${taikhoan.getEmail()}"></span> <span
+			th:utext="${taikhoan.getPassword()}"></span> <span
+			th:utext="${taikhoan.getRole()}"></span>
+	</div>
+
+</body>
+</html>

@@ -5,25 +5,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<formth:action ="@{/taikhoan}"th:object="${newtaikhoan}" method="post">
+	<form th:action ="@{/taikhoan}" th:object="${taikhoan}" method="post">
+	
 		<p>
 			title:
-			<inputtype ="text"th:field="*{id}" />
+			<input type ="text" th:field="*{email}" />
 		</p>
 		<p>
 			title:
-			<inputtype ="text"th:field="*{email}" />
+			<input type ="text" th:field="*{password}" />
 		</p>
 		<p>
 			title:
-			<inputtype ="text"th:field="*{password}" />
+			<input type ="text" th:field="*{role}" />
 		</p>
 		<p>
-			title:
-			<inputtype ="text"th:field="*{role}" />
-		</p>
-		<p>
-			<buttontype ="submit"class="btn btn-success">Add
+			<button type ="submit" class="btn btn-success">Add
 			</button>
 		</p>
 		</form>

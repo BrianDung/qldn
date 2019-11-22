@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import com.qlda.Entity.TaiKhoan;
 import com.qlda.Repository.TaiKhoanRepository;
 
-@Component
+@Service
 public class TaiKhoanService {
 	@Autowired
 	TaiKhoanRepository taiKhoanRepository;
-	List<TaiKhoan> listTaiKhoan = taiKhoanRepository.findAll(); // Danh sach tai khoan lay tu database
+	
 
 	public List<TaiKhoan> getAllTaiKhoan() {
 		return taiKhoanRepository.findAll();

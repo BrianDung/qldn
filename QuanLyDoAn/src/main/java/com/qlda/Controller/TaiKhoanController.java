@@ -34,7 +34,7 @@ public class TaiKhoanController {
 
 	@GetMapping("/addtaikhoan") // Tao 1 object tai khoan hien thi toi view
 	public String formTaiKhoan(Model model) {
-		model.addAttribute("newTaiKhoan", new TaiKhoan());
+		model.addAttribute("taikhoan", new TaiKhoan());
 		return "test3";
 	}
 
