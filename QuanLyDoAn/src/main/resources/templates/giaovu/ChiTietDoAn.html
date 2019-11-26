@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+  <meta name="author" content="GeeksLabs">
+  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+  <link rel="shortcut icon" href="img/favicon.png">
+
+  <title>Thông tin chi tiết đề tài</title>
+
+</head>
+
+<body>
+
+ <th:block th:include="giaovu/head"></th:block>
+  <!-- container section start -->
+  <section id="container" class="">
+    <!-- header -->
+    	<th:block th:include="giaovu/header"></th:block>
+    <!--header end-->
+
+    <!--sidebar start-->
+     	<th:block th:include="/sidebar"></th:block>
+    <!--sidebar end-->
+
+
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+          <div class="col-lg-12">
+            <h3 class="page-header"><i class="fa fa-table"></i> Chi tiết đồ án</h3>
+            <ol class="breadcrumb">
+              <li><i class="fa fa-home"></i><a href="index.html">Danh sách sinh viên</a></li>
+              <li><i class="fa fa-table"></i>Chi tiết đồ án </li>
+
+            </ol>
+          </div>
+        </div>
+        <div class="row">
+
+          <div class="col-lg-12">
+            <!--collapse start-->
+            <div class="panel-group m-bot20" id="accordion">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                      Mô tả chung
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                  <div class="panel-body">
+
+                    Do nhận thấy những khó khăn, hạn chế về sự tương tác giữa giảng viên và sinh viên khi tham gia nhận
+                    đề tài thực hiện đồ án tốt nghiệp và nhu cầu cấp thiết hỗ trợ tốt nhất cho Giáo vụ của Viện SPKT về
+                    quản lý đồ án cho sinh viên, nhóm nghiên cứu nảy sinh ý tưởng xây dựng hệ thống thông tin quản lý đồ
+                    án tốt nghiệp của sinh viên Viện SPKT
+
+
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                      Nội dung
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    Đồ án trình bày quy trình xây dựng phần mềm quản lý đồ án tốt nghiệp dựa trên thực trạng quản lý đồ
+                    án tốt nghiệp hiện tại, từ đó đi vào phân tích thiết kế đưa ra sản phẩm có các chức năng đáp ứng yêu
+                    cầu với các nhiệm vụ chính
+                    <ul>
+                      <li> - Tìm hiểu thực trạng quản lỷ đồ án tốt nghiệp sinh viên</li>
+                      <li> - Phân tích yêu cầu, hạn chế, đưa ra các chức năng khắc phục</li>
+                      <li> - Thiết kế hệ thống đưa ra mô hình phần mềm đáp ứng</li>
+                      <li> - Lập trình, viết mã nguồn hoàn chỉnh</li>
+                    </ul>
+
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                      Thông tin liên quan
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    Đối tượng nghiên cứu.<br>
+                    - Các quá trình quản lý đồ án, lưu trữ, thống kê, tìm kiếm đồ án…. qua đó xây dựng chương trình quản
+                    lý đồ án tốt nghiệp của sinh viên.
+                    <br>Phạm vi nghiên cứu đề tài.<br>
+                    - Chương trình được áp dụng quản lý đồ án tốt nghiệp cho sinh viên Viện Sư Phạm Kỹ Thuật – Trường
+                    Đại Học Bách Khoa Hà Nội.
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--collapse end-->
+          </div>
+
+        </div>
+      </section>
+    </section>
+  </section>
+  <!-- container section end -->
+
+  <!-- javascripts -->
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <!-- nice scroll -->
+  <script src="js/jquery.scrollTo.min.js"></script>
+  <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+  <!-- gritter -->
+
+  <!-- custom gritter script for this page only-->
+  <script src="js/gritter.js" type="text/javascript"></script>
+  <!--custome script for all page-->
+  <script src="js/scripts.js"></script>
+
+
+
+
+</body>
+
+</html>

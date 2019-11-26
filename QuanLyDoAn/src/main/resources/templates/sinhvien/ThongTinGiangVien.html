@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+    <meta name="author" content="GeeksLabs">
+    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <title>Thông tin giảng viên</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+    <link href="css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom styles -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+      <script src="js/lte-ie7.js"></script>
+    <![endif]-->
+
+    <!-- =======================================================
+      Theme Name: NiceAdmin
+      Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+      Author: BootstrapMade
+      Author URL: https://bootstrapmade.com
+    ======================================================= -->
+</head>
+
+<body>
+    <!-- container section start -->
+    <section id="container" class="">
+        <!--header start-->
+        <header class="header dark-bg">
+            <div class="toggle-nav">
+                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i
+                        class="icon_menu"></i></div>
+            </div>
+
+            <!--logo start-->
+            <a href="index.html" class="logo">Giảng <span class="lite">Viên</span></a>
+            <!--logo end-->
+
+            <div class="nav search-row" id="top_menu">
+                <!--  search form start -->
+                <ul class="nav top-menu">
+                    <li>
+                        <form class="navbar-form">
+                            <input class="form-control" placeholder="Search" type="text">
+                        </form>
+                    </li>
+                </ul>
+                <!--  search form end -->
+            </div>
+
+            <div class="top-nav notification-row">
+                <!-- notificatoin dropdown start-->
+                <ul class="nav pull-right top-menu">
+
+                    <!-- task notificatoin start -->
+                    <li id="task_notificatoin_bar" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="icon-task-l"></i>
+                            <span class="badge bg-important">3</span>
+                        </a>
+                        <ul class="dropdown-menu extended tasks-bar">
+                            <div class="notify-arrow notify-arrow-blue"></div>
+                            <li>
+                                <p class="blue">Bạn có 3 nhiệm vụ</p>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div class="desc">Nhiệm vụ A </div>
+                                        <div class="percent">Chưa hoàn thành</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div class="desc">
+                                            Nhiệm vụ B
+                                        </div>
+                                        <div class="percent">Quá hạn nộp bài</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div class="desc">Nhiệm vụ C </div>
+                                        <div class="percent">Chưa hoàn thành</div>
+                                    </div>
+
+                                </a>
+                            </li>
+                            <li class="external">
+                                <a href="task.html">Xem tất cả nhiệm vụ</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- thong bao -->
+                    <li id="alert_notificatoin_bar" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                            <i class="icon-bell-l"></i>
+                            <span class="badge bg-important">2</span>
+                        </a>
+                        <ul class="dropdown-menu extended notification">
+                            <div class="notify-arrow notify-arrow-blue"></div>
+                            <li>
+                                <p class="blue">Bạn có 2 thông báo</p>
+                            </li>
+                            <li>
+                                <a href="taskDetail.html">
+                                    <span class="label label-primary"><i class="icon_profile"></i></span>
+                                    Bạn có 1 đánh giá từ GVHD
+                                    <span class="small italic pull-right">5 mins</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="disscussDetail.html">
+                                    <span class="label label-warning"><i class="icon_pin"></i></span>
+                                    Bạn có 1 cuộc trò chuyện.
+                                    <span class="small italic pull-right">50 mins</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Xem tất cả thông báo</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- alert notification end-->
+                    <!-- user login dropdown start-->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <img alt="" src="img/profile-avatar-duc.jpg">
+                            </span>
+                            <span class="username">Tran Khanh Duc</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu extended logout">
+                            <div class="log-arrow-up"></div>
+                            <li class="eborder-top">
+                                <a href="information.html"><i class="icon_profile"></i> My Profile</a>
+                            </li>
+                            <li>
+                                <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- user login dropdown end -->
+                </ul>
+                <!-- notificatoin dropdown end-->
+            </div>
+        </header>
+        <!--header end-->
+
+        <!--sidebar start-->
+
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu">
+                    <li class="active">
+                        <a class="" href="index-SinhVien.html">
+                            <i class="icon_house_alt"></i>
+                            <span>Trang chủ</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a class="" href="ThongTin.html">
+                            <i class="icon_info"></i>
+                            <span>Thông tin</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a class="" href="NhiemVu.html">
+                            <i class="icon_check"></i>
+                            <span>Nhiệm vụ</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a class="" href="ThongKe.html">
+                            <i class="icon_datareport"></i>
+                            <span>Thống Kê</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a class="" href="TroChuyen.html">
+                            <i class="icon_chat_alt"></i>
+                            <span>Tạo cuộc trò chuyện</span>
+                        </a>
+                    </li>
+
+                    <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+
+        <!--sidebar end-->
+
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header"><i class="icon_info"></i> Thông tin</h3>
+                        <ol class="breadcrumb">
+                            <li><i class="fa fa-home"></i><a href="index-SinhVien.html">Trang chủ</a></li>
+                            <li><i class="icon_info"></i>Thông tin</li>
+                            <li><i class="icon_profile"></i>Thông tin cá nhân</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- profile-widget -->
+                    <div class="col-lg-12">
+                        <div class="profile-widget profile-widget-info">
+                            <div class="panel-body">
+                                <div class="col-lg-3 col-sm-4">
+                                    <h4>PGS TS Tran Khanh Duc</h4>
+                                    <div class="follow-ava">
+                                        <img src="img/profile-avatar-duc.jpg" alt="">
+                                    </div>
+                                    <h6>Giảng viên chính</h6>
+                                </div>
+                                <div class="col-lg-18 col-sm-8 follow-info">
+                                    <p>Giảng Viên Viện Sư Phạm Kỹ Thuật Trường Đại Học Bách Khoa Hà Nội</p>
+                                    <p><i class="icon_mobile"></i> Số điện thoại:</p>
+                                    <p><i class="icon_mail_alt"></i> Email:</p>
+                                    <h6>
+                                        <span><i class="icon_clock_alt"></i>11:05 AM</span>
+                                        <span><i class="icon_calendar"></i>30.10.19</span>
+                                        <span><i class="icon_pin_alt"></i>VN</span>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- page start-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <section class="panel">
+                            <header class="panel-heading tab-bg-info">
+                                <ul class="nav nav-tabs">
+                                    <li>
+                                        <a data-toggle="tab" href="#profile">
+                                            <i class="icon-user"></i>
+                                            Thông tin cá nhân
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </header>
+                            <div class="panel-body">
+                                <div class="tab-content">
+                                    <!-- profile -->
+                                    <div id="profile" class="tab-pane">
+                                        <section class="panel">
+
+                                            <div class="panel-body bio-graph-info">
+
+                                                <div class="row">
+                                                    <div class="bio-row">
+                                                        <p><span>Họ và tên </span>: Trần Khánh Đức </p>
+                                                    </div>
+
+                                                    <div class="bio-row">
+                                                        <p><span>Năm sinh</span>: 1954</p>
+                                                    </div>
+
+                                                    <div class="bio-row">
+                                                        <p><span>Chức vụ : </span>: PGS TS</p>
+                                                    </div>
+
+                                                    <div class="bio-row">
+                                                        <p><span>Số điện thoại </span>: 0913584171</p>
+                                                    </div>
+
+                                                    <div class="bio-row">
+                                                        <p><span>Email </span>: kduc1954@yahoo.com</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <section>
+                                            <div class="row">
+                                            </div>
+                                        </section>
+                                    </div>
+                                    <!-- edit-profile -->
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- page end-->
+            </section>
+        </section>
+
+
+    </section>
+
+    <!-- container section end -->
+    <!-- javascripts -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- nice scroll -->
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <!-- jquery knob -->
+    <script src="assets/jquery-knob/js/jquery.knob.js"></script>
+    <!--custome script for all page-->
+    <script src="js/scripts.js"></script>
+
+    <script>
+        //knob
+        $(".knob").knob();
+    </script>
+
+
+</body>
+
+</html>

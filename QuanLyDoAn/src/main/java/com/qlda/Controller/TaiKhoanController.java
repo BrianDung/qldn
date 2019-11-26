@@ -25,7 +25,7 @@ public class TaiKhoanController {
 	@GetMapping("/taikhoan")
 	public String taiKhoan(Model model) {
 		model.addAttribute("taikhoan", taiKhoanService.getAllTaiKhoan());
-		return "test";
+		return "giangvien/TrangChu";
 	}
 
 	@GetMapping("/taikhoan/{id}")

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+    <meta name="author" content="GeeksLabs">
+    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <title>Thông tin giảng viên</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+    <link href="css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom styles -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+
+    <link href="css/daterangepicker.css" rel="stylesheet" />
+    <link href="css/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="css/bootstrap-colorpicker.css" rel="stylesheet" />
+    <!-- date picker -->
+
+</head>
+
+<body>
+    <th:block th:include="sinhvien/head"></th:block>
+  <!-- container section start -->
+  <section id="container" class="">
+    <!-- header -->
+    	<th:block th:include="sinhvien/header"></th:block>
+    <!--header end-->
+
+    <!--sidebar start-->
+     	<th:block th:include="sinhvien/sidebar"></th:block>
+    <!--sidebar end-->
+
+        <!--sidebar end-->
+
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header"><i class="fa fa-user-md"></i> Chi tiết bài tập và đánh giá</h3>
+                        <ol class="breadcrumb">
+                            <li><i class="fa fa-home"></i><a href="index-SinhVien.html">Trang chủ</a></li>
+                            <li><i class="fa fa-laptop"></i>Bảng điều hướng</li>
+                            <li><i class="fa fa-user-md"></i>Chi tiết bài tập và đánh giá</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- profile-widget -->
+                    <div class="col-lg-12">
+                        <div class="profile-widget profile-widget-info">
+                            <div class="panel-body">
+                                <div class="col-lg-3 col-sm-2">
+                                    <h4>PGS TS Tran Khanh Duc</h4>
+                                    <div class="follow-ava">
+                                        <img src="img/profile-avatar-duc.jpg" alt="">
+                                    </div>
+                                    <h6>Giảng viên chính</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- page start-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <section class="panel">
+                            <header class="panel-heading tab-bg-info">
+                                <ul class="nav nav-tabs">
+                                    <li>
+                                        <a data-toggle="tab" href="#profile">
+                                            <i class="icon-user"></i>
+                                            Chi tiết bài tập
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a data-toggle="tab" href="#edit-profile">
+                                            <i class="icon-envelope"></i>
+                                            Đánh giá
+                                        </a>
+                                    </li>
+                                </ul>
+                            </header>
+                            <div class="panel-body">
+                                <div class="tab-content">
+                                    <!-- profile -->
+                                    <div id="profile" class="tab-pane">
+                                        <section class="panel">
+                                            <div class="panel-body bio-graph-info">
+                                                <!-- <h1>Bio Graph</h1> -->
+                                                <div class="row">
+                                                    <div class="bio-row">
+                                                        <p><span>Tên bài tập</span>: xxx </p>
+                                                    </div>
+
+                                                    <div class="bio-row">
+                                                        <p><span>Nội dung</span>: xxx</p>
+                                                    </div>
+
+                                                    <div class="bio-row">
+                                                        <p><span>Hạn nộp bài : </span>: xxx</p>
+                                                    </div>
+
+                                                    <div class="bio-row">
+                                                        <p><span>Sinh viên thực hiện</span>: xxx</p>
+                                                    </div>
+
+                                                    <div class="bio-row">
+                                                        <p><span>File </span>:xxx</p>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                    <!-- edit-profile -->
+                                    <div id="edit-profile" class="tab-pane">
+                                        <section class="panel">
+                                            <div class="panel-body bio-graph-info">
+                                                <h1>Chi tiết đánh giá</h1>
+                                                <form class="form-horizontal" role="form">
+                                                    <div class="form-group">
+                                                        <div class="form-group">
+                                                            <label class="control-label col-sm-2">Nội
+                                                                dung</label>
+                                                            <div class="col-sm-10">
+                                                                xxx
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-group">
+                                                            <label class="control-label col-sm-2 "
+                                                                for="exampleInputFile">File </label>
+                                                            <div class="col-sm-10">
+                                                                xxx
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-lg-2" for="inputSuccess">Thang
+                                                            điểm</label>
+                                                        <div class="col-sm-10">
+                                                            Tốt , Khá , Trung bình , Yếu
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- page end-->
+            </section>
+        </section>
+
+
+    </section>
+
+    <!-- container section end -->
+    <!-- javascripts -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- nice scroll -->
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <!-- jquery knob -->
+    <script src="assets/jquery-knob/js/jquery.knob.js"></script>
+    <!--custome script for all page-->
+    <script src="js/scripts.js"></script>
+
+    <script>
+        //knob
+        $(".knob").knob();
+    </script>
+
+
+
+    <!-- jquery ui -->
+    <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+
+    <!--custom checkbox & radio-->
+    <script type="text/javascript" src="js/ga.js"></script>
+    <!--custom switch-->
+    <script src="js/bootstrap-switch.js"></script>
+    <!--custom tagsinput-->
+    <script src="js/jquery.tagsinput.js"></script>
+
+    <!-- colorpicker -->
+
+    <!-- bootstrap-wysiwyg -->
+    <script src="js/jquery.hotkeys.js"></script>
+    <script src="js/bootstrap-wysiwyg.js"></script>
+    <script src="js/bootstrap-wysiwyg-custom.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/bootstrap-colorpicker.js"></script>
+    <script src="js/daterangepicker.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <!-- ck editor -->
+    <script type="text/javascript" src="assets/ckeditor/ckeditor.js"></script>
+    <!-- custom form component script for this page-->
+    <script src="js/form-component.js"></script>
+
+
+
+</body>
+
+</html>
