@@ -13,7 +13,6 @@ import com.qlda.Repository.TaiKhoanRepository;
 public class TaiKhoanService {
 	@Autowired
 	TaiKhoanRepository taiKhoanRepository;
-	
 
 	public List<TaiKhoan> getAllTaiKhoan() {
 		return taiKhoanRepository.findAll();
@@ -31,5 +30,21 @@ public class TaiKhoanService {
 	public TaiKhoan addTaiKhoan(TaiKhoan taikhoan) {
 		taiKhoanRepository.save(taikhoan);
 		return taikhoan;
+	}
+
+	public void deleteTaiKhoan(Long id) {
+		taiKhoanRepository.deleteById(id);
+	}
+
+	public void updateTaiKhoan(TaiKhoan taikhoan) {
+		for (TaiKhoan tk : taiKhoanRepository.findAll()) {
+			if (tk.getId() == taikhoan.getId()) {
+				tk.setEmail(taikhoan.getEmail());
+				tk.setPassword(taikhoan.getPassword());
+				tk.setRole(taikhoan.getRole());
+				taiKhoanRepository.save(tk);
+			}
+		}
+
 	}
 }

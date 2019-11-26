@@ -6,17 +6,20 @@
 </head>
 <body>
 	<form th:action ="@{/taikhoan}" th:object="${taikhoan}" method="post">
-	
 		<p>
-			title:
+			id:
+			<input type ="text" th:field="*{id}" />
+		</p>
+		<p>
+			Email:
 			<input type ="text" th:field="*{email}" />
 		</p>
 		<p>
-			title:
+			password:
 			<input type ="text" th:field="*{password}" />
 		</p>
 		<p>
-			title:
+			Role:
 			<input type ="text" th:field="*{role}" />
 		</p>
 		<p>

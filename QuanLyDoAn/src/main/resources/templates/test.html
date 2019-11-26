@@ -9,7 +9,12 @@
 		<span th:utext="${taikhoan.getId()}"></span> <span
 			th:utext="${taikhoan.getEmail()}"></span> <span
 			th:utext="${taikhoan.getPassword()}"></span> <span
-			th:utext="${taikhoan.getRole()}"></span>
+			th:utext="${taikhoan.getRole()}"></span> <a
+			th:href="@{|/taikhoan/${taikhoan.getId()}|}"> Edit</a>
+	</div>
+	
+	</div>
+	<a th:href="@{|/addtaikhoan/|}"> Add</a>
 	</div>
 
 </body>

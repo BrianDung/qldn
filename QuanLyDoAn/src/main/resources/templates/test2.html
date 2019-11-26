@@ -6,10 +6,25 @@
 </head>
 <body>
 
-	<span th:utext="${onlytk.getId()}"></span>
-	<span th:utext="${onlytk.getEmail()}"></span>
-	<span th:utext="${onlytk.getPassword()}"></span>
-	<span th:utext="${onlytk.getRole()}"></span>
+	<form th:action="@{/taikhoan}" th:object="${taikhoan}" method="post">
+		<p>
+			id: <input type="text" th:field="*{id}" />
+		</p>
+		<p>
+			Email: <input type="text" th:field="*{email}" />
+		</p>
+		<p>
+			password: <input type="text" th:field="*{password}" />
+		</p>
+		<p>
+			Role: <input type="text" th:field="*{role}" />
+		</p>
+
+		<p>
+			<button type="submit" class="btn btn-success">Update</button>
+		</p>
+
+	</form>
 
 </body>
 </html>
