@@ -36,13 +36,14 @@ public class TaiKhoanService {
 		taiKhoanRepository.deleteById(id);
 	}
 
-	public void updateTaiKhoan(TaiKhoan taikhoan) {
+	public void updateTaiKhoan(TaiKhoan taikhoan, Long id) {
+
 		for (TaiKhoan tk : taiKhoanRepository.findAll()) {
-			if (tk.getId() == taikhoan.getId()) {
+			if (tk.getId() == id) {
 				tk.setEmail(taikhoan.getEmail());
 				tk.setPassword(taikhoan.getPassword());
 				tk.setRole(taikhoan.getRole());
-				taiKhoanRepository.save(tk);
+				TaiKhoan updateTaiKhoan = taiKhoanRepository.save(tk);
 			}
 		}
 

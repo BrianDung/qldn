@@ -28,9 +28,8 @@ public class TaiKhoanController {
 		return "giangvien/TrangChu";
 	}
 
-	@GetMapping("/taikhoan/{id}")
+	@GetMapping("/update/{id}")
 	public String taiKhoanDetail(@PathVariable("id") int id, Model model) {
-
 		model.addAttribute("taikhoan", taiKhoanService.getById(id));
 		return "test2";
 	}
@@ -52,6 +51,12 @@ public class TaiKhoanController {
 		taiKhoanService.deleteTaiKhoan(id);
 		model.addAttribute("taikhoan", id);
 		return "test5";
+	}
+
+	@PostMapping("/update/{id}")
+	public String updateTaiKhoan(@PathVariable("id") Long id, @ModelAttribute TaiKhoan taikhoan, Model model) {
+		taiKhoanService.updateTaiKhoan(taikhoan, id);
+		return "redirect:/taikhoan"; // Chuyen tiep toi trang /{dich}
 	}
 
 }
