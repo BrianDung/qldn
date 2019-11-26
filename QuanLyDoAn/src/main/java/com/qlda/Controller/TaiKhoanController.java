@@ -8,23 +8,32 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.qlda.Entity.TaiKhoan;
 import com.qlda.Repository.TaiKhoanRepository;
 import com.qlda.Service.TaiKhoanService;
 
 @Controller
+@RequestMapping("/sinhvien")
 public class TaiKhoanController {
 
 	@Autowired
 	TaiKhoanService taiKhoanService;
 
+	
 	@GetMapping("/taikhoan")
 	public String taiKhoan(Model model) {
 		model.addAttribute("taikhoan", taiKhoanService.getAllTaiKhoan());
 		return "test";
 	}
-
+	
+	@GetMapping("/giangvien")
+	public String giangvien(Model model) {
+		model.addAttribute("taikhoan", taiKhoanService.getAllTaiKhoan());
+		return "test";
+	}
+	
 	@GetMapping("/taikhoan/{id}")
 	public String taiKhoanDetail(@PathVariable("id") int id, Model model) {
 
