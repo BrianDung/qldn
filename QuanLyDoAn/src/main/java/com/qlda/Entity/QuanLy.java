@@ -15,6 +15,7 @@ import javax.persistence.Table;
 public class QuanLy {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String ten;
 	private String sodienthoai;

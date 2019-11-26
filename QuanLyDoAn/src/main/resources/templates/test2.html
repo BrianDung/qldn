@@ -6,9 +6,10 @@
 </head>
 <body>
 
-	<form th:action="@{/taikhoan}" th:object="${taikhoan}" method="post">
+	<form th:action="@{/update/{id}(id=${taikhoan.id})}"
+		th:object="${taikhoan}" method="post">
 		<p>
-			id: <input type="text" th:field="*{id}" />
+			Id: <span th:utext="${taikhoan.getId()}"></span>
 		</p>
 		<p>
 			Email: <input type="text" th:field="*{email}" />

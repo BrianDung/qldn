@@ -4,48 +4,45 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-
 
 @Entity
 @Table(name = "nhiemvu")
 public class NhiemVu {
 
 	@Id // Đánh dấu trường này là primary key
-	@GeneratedValue // Tự động tăng giá trị id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String ten;
 	private String noidung;
 	private String trangthai;
 	private Date ngaytao;
-	private byte[] filehd;
-	private byte[] filebt;
-	
+	private String filehd;
+	private String filebt;
+
 	@OneToOne
 	@JoinColumn(name = "iddetai", referencedColumnName = "id")
 	private Detai detai;
-	
-	public byte[] getFilehd() {
+
+	public String getFilehd() {
 		return filehd;
 	}
 
-	public void setFilehd(byte[] filehd) {
+	public void setFilehd(String filehd) {
 		this.filehd = filehd;
 	}
 
-	public byte[] getFilebt() {
+	public String getFilebt() {
 		return filebt;
 	}
 
-	public void setFilebt(byte[] filebt) {
+	public void setFilebt(String filebt) {
 		this.filebt = filebt;
 	}
-
-	
 
 	public Long getId() {
 		return id;
@@ -86,7 +83,6 @@ public class NhiemVu {
 	public void setNgaytao(Date ngaytao) {
 		this.ngaytao = ngaytao;
 	}
-
 
 	public Detai getDetai() {
 		return detai;

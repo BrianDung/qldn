@@ -4,25 +4,25 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "detai")
 public class Detai {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	private String ten;
 	private String mota;
 	private Date ngaytao;
-	private byte[] file;
+	private String file;
 	private String trangthai;
-	
+
 	@OneToOne
 	@JoinColumn(name = "idsinhvien", referencedColumnName = "id")
 	private SinhVien sinhvien;
@@ -59,11 +59,13 @@ public class Detai {
 		this.ngaytao = ngaytao;
 	}
 
-	public byte[] getFile() {
+	
+
+	public String getFile() {
 		return file;
 	}
 
-	public void setFile(byte[] file) {
+	public void setFile(String file) {
 		this.file = file;
 	}
 
@@ -82,5 +84,5 @@ public class Detai {
 	public void setSinhvien(SinhVien sinhvien) {
 		this.sinhvien = sinhvien;
 	}
-	
+
 }
