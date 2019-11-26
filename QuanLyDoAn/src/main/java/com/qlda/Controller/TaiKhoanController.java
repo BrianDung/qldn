@@ -16,24 +16,24 @@ import com.qlda.Repository.TaiKhoanRepository;
 import com.qlda.Service.TaiKhoanService;
 
 @Controller
+
 public class TaiKhoanController {
 
 	@Autowired
 	TaiKhoanService taiKhoanService;
 
-	@GetMapping("/taikhoan") // Lay danh sach tai khoan
+	@GetMapping("/taikhoan")
 	public String taiKhoan(Model model) {
 		model.addAttribute("taikhoan", taiKhoanService.getAllTaiKhoan());
 		return "test";
 	}
 
-	@GetMapping("/taikhoan/{id}") // Chi tiet tai khoan
+	@GetMapping("/taikhoan/{id}")
 	public String taiKhoanDetail(@PathVariable("id") int id, Model model) {
 
 		model.addAttribute("taikhoan", taiKhoanService.getById(id));
 		return "test2";
 	}
-	
 
 	@GetMapping("/addtaikhoan") // Tao 1 object tai khoan hien thi toi view
 	public String formTaiKhoan(Model model) {
@@ -54,5 +54,4 @@ public class TaiKhoanController {
 		return "test5";
 	}
 
-	
 }

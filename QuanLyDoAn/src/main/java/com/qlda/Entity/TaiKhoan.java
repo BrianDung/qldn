@@ -5,18 +5,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import lombok.Builder;
 import lombok.Data;
 
 @Entity
 @Table(name = "taikhoan")
-@Data
 
 public class TaiKhoan {
 
 	@Id
-	public Long id;
+	private Long id;
 	private String email;
 	private String password;
 	private String role;
@@ -54,7 +51,15 @@ public class TaiKhoan {
 	}
 
 	public TaiKhoan() {
-		// TODO Auto-generated constructor stub
+		super();
+	}
+
+	public TaiKhoan(Long id, String email, String password, String role) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.role = role;
 	}
 
 }
