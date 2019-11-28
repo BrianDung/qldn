@@ -88,10 +88,13 @@
 								<div th:each="sv : ${listsinhvien}">
 									<tr>
 										<!-- Họ và tên -->
-										<td><a
-											th:href="@{|/trangchu_quanly/sinhvien/${sv.getIdSv()}|}">
-												<span th:utext="${sv.getTenSv()}"></span>
-										</a></td>
+										<td>
+											<a th:href="@{|/trangchu_quanly/sinhvien/${sv.getIdSv()}|}">
+												<span th:utext="${sv.getTenSv()}"/>
+											</a>
+										</td>
+										
+										
 
 										<!-- Tên đề tài -->
 										<td><a

@@ -17,7 +17,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 </head>
 
 <body>
-  <th:block th:include="giaovu/head"></th:block>
+  
   <!-- container section start -->
   <section id="container" class="">
     <!-- header -->
@@ -25,7 +25,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
     <!--header end-->
 
     <!--sidebar start-->
-     	<th:block th:include="/sidebar"></th:block>
+     	<th:block th:include="giaovu/sidebar"></th:block>
     <!--sidebar end-->
 
         <!--main content start-->
@@ -62,57 +62,27 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                             </div>
                             <table class="table table-hover personal-task">
                                 <tbody>
-                                    <tr>
-                                        <td>Hôm nay</td>
-                                        <td>
-                                            Hỏi đáp về đề cương
-                                        </td>
-                                        <td>Chủ đề</td>
-                                        <td>
-                                            <a href="disscussDetail.html">Xem chi tiết</a>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>Hôm qua</td>
-                                        <td>
-                                            Phân tích thiết kế hệ thống
-                                        </td>
-                                        <td>Chủ đề</td>
-                                        <td>
-                                            <a href="disscussDetail.html">Xem chi tiết</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>21-10-19</td>
-                                        <td>
-                                            Đề cương
-                                        </td>
-                                        <td>Chủ đề</td>
-                                        <td>
-                                            <a href="disscussDetail.html">Xem chi tiết</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>22-10-19</td>
-                                        <td>
-                                            Nghiên cứu các hệ thống liên quan
-                                        </td>
-                                        <td>Chủ đề</td>
-                                        <td>
-                                            <a href="disscussDetail.html">Xem chi tiết</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>24-10-14</td>
-                                        <td>
-                                            Giao diện demo
-                                        </td>
-                                        <td>Chủ đề</td>
-                                        <td>
-                                            <a href="disscussDetail.html">Xem chi tiết</a>
-                                        </td>
-                                    </tr>
+	                                <tr>
+										<th><i class="icon_clock_alt"></i> Thời gian</th>
+										<th><i class="icon_document_alt"></i> Tên </th>
+										<th><i class="icon_info_alt"></i> Chủ đề </th>
+										<th><i class="icon_document_alt"></i> Chi tiết</th>
+									</tr>
+									<div>
+										<tr>
+											<!-- Thời gian đăng -->
+	                                        <td><span th:utext="${baidang.}"></span></td>
+	                                        
+	                                        <!-- Tên bài đăng -->
+	                                        <td><span th:utext="${baidang.}"></span></td>
+	                                        
+	                                        <!-- Chủ đề -->
+	                                        <td><span th:utext="${baidang.}"></span></td>
+	                                        
+	                                        <!-- Chi tiết -->
+	                                        <td><a href="disscussDetail.html">Xem chi tiết</a></td>
+                                    	</tr>
+									</div>
                                 </tbody>
                             </table>
                         </section>
