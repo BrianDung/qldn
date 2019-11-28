@@ -63,40 +63,31 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                         <th><i class="icon_cogs"></i> Action</th>
 
                                     </tr>
-                                    <tr>
-                                        <td><a href="ChiTietDoAn.html">Hệ thống quản lý đồ án</a></td>
-                                        <td><a href="infoStudent.html">Tran Tien Dung</a></td>
-                                        <td><a href="infoTeacher.html">PGS TS TRan Khanh Duc</a></td>
-                                        <td>15/03/1997</td>
-                                        <td>dungtt@gmail.com</td>
-                                        <td>20155287</td>
-                                        <td>0968628851</td>
-                                        <td>final.zar</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                                                <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                                                <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="ChiTietDoAn.html">Hệ thống quản lý đồ án</a></td>
-                                        <td>Tran Phuc Hau</td>
-                                        <td>PGS TS TRan Khanh Duc</td>
-                                        <td>25/10/1996</td>
-                                        <td>hautp@gmail.com</td>
-                                        <td>20155538</td>
-                                        <td>036xxx</td>
-                                        <td>final.zar</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                                                <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                                                <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    <div>
+                                    	<tr>
+	                                    	<!-- Ten de tai -->
+	                                        <td><a th:href="ChiTietDoAn.html"><span th:utext="${}"></span></a></td>
+	                                        
+	                                        <!-- Ten Sinh Vien -->
+	                                        <td><a th:href="infoStudent.html"><span th:utext="${}"></span></a></td>
+	                                        
+	                                        <!-- Ten Gianh Vien -->
+	                                        <td><a th:href="infoTeacher.html"><span th:utext="${}"></span></a></td>
+	                                        
+	                                      	<!-- File -->
+	                                        <td>final.zar</td>
+	                                        
+	                                        <!-- Them sua xoa de tai -->
+	                                        <td>
+	                                            <div class="btn-group">
+	                                                <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
+	                                                <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
+	                                                <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
+	                                            </div>
+	                                        </td>
+                                    	</tr>
+                                    </div>
+                                    
 
                                 </tbody>
                             </table>
