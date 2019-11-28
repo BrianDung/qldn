@@ -28,27 +28,29 @@ public class DanhGia {
 	@JoinColumn(name = "idNhiemVu", referencedColumnName = "id")
 	private NhiemVu nhiemVu;
 	//
+	private String ten;
 	private String noidung;
 
 	private String tieuchi1;
 	private String tieuchi2;
 	private String tieuchi3;
 	private String file;
-	public DanhGia(long id, NhiemVu nhiemVu, String noidung, String tieuchi1, String tieuchi2, String tieuchi3,
-			String file) {
+
+	public DanhGia() {
+		super();
+	}
+
+	public DanhGia(long id, NhiemVu nhiemVu, String ten, String noidung, String tieuchi1, String tieuchi2,
+			String tieuchi3, String file) {
 		super();
 		this.id = id;
 		this.nhiemVu = nhiemVu;
+		this.ten = ten;
 		this.noidung = noidung;
 		this.tieuchi1 = tieuchi1;
 		this.tieuchi2 = tieuchi2;
 		this.tieuchi3 = tieuchi3;
 		this.file = file;
 	}
-	public DanhGia() {
-		super();
-	}
-
-	
 
 }
