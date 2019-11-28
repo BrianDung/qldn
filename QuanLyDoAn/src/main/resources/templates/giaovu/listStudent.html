@@ -77,28 +77,30 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                   <th><i class="icon_mail_alt"></i> Email</th>
                   <th><i class="icon_pin_alt"></i> MSSV</th>
                   <th><i class="icon_mobile"></i> Giảng viên HD</th>
-                  <th><i class="icon_datareport"></i> Thông tin chi tiết</th>
+                 
                 </tr>
             
-                <div th:each="SV : ${sinhVienService.list}">
-                <tr>
-                  <td><span th:utext="${SV.ten}"></td>
-                  <td>Hệ thống quản lý đò án</td>
-                  <td>hautp@gmail.com</td>
-                  <td>2015538</td>
-                  <td><a href="infoTeacher.html">Tran Khanh Duc</a></td>
-                  <td>
-                    <li class="dropdown">
-                      <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">Xem thêm<b
-                          class="caret"></b></a>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">Danh sách bài tập</a></li>
-                        <li><a href="#">thống kê</a></li>
-                        <li><a href="#">Danh sách cuộc trò chuyện</a></li>
-                      </ul>
-                    </li>
-                  </td>
-                </tr>
+                <div th:each="sv : ${}">
+	                <tr>
+	                  <td><span th:utext="${sv.}"></td> <!-- Họ và tên -->
+	                  <td><span th:utext="${sv.}"></td> <!-- Tên đề tài -->
+	                  <td><span th:utext="${sv.}"></td> <!-- Email -->
+	                  <td><span th:utext="${sv.}"></td> <!-- MSSV -->
+	                  <td><span th:utext="${sv.}"></td> <!-- Giảng Viên Hướng Dẫn -->
+	                  
+	                  <!-- <td>
+	                    <li class="dropdown">
+	                      <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">Xem thêm<b
+	                          class="caret"></b></a>
+	                      <ul class="dropdown-menu">
+	                        <li><a href="#">Danh sách bài tập</a></li>
+	                        <li><a href="#">thống kê</a></li>
+	                        <li><a href="#">Danh sách cuộc trò chuyện</a></li>
+	                      </ul>
+	                    </li>
+	                  </td> -->
+	                  
+	                </tr>
                 </div>
               </tbody>
             </table>
