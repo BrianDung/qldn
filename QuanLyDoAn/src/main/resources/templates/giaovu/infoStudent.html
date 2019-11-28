@@ -60,7 +60,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                         <div class="profile-widget profile-widget-info">
                             <div class="panel-body">
                                 <div class="col-lg-2 col-sm-2">
-                                    <h4>Tran Tien Dung</h4>
+                                    <h4>
+                                    	<span th:utext="${sinhvieninf.getTenSv()}"></span>
+                                    </h4>
                                     <div class="follow-ava">
                                         <img src="img/profile-avatar-dung.jpg" alt="">
                                     </div>
@@ -69,12 +71,14 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                 <div class="col-lg-4 col-sm-4 follow-info">
                                     <p>Sinh viên K60 , Viện Sư Phạm Kỹ Thuật</p>
                                     <p>Lớp SPKT- CNTT</p>
-                                    <p><i class="fa fa-user-md"> MSSV :20155287</i></p>
-                                    <h6>
+                                    <p>
+                                    	<i class="fa fa-user-md"> MSSV :<span th:utext="${sinhvieninf.getMssv()}"></span></i>
+                                    </p>
+                                    <!-- <h6>
                                         <span><i class="icon_clock_alt"></i>11:05 AM</span>
                                         <span><i class="icon_calendar"></i>30.10.19</span>
                                         <span><i class="icon_pin_alt"></i>VN</span>
-                                    </h6>
+                                    </h6> -->
                                 </div>
 
                             </div>
@@ -110,32 +114,47 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                                 <!-- <h1>Bio Graph</h1> -->
                                                 <div class="row">
                                                     <div class="bio-row">
-                                                        <p><span>Họ và tên </span>: Trần Tiến Dũng </p>
+                                                        <p>
+                                                        	<span>Họ và tên </span>: <span th:utext="${sinhvieninf.getTenSv()}"></span>
+                                                        </p>
                                                     </div>
                                                     <div class="bio-row">
-                                                        <p><span>Đề tài </span>: XXX</p>
+                                                        <p>
+                                                        	<span>Đề tài </span>: <span th:utext="${sinhvieninf.getTenDeTai()}"></span>
+                                                        </p>
                                                     </div>
                                                     <div class="bio-row">
-                                                        <p><span>Năm sinh</span>: 15/03/1997</p>
+                                                        <p>
+                                                        	<span>Năm sinh</span>: <span th:utext="${sinhvieninf.getNamSinhSv()}"></span>
+                                                        </p>
+                                                    </div> 
+                                                    <div class="bio-row">
+                                                        <p>
+                                                        	<span>GVHD </span>:  <a href="infoTeacher.html"><span th:utext="${sinhvieninf.getTenGv()}"></span></a>
+                                                         </p>
                                                     </div>
                                                     <div class="bio-row">
-                                                        <p><span>GVHD </span>: PGS.TS <a href="infoTeacher.html">Trần
-                                                                Khánh Đức</a></p>
+                                                        <p>
+                                                        	<span>MSSV </span>: <span th:utext="${sinhvieninf.getMssv()}"></span>
+                                                        </p>
                                                     </div>
                                                     <div class="bio-row">
-                                                        <p><span>MSSV </span>: 20155287</p>
+                                                        <p>
+                                                        	<span>Số điện thoại</span>: <span th:utext="${sinhvieninf.getSoDienThoaiGv()}"></span>
+                                                        </p>
                                                     </div>
                                                     <div class="bio-row">
-                                                        <p><span>Số điện thoại</span>: 0913584171</p>
+                                                        <p>
+                                                        	<span>Số điện thoại </span>: <span th:utext="${sinhvieninf.getSoDienThoaiSv()}"></span>
+                                                        </p>
                                                     </div>
                                                     <div class="bio-row">
-                                                        <p><span>Số điện thoại </span>: 0968628851</p>
+                                                        
                                                     </div>
                                                     <div class="bio-row">
-                                                        <p><span>Email </span>: kduc1954@yahoo.com</p>
-                                                    </div>
-                                                    <div class="bio-row">
-                                                        <p><span>Email </span>:20155287@student.hust.edu.vn</p>
+                                                        <p>
+                                                        	<span>Email </span>:<span th:utext="${sinhvieninf.getEmailSv()}"></span>
+                                                        </p>
                                                     </div>
                                                     <!-- <div class="bio-row">
                             <p><span>Phone </span>: (+021) 956 789123</p>
@@ -165,15 +184,15 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
     <!-- container section end -->
     <!-- javascripts -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
     <!-- nice scroll -->
-    <script src="js/jquery.scrollTo.min.js"></script>
-    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script th:src="@{/js/jquery.scrollTo.min.js}"></script>
+    <script th:src="@{/js/jquery.nicescroll.js}" type="text/javascript"></script>
     <!-- jquery knob -->
-    <script src="assets/jquery-knob/js/jquery.knob.js"></script>
+    <script th:src="@{/assets/jquery-knob/js/jquery.knob.js}"></script>
     <!--custome script for all page-->
-    <script src="js/scripts.js"></script>
+    <script th:src="@{/js/scripts.js}"></script>
 
     <script>
         //knob

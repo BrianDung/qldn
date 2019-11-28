@@ -70,47 +70,42 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                         <th><i class="icon_star_alt"></i> Đánh giá</th>
                                         <th><i class="icon_datareport"></i> Thông tin chi tiết</th>
                                     </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Báo cáo đề cương</td>
-                                        <td>decuong.docx</td>
-                                        <td>Trần Tiến Dũng</td>
-                                        <td>31/10/2019</td>
-                                        <td>8/10</td>
+                                    <div>
+	                                    <tr>
+	                                    	<!-- Id -->
+	                                        <td><span th:utext="${}"></span></td>
+	                                        
+	                                        <!-- Ten bai -->
+	                                        <td><span th:utext="${}"></span></td>
+	                                        
+	                                        <!-- File -->
+	                                        <td><span th:utext="${}"></span></td>
+	                                        
+	                                        <!-- Ten Sinh Vien -->
+	                                        <td><span th:utext="${}"></span></td>
+	                                        
+	                                        <!-- Thoi gian -->
+	                                        <td><span th:utext="${}"></span></td>
+	                                        
+	                                        <!-- Danh gia -->
+	                                        <td><span th:utext="${}"></span>/10</td>
+	 
+	                                        <td>
+	                                            <li class="dropdown">
+	                                                <a href="javascript:;" class="dropdown-toggle"
+	                                                    data-toggle="dropdown">Xem thêm<b class="caret"></b></a>
+	                                                <ul class="dropdown-menu">
+	                                                    <li><a href="taskDetail.html">Xem chi tiết bài tập và đánh giá</a>
+	                                                    </li>
+	                                                    <li><a href="#">another action</a></li>
+	
+	                                                </ul>
+	                                            </li>
+	                                        </td>
+	                                    </tr>
+                                    </div>
+                                    
 
-                                        <td>
-                                            <li class="dropdown">
-                                                <a href="javascript:;" class="dropdown-toggle"
-                                                    data-toggle="dropdown">Xem thêm<b class="caret"></b></a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="taskDetail.html">Xem chi tiết bài tập và đánh giá</a>
-                                                    </li>
-                                                    <li><a href="#">another action</a></li>
-
-                                                </ul>
-                                            </li>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Báo cáo đề cương</td>
-                                        <td>decuong.docx</td>
-                                        <td>Trần Phúc Hậu</td>
-                                        <td>31/10/2019</td>
-                                        <td>8/10</td>
-
-                                        <td>
-                                            <li class="dropdown">
-                                                <a href="javascript:;" class="dropdown-toggle"
-                                                    data-toggle="dropdown">Xem thêm<b class="caret"></b></a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="taskDetail.html">Xem chi tiết bài tập và đánh giá</a>
-                                                    </li>
-                                                    <li><a href="#">another action</a></li>
-                                                </ul>
-                                            </li>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </section>

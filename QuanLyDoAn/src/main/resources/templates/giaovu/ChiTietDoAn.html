@@ -23,7 +23,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
     <!--header end-->
 
     <!--sidebar start-->
-     	<th:block th:include="/sidebar"></th:block>
+     	<th:block th:include="giaovu/sidebar"></th:block>
     <!--sidebar end-->
 
 
@@ -55,7 +55,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in">
                   <div class="panel-body">
-
+                  
+					<span th:utext="${}"></span>
                     Do nhận thấy những khó khăn, hạn chế về sự tương tác giữa giảng viên và sinh viên khi tham gia nhận
                     đề tài thực hiện đồ án tốt nghiệp và nhu cầu cấp thiết hỗ trợ tốt nhất cho Giáo vụ của Viện SPKT về
                     quản lý đồ án cho sinh viên, nhóm nghiên cứu nảy sinh ý tưởng xây dựng hệ thống thông tin quản lý đồ
@@ -75,6 +76,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse">
                   <div class="panel-body">
+                   
+                  	<span th:utext="${}"></span>
                     Đồ án trình bày quy trình xây dựng phần mềm quản lý đồ án tốt nghiệp dựa trên thực trạng quản lý đồ
                     án tốt nghiệp hiện tại, từ đó đi vào phân tích thiết kế đưa ra sản phẩm có các chức năng đáp ứng yêu
                     cầu với các nhiệm vụ chính
@@ -98,6 +101,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse">
                   <div class="panel-body">
+                  
+                  <span th:utext="${}"></span>
                     Đối tượng nghiên cứu.<br>
                     - Các quá trình quản lý đồ án, lưu trữ, thống kê, tìm kiếm đồ án…. qua đó xây dựng chương trình quản
                     lý đồ án tốt nghiệp của sinh viên.
