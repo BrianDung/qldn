@@ -11,6 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
+
 @Data
 @Entity
 @Table(name = "detai")
@@ -25,14 +26,14 @@ public class DeTai {
 	private String thongtin;
 	private Date ngaytao;
 	private String file;
-	private String trangthai;
+	private boolean trangthai;
 
 	@OneToOne
 	@JoinColumn(name = "idsinhvien", referencedColumnName = "id")
 	private SinhVien sinhvien;
 
 	public DeTai(long id, String ten, String mota, String noidung, String thongtin, Date ngaytao, String file,
-			String trangthai, SinhVien sinhvien) {
+			boolean trangthai, SinhVien sinhvien) {
 		super();
 		this.id = id;
 		this.ten = ten;
@@ -48,7 +49,5 @@ public class DeTai {
 	public DeTai() {
 		super();
 	}
-
-	
 
 }
