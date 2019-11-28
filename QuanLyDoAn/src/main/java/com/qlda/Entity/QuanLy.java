@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+@Data
 @Entity
 @Table(name = "quanly")
 public class QuanLy {
@@ -25,44 +27,15 @@ public class QuanLy {
 	@JoinColumn(name = "idtaikhoan", referencedColumnName = "id")
 	private TaiKhoan taikhoan;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
+	public QuanLy(Long id, String ten, String sodienthoai, Date namsinh, TaiKhoan taikhoan) {
+		super();
 		this.id = id;
-	}
-
-	public String getTen() {
-		return ten;
-	}
-
-	public void setTen(String ten) {
 		this.ten = ten;
-	}
-
-	public String getSodienthoai() {
-		return sodienthoai;
-	}
-
-	public void setSodienthoai(String sodienthoai) {
 		this.sodienthoai = sodienthoai;
-	}
-
-	public Date getNamsinh() {
-		return namsinh;
-	}
-
-	public void setNamsinh(Date namsinh) {
 		this.namsinh = namsinh;
-	}
-
-	public TaiKhoan getTaikhoan() {
-		return taikhoan;
-	}
-
-	public void setTaikhoan(TaiKhoan taikhoan) {
 		this.taikhoan = taikhoan;
 	}
+	
+	
 	
 }

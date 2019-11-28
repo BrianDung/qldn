@@ -16,69 +16,68 @@ public class QuanLyController {
 	@Autowired
 	QuanLyService quanlyservice;
 
-	
-
-	@RequestMapping(value = { "/quanly" }) // danh sach quan ly
-	public String quanLys(Model model) {
-
-		return "giangvien/GiangVien";
+	// Giao dien Thong tin Quan ly - Chi tiết của quản lý
+	@GetMapping("/quanly/{id}")
+	public String quanLyDetail(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("quanly", quanlyservice.getInfQuanLy(id));
+		return "giaovu/information";
 	}
 
-	@RequestMapping(value = { "/quanly/{id}" }) // chi tiet quan ly
-	public String quanLyDetail(Model model) {
-
-		return "giangvien/GiangVien";
-	}
-
-	@GetMapping("/sinhvien") // danh sach sinh vien
+	// Giao dien Danh sach sinh vien - Lấy ra danh sách các model SinhVienDetail
+	@GetMapping("/sinhvien")
 	public String sinhViens(Model model) {
 		model.addAttribute("listsinhvien", quanlyservice.getAllSinhVien());
-		return "listStudent";
-
+		return "giaovu/listStudent";
 	}
 
-	@GetMapping("/sinhvien/{id}") // chi tiet sinh vien
+	// Giao diện thông tin chi tiết sinh viên
+	@GetMapping("/sinhvien/{id}")
 	public String sinhVienDetail(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("sinhvieninf", quanlyservice.getInfoSv(id));
-		return "infsv";
+		model.addAttribute("sinhvien", quanlyservice.getInfoSv(id));
+		return "giaovu/infoStudent";
 	}
 
-	@RequestMapping(value = { "/giangvien" }) // danh sach giang vien
+	// Giao diện thông tin chi tiết của 1 đề tài (đồ án)
+	@GetMapping("doan/{id}")
+	public String doanDetail(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("detai", quanlyservice.getInfDeTai(id));
+		return "giaovu/ChiTietDoAn";
+	}
+
+	// Giao diện thông tin chi tiết của 1 giảng viên
+	@GetMapping("/giangvien/{id}")
+	public String giangvienDetail(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("giangvien", quanlyservice.getInfoGv(id));
+		return "giaovu/infoTeacher";
+	}
+
+	// Giao diện danh sách giảng viên
+	@GetMapping("/giangvien")
 	public String giangviens(Model model) {
 		model.addAttribute("listgiangvien", quanlyservice.getAllGiangVien());
-		return "listGiangVien";
+		return "giaovu/DanhSachGiangVien";
 	}
 
-	@RequestMapping(value = { "/giangvien/{id}" }) // chi tiet giang vien
-	public String giangvienDetail(@PathVariable("id") Long id,Model model) {
-
-		return "giangvien/GiangVien";
-	}
+	// Giao diện sinh viên của giảng viên
 	@GetMapping("/giangvien/sinhvien/{id}")
-	public String listStudenOfTeacher(@PathVariable("id") Long id,Model model) {
-		
+	public String listStudenOfTeacher(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("listsinhvien", quanlyservice.getStudentOfTeacher(id));
-		return "listStudent";
+		return "giaovu/listStudent";
+
+	}
+
+	// Giao diện danh sách đồ án
+	@GetMapping("/doan")
+	public String listDoAn(Model model) {
+		model.addAttribute("listdoan", quanlyservice.getAllDoAnDetail());
+		return "test4";
+	}
+	
+	// Giao dien danh sach bai tap truyen vao id cua detai
+	@GetMapping("sinhvien/baitap/{id}")
+	public String listTaskOfStudent(@PathVariable("id") Long id ,Model model) {
 		
-	}
-	
-	
-	@RequestMapping(value = { "/doan" }) // danh sach do an
-	public String doans(Model model) {
-
-		return "giangvien/GiangVien";
-	}
-
-	@RequestMapping(value = { "/doan/{id}" }) // chi tiet do an
-	public String doanDetail(Model model) {
-
-		return "giangvien/GiangVien";
-	}
-
-	@RequestMapping(value = { "/baitap" }) // danh sach bai tap
-	public String baiTaps(Model model) {
-
-		return "giangvien/GiangVien";
+		return "test4";
 	}
 
 	@RequestMapping(value = { "/baitap/{id}" }) // chi tiet bai tap

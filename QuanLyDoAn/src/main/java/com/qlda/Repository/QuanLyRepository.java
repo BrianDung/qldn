@@ -9,9 +9,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.qlda.Entity.DeTai;
 import com.qlda.Entity.GiangVien;
 import com.qlda.Entity.QuanLy;
+import com.qlda.Model.BaiTapDetail;
+import com.qlda.Model.DoAnDetail;
 import com.qlda.Model.GiangVienDetail;
+import com.qlda.Model.QuanLyDetail;
 import com.qlda.Model.SinhVienDetail;
 
 @Repository
@@ -34,7 +38,18 @@ public interface QuanLyRepository extends JpaRepository<QuanLy, Long> {
 			+ "FROM GiangVien gv INNER JOIN gv.taikhoan tk")
 	List<GiangVienDetail> getAllListGv();
 
-	
-	
-	
+	@Query("SELECT new com.qlda.Entity.DeTai(dt.id , dt.ten, dt.mota, dt.noidung, dt.thongtin , dt.ngaytao, dt.file , dt.trangthai)"
+			+ "FROM DeTai dt")
+	List<DeTai> getAllDeTai();
+
+	@Query("SELECT new com.qlda.Model.QuanLyDetail(ql.id , ql.ten, ql.sodienthoai, ql.namsinh, tk.email)"
+			+ "FROM QuanLy ql INNER JOIN ql.taikhoan tk")
+	List<QuanLyDetail> getAllQuanLy();
+
+	@Query("SELECT new com.qlda.Model.DoAnDetail(dt.id, dt.ten, gv.id, gv.ten, sv.id, sv.ten, dt.ngaytao,dt.trangthai)"
+			+ "FROM DeTai dt INNER JOIN dt.sinhvien sv INNER JOIN sv.giangvien gv ")
+	List<DoAnDetail> getAllDoAnDetail();
+	@Query("SELECT new com.qlda.Model.BaiTapDetail(nv.id,nv.ten,nv.trangthai,nv.filebt,nv.filehd,nv.ngaytao,dg.id,dg.tieuchi1,dg.tieuchi2,dg.tieuchi3)"+
+	"FROM DanhGia dg INNER JOIN dg.nhiemvu nv INNER JOIN nv.detai dt INNER JOIN dt.sinhvien sv")
+	List<BaiTapDetail> getAllBaiTapDetail();
 }

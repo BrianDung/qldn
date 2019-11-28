@@ -23,6 +23,8 @@ public class SinhVienDetail { // Giao dien danh sach sinh vien lam do an
 	// De tai
 	private Long idDetai;
 	private String tenDeTai;
+	
+	
 	// Contructor cho view Danh sach sinh vien lam do an
 	public SinhVienDetail(Long idSv, String tenSv, int mssv, String emailSv, Long idGv, String tenGv, Long idDetai,
 			String tenDeTai) {
