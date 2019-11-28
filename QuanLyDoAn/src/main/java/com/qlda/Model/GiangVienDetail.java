@@ -21,4 +21,5 @@ public class GiangVienDetail {
 		this.id = id;
 	}
 
+	
 }

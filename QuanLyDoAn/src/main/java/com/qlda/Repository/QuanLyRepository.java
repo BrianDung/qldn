@@ -35,4 +35,6 @@ public interface QuanLyRepository extends JpaRepository<QuanLy, Long> {
 	List<GiangVienDetail> getAllListGv();
 
 	
+	
+	
 }

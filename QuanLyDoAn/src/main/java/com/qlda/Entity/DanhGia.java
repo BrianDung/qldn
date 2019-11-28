@@ -28,67 +28,27 @@ public class DanhGia {
 	@JoinColumn(name = "idNhiemVu", referencedColumnName = "id")
 	private NhiemVu nhiemVu;
 	//
-	private String noiDung;
-	
-	private String tieuChi1;
-	private String tieuChi2;
-	private String tieuChi3;
-	private String tieuChi4;
-	private String trungBinh;
-	private String file;
+	private String noidung;
 
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
+	private String tieuchi1;
+	private String tieuchi2;
+	private String tieuchi3;
+	private String file;
+	public DanhGia(long id, NhiemVu nhiemVu, String noidung, String tieuchi1, String tieuchi2, String tieuchi3,
+			String file) {
+		super();
 		this.id = id;
-	}
-	public NhiemVu getNhiemVu() {
-		return nhiemVu;
-	}
-	public void setNhiemVu(NhiemVu nhiemVu) {
 		this.nhiemVu = nhiemVu;
-	}
-	public String getNoiDung() {
-		return noiDung;
-	}
-	public void setNoiDung(String noiDung) {
-		this.noiDung = noiDung;
-	}
-	public String getTieuChi1() {
-		return tieuChi1;
-	}
-	public void setTieuChi1(String tieuChi1) {
-		this.tieuChi1 = tieuChi1;
-	}
-	public String getTieuChi2() {
-		return tieuChi2;
-	}
-	public void setTieuChi2(String tieuChi2) {
-		this.tieuChi2 = tieuChi2;
-	}
-	public String getTieuChi3() {
-		return tieuChi3;
-	}
-	public void setTieuChi3(String tieuChi3) {
-		this.tieuChi3 = tieuChi3;
-	}
-	public String getTieuChi4() {
-		return tieuChi4;
-	}
-	public void setTieuChi4(String tieuChi4) {
-		this.tieuChi4 = tieuChi4;
-	}
-	public String getTrungBinh() {
-		return trungBinh;
-	}
-	public void setTrungBinh(String trungBinh) {
-		this.trungBinh = trungBinh;
-	}
-	public String getFile() {
-		return file;
-	}
-	public void setFile(String file) {
+		this.noidung = noidung;
+		this.tieuchi1 = tieuchi1;
+		this.tieuchi2 = tieuchi2;
+		this.tieuchi3 = tieuchi3;
 		this.file = file;
 	}
+	public DanhGia() {
+		super();
+	}
+
+	
+
 }

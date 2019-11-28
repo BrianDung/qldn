@@ -16,10 +16,7 @@ public class QuanLyController {
 	@Autowired
 	QuanLyService quanlyservice;
 
-	@GetMapping("/")
-	public String index(Model model) {
-		return "giaovu/index";
-	}
+	
 
 	@RequestMapping(value = { "/quanly" }) // danh sach quan ly
 	public String quanLys(Model model) {
