@@ -22,10 +22,15 @@ public class TaiKhoanController {
 	@Autowired
 	TaiKhoanService taiKhoanService;
 
+	@GetMapping("/")
+	public String test() {
+		return "giangvien/TrangChu";
+	}
+
 	@GetMapping("/taikhoan")
 	public String taiKhoan(Model model) {
 		model.addAttribute("taikhoan", taiKhoanService.getAllTaiKhoan());
-		return "giangvien/TrangChu";
+		return "test";
 	}
 
 	@GetMapping("/update/{id}")

@@ -87,6 +87,15 @@ public class SinhVien {
 	public void setGiangvien(GiangVien giangvien) {
 		this.giangvien = giangvien;
 	}
+
+	public SinhVien(Long id, int mssv, String ten, Date namsinh, String sodienthoai) {
+		super();
+		this.id = id;
+		this.mssv = mssv;
+		this.ten = ten;
+		this.namsinh = namsinh;
+		this.sodienthoai = sodienthoai;
+	}
 	
 	
 }

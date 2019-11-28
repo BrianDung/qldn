@@ -26,7 +26,7 @@ public class NhiemVu {
 
 	@OneToOne
 	@JoinColumn(name = "iddetai", referencedColumnName = "id")
-	private Detai detai;
+	private DeTai detai;
 
 	public String getFilehd() {
 		return filehd;
@@ -84,11 +84,11 @@ public class NhiemVu {
 		this.ngaytao = ngaytao;
 	}
 
-	public Detai getDetai() {
+	public DeTai getDetai() {
 		return detai;
 	}
 
-	public void setDetai(Detai detai) {
+	public void setDetai(DeTai detai) {
 		this.detai = detai;
 	}
 }

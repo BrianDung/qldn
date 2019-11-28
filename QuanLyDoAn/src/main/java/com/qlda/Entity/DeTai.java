@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "detai")
-public class Detai {
+public class DeTai {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;

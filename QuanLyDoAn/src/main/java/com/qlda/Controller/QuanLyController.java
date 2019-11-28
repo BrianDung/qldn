@@ -1,19 +1,24 @@
 package com.qlda.Controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.qlda.Service.QuanLyService;
+
+@RequestMapping("/trangchu_quanly")
 @Controller
-@RequestMapping("/trangchu-quanly")
 public class QuanLyController {
+	@Autowired
+	QuanLyService quanlyservice;
 
-	// GET: Hiển thị trang login
-	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
+	@GetMapping("/")
 	public String index(Model model) {
-
-		return "giangvien/TrangChu";
+		return "giaovu/index";
 	}
 
 	@RequestMapping(value = { "/quanly" }) // danh sach quan ly
@@ -28,30 +33,39 @@ public class QuanLyController {
 		return "giangvien/GiangVien";
 	}
 
-	@RequestMapping(value = { "/sinhvien" }) // danh sach sinh vien
+	@GetMapping("/sinhvien") // danh sach sinh vien
 	public String sinhViens(Model model) {
+		model.addAttribute("listsinhvien", quanlyservice.getAllSinhVien());
+		return "listStudent";
 
-		return "giangvien/GiangVien";
 	}
 
-	@RequestMapping(value = { "/sinhvien/{id}" }) // chi tiet sinh vien
-	public String sinhVienDetail(Model model) {
-
-		return "giangvien/GiangVien";
+	@GetMapping("/sinhvien/{id}") // chi tiet sinh vien
+	public String sinhVienDetail(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("sinhvieninf", quanlyservice.getInfoSv(id));
+		return "infsv";
 	}
 
 	@RequestMapping(value = { "/giangvien" }) // danh sach giang vien
 	public String giangviens(Model model) {
-
-		return "giangvien/GiangVien";
+		model.addAttribute("listgiangvien", quanlyservice.getAllGiangVien());
+		return "listGiangVien";
 	}
 
 	@RequestMapping(value = { "/giangvien/{id}" }) // chi tiet giang vien
-	public String giangvienDetail(Model model) {
+	public String giangvienDetail(@PathVariable("id") Long id,Model model) {
 
 		return "giangvien/GiangVien";
 	}
-
+	@GetMapping("/giangvien/sinhvien/{id}")
+	public String listStudenOfTeacher(@PathVariable("id") Long id,Model model) {
+		
+		model.addAttribute("listsinhvien", quanlyservice.getStudentOfTeacher(id));
+		return "listStudent";
+		
+	}
+	
+	
 	@RequestMapping(value = { "/doan" }) // danh sach do an
 	public String doans(Model model) {
 
