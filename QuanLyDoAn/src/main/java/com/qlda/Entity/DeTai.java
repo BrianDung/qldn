@@ -26,7 +26,7 @@ public class DeTai {
 	private String thongtin;
 	private Date ngaytao;
 	private String file;
-	private boolean trangthai;
+	private boolean trangthai; // change boolean
 
 	@OneToOne
 	@JoinColumn(name = "idsinhvien", referencedColumnName = "id")
