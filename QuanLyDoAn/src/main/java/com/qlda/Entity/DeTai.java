@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+@Data
 @Entity
 @Table(name = "detai")
 public class DeTai {
@@ -19,6 +21,8 @@ public class DeTai {
 
 	private String ten;
 	private String mota;
+	private String noidung;
+	private String thongtin;
 	private Date ngaytao;
 	private String file;
 	private String trangthai;
@@ -27,62 +31,24 @@ public class DeTai {
 	@JoinColumn(name = "idsinhvien", referencedColumnName = "id")
 	private SinhVien sinhvien;
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
+	public DeTai(long id, String ten, String mota, String noidung, String thongtin, Date ngaytao, String file,
+			String trangthai, SinhVien sinhvien) {
+		super();
 		this.id = id;
-	}
-
-	public String getTen() {
-		return ten;
-	}
-
-	public void setTen(String ten) {
 		this.ten = ten;
-	}
-
-	public String getMota() {
-		return mota;
-	}
-
-	public void setMota(String mota) {
 		this.mota = mota;
-	}
-
-	public Date getNgaytao() {
-		return ngaytao;
-	}
-
-	public void setNgaytao(Date ngaytao) {
+		this.noidung = noidung;
+		this.thongtin = thongtin;
 		this.ngaytao = ngaytao;
+		this.file = file;
+		this.trangthai = trangthai;
+		this.sinhvien = sinhvien;
+	}
+
+	public DeTai() {
+		super();
 	}
 
 	
-
-	public String getFile() {
-		return file;
-	}
-
-	public void setFile(String file) {
-		this.file = file;
-	}
-
-	public String getTrangthai() {
-		return trangthai;
-	}
-
-	public void setTrangthai(String trangthai) {
-		this.trangthai = trangthai;
-	}
-
-	public SinhVien getSinhvien() {
-		return sinhvien;
-	}
-
-	public void setSinhvien(SinhVien sinhvien) {
-		this.sinhvien = sinhvien;
-	}
 
 }
