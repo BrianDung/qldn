@@ -21,13 +21,11 @@ public class DoAnDetail {
 		super();
 	}
 
-	public DoAnDetail(Long idDeTai, String tenDeTai, Long idNhiemVu, String tenNhiemVu, Long idGv, String tenGv,
-			Long idSv, String tenSv, Date ngayTao, String trangThai) {
+	public DoAnDetail(Long idDeTai, String tenDeTai, Long idGv, String tenGv, Long idSv, String tenSv, Date ngayTao,
+			String trangThai) {
 		super();
 		this.idDeTai = idDeTai;
 		this.tenDeTai = tenDeTai;
-		this.idNhiemVu = idNhiemVu;
-		this.tenNhiemVu = tenNhiemVu;
 		this.idGv = idGv;
 		this.tenGv = tenGv;
 		this.idSv = idSv;
