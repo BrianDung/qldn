@@ -5,20 +5,20 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class GiangVienDetail {
+public class QuanLyDetail {
+	private Long id;
 	private String ten;
+	private String soDienThoai;
 	private Date namSinh;
 	private String email;
-	private String soDienThoai;
-	private Long id;
 
-	public GiangVienDetail(String ten, Date namSinh, String email, String soDienThoai, Long id) {
+	public QuanLyDetail(Long id, String ten, String soDienThoai, Date namSinh, String email) {
 		super();
+		this.id = id;
 		this.ten = ten;
+		this.soDienThoai = soDienThoai;
 		this.namSinh = namSinh;
 		this.email = email;
-		this.soDienThoai = soDienThoai;
-		this.id = id;
 	}
 
 }

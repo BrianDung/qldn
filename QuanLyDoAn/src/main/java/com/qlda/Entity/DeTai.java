@@ -26,14 +26,14 @@ public class DeTai {
 	private String thongtin;
 	private Date ngaytao;
 	private String file;
-	private boolean trangthai;
+	private String trangthai; // change boolean
 
 	@OneToOne
 	@JoinColumn(name = "idsinhvien", referencedColumnName = "id")
 	private SinhVien sinhvien;
 
 	public DeTai(long id, String ten, String mota, String noidung, String thongtin, Date ngaytao, String file,
-			boolean trangthai, SinhVien sinhvien) {
+			String trangthai) {
 		super();
 		this.id = id;
 		this.ten = ten;
@@ -43,7 +43,7 @@ public class DeTai {
 		this.ngaytao = ngaytao;
 		this.file = file;
 		this.trangthai = trangthai;
-		this.sinhvien = sinhvien;
+
 	}
 
 	public DeTai() {
