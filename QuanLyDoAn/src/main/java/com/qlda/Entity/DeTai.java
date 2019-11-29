@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data
@@ -24,6 +26,7 @@ public class DeTai {
 	private String mota;
 	private String noidung;
 	private String thongtin;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngaytao;
 	private String file;
 	private String trangthai; // change boolean

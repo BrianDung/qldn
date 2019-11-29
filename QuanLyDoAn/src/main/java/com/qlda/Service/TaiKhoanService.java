@@ -14,8 +14,28 @@ public class TaiKhoanService {
 	@Autowired
 	TaiKhoanRepository taiKhoanRepository;
 
-	public List<TaiKhoan> getAllTaiKhoan() {
-		return taiKhoanRepository.findAll();
+	// Them 1 tai khoan
+	public TaiKhoan addTaiKhoan(TaiKhoan taikhoan) {
+		boolean check = checkEmail(taikhoan);
+		if (check == true)
+			return taiKhoanRepository.save(taikhoan);
+		else
+			return null;
+
+	}
+
+	// Check thong tin Email
+	public boolean checkEmail(TaiKhoan taikhoan) {
+		if (taikhoan.getEmail() == null || taikhoan.getPassword() == null || taikhoan.getRole() == null) {
+			return false;
+		} else {
+			for (TaiKhoan tk : taiKhoanRepository.findAll()) {
+				if (tk.getEmail() == taikhoan.getEmail()) {
+					return false;
+				}
+			}
+			return true;
+		}
 	}
 
 	public TaiKhoan getById(int id) {
@@ -25,11 +45,6 @@ public class TaiKhoanService {
 			}
 		}
 		return null;
-	}
-
-	public TaiKhoan addTaiKhoan(TaiKhoan taikhoan) {
-		taiKhoanRepository.save(taikhoan);
-		return taikhoan;
 	}
 
 	public void deleteTaiKhoan(Long id) {

@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "sinhvien")
 public class SinhVien {
@@ -19,6 +21,7 @@ public class SinhVien {
 	private Long id;
 	private int mssv;
 	private String ten;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date namsinh;
 	private String sodienthoai;
 	

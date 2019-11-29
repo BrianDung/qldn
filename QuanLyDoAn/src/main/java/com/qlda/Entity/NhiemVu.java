@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data
@@ -23,7 +25,9 @@ public class NhiemVu {
 	private String ten;
 	private String noidung;
 	private String trangthai;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngaytao;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date hannop;
 	private String filehd;
 	private String filebt;

@@ -5,13 +5,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+	RESULT
+	
+		<span th:utext="${taikhoan.getId()}"></span>
+		<span th:utext="${taikhoan.getEmail()}"></span> <span
+			th:utext="${taikhoan.getPassword()}"></span> <span
+			th:utext="${taikhoan.getRole()}"></span>
 
-	<div th:each=" bd : ${baidang}">
-		<span th:utext="${bd.getTen()}"></span> <span
-			th:utext="${bd.getNoidung()}"></span> <span
-			th:utext="${bd.getNgaytao()}"></span> <span
-			th:utext="${bd.getFile()}"></span>
-	</div>
 
 
 

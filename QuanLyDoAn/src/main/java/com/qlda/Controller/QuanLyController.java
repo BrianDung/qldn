@@ -4,11 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.qlda.Entity.TaiKhoan;
 import com.qlda.Service.QuanLyService;
+import com.qlda.Service.TaiKhoanService;
 
 @RequestMapping("/trangchu_quanly")
 @Controller
@@ -91,14 +95,14 @@ public class QuanLyController {
 	@GetMapping("trochuyen/{id}")
 	public String troChuyens(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("listtrochuyensinhvien", quanlyservice.getAllTroChuyen(id));
-		return "giaovu/disscuss";
+		return "test";
 	}
 
 	// View chi tiet tro chuyen
 	@GetMapping("sinhvien/trochuyen/{id}")
 	public String troChuyenDetail(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("baidang", quanlyservice.getInfoBaiDang(id));
-		return "test4";
+		return "giaovu/disscussDetail";
 	}
 
 	@RequestMapping(value = { "/thongke" }) // danh sach thong ke
@@ -133,12 +137,6 @@ public class QuanLyController {
 
 	@RequestMapping(value = { "/taikhoan/giangvien/{id}" }, method = RequestMethod.POST) // Tao tai khoan giang vien
 	public String taoTaiKhoanGiangVien(Model model) {
-
-		return "giangvien/GiangVien";
-	}
-
-	@RequestMapping(value = { "/taikhoan/sinhvien/{id}" }, method = RequestMethod.POST) // Tao tai khoan sinh vien
-	public String taoTaiKhoanSinhVien(Model model) {
 
 		return "giangvien/GiangVien";
 	}
