@@ -70,20 +70,35 @@ public class QuanLyController {
 	@GetMapping("/doan")
 	public String listDoAn(Model model) {
 		model.addAttribute("listdoan", quanlyservice.getAllDoAnDetail());
-		return "test4";
+		return "giaovu/DanhSachDoAn";
 	}
-	
+
 	// Giao dien danh sach bai tap truyen vao id cua detai
 	@GetMapping("sinhvien/baitap/{id}")
-	public String listTaskOfStudent(@PathVariable("id") Long id ,Model model) {
-		
-		return "test4";
+	public String listTaskOfStudent(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("listnhiemvu", quanlyservice.getAllBaiTapDetail(id));
+		return "giaovu/DanhSachBaiTap";
 	}
 
-	@RequestMapping(value = { "/baitap/{id}" }) // chi tiet bai tap
-	public String baiTapDetail(Model model) {
+	// Giao dien xem chi tiet va danh gia bai tap
+	@GetMapping("baitap/{id}")
+	public String baiTapDetail(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("baitapdanhgia", quanlyservice.getBaiTapDanhGia(id));
+		return "giaovu/taskDetail";
+	}
 
-		return "giangvien/GiangVien";
+	// View danh sach tro chuyen cua 1 sinh vien
+	@GetMapping("trochuyen/{id}")
+	public String troChuyens(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("listtrochuyensinhvien", quanlyservice.getAllTroChuyen(id));
+		return "giaovu/disscuss";
+	}
+
+	// View chi tiet tro chuyen
+	@GetMapping("sinhvien/trochuyen/{id}")
+	public String troChuyenDetail(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("baidang", quanlyservice.getInfoBaiDang(id));
+		return "test4";
 	}
 
 	@RequestMapping(value = { "/thongke" }) // danh sach thong ke
@@ -94,18 +109,6 @@ public class QuanLyController {
 
 	@RequestMapping(value = { "/thongke/{id}" }) // chi tiet thong ke
 	public String thongkeDetail(Model model) {
-
-		return "giangvien/GiangVien";
-	}
-
-	@RequestMapping(value = { "/trochuyen" }) // danh sach tro chuyen
-	public String troChuyens(Model model) {
-
-		return "giangvien/GiangVien";
-	}
-
-	@RequestMapping(value = { "/trochuyen/{id}" }) // chi tiet tro chuyen
-	public String troChuyenDetail(Model model) {
 
 		return "giangvien/GiangVien";
 	}

@@ -22,29 +22,29 @@ public class DanhGia {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@OneToOne
-	@JoinColumn(name = "idNhiemVu", referencedColumnName = "id")
-	private NhiemVu nhiemVu;
+	@JoinColumn(name = "idnhiemvu", referencedColumnName = "id")
+	private NhiemVu nhiemvu;
 	//
 	private String ten;
 	private String noidung;
 
-	private String tieuchi1;
-	private String tieuchi2;
-	private String tieuchi3;
+	private int tieuchi1;
+	private int tieuchi2;
+	private int tieuchi3;
 	private String file;
 
 	public DanhGia() {
 		super();
 	}
 
-	public DanhGia(long id, NhiemVu nhiemVu, String ten, String noidung, String tieuchi1, String tieuchi2,
-			String tieuchi3, String file) {
+	public DanhGia(long id, NhiemVu nhiemvu, String ten, String noidung, int tieuchi1, int tieuchi2,
+			int tieuchi3, String file) {
 		super();
 		this.id = id;
-		this.nhiemVu = nhiemVu;
+		this.nhiemvu = nhiemvu;
 		this.ten = ten;
 		this.noidung = noidung;
 		this.tieuchi1 = tieuchi1;

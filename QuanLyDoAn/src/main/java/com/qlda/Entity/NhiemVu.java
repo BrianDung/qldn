@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "nhiemvu")
 public class NhiemVu {
@@ -21,6 +24,7 @@ public class NhiemVu {
 	private String noidung;
 	private String trangthai;
 	private Date ngaytao;
+	private Date hannop;
 	private String filehd;
 	private String filebt;
 
@@ -28,67 +32,4 @@ public class NhiemVu {
 	@JoinColumn(name = "iddetai", referencedColumnName = "id")
 	private DeTai detai;
 
-	public String getFilehd() {
-		return filehd;
-	}
-
-	public void setFilehd(String filehd) {
-		this.filehd = filehd;
-	}
-
-	public String getFilebt() {
-		return filebt;
-	}
-
-	public void setFilebt(String filebt) {
-		this.filebt = filebt;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getTen() {
-		return ten;
-	}
-
-	public void setTen(String ten) {
-		this.ten = ten;
-	}
-
-	public String getNoidung() {
-		return noidung;
-	}
-
-	public void setNoidung(String noidung) {
-		this.noidung = noidung;
-	}
-
-	public String getTrangthai() {
-		return trangthai;
-	}
-
-	public void setTrangthai(String trangthai) {
-		this.trangthai = trangthai;
-	}
-
-	public Date getNgaytao() {
-		return ngaytao;
-	}
-
-	public void setNgaytao(Date ngaytao) {
-		this.ngaytao = ngaytao;
-	}
-
-	public DeTai getDetai() {
-		return detai;
-	}
-
-	public void setDetai(DeTai detai) {
-		this.detai = detai;
-	}
 }

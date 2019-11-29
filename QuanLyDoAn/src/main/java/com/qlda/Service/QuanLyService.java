@@ -7,15 +7,18 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.qlda.Entity.BaiDang;
 import com.qlda.Entity.DeTai;
 import com.qlda.Entity.GiangVien;
 import com.qlda.Entity.QuanLy;
 import com.qlda.Entity.SinhVien;
 import com.qlda.Entity.TaiKhoan;
+import com.qlda.Model.BaiTapDetail;
 import com.qlda.Model.DoAnDetail;
 import com.qlda.Model.GiangVienDetail;
 import com.qlda.Model.QuanLyDetail;
 import com.qlda.Model.SinhVienDetail;
+import com.qlda.Model.TroChuyenDetail;
 import com.qlda.Repository.QuanLyRepository;
 
 @Service
@@ -83,8 +86,47 @@ public class QuanLyService {
 		}
 		return null;
 	}
+
 	public List<DoAnDetail> getAllDoAnDetail() {
 		return quanlyrepository.getAllDoAnDetail();
 	}
-	
+
+	public List<BaiTapDetail> getAllBaiTapDetail(Long id) {
+		List<BaiTapDetail> list = new ArrayList<BaiTapDetail>();
+		for (BaiTapDetail bt : quanlyrepository.getAllBaiTapDetail()) {
+			if (bt.getIdDeTai() == id) {
+				list.add(bt);
+			}
+		}
+		return list;
+
+	}
+
+	public BaiTapDetail getBaiTapDanhGia(Long id) {
+		for (BaiTapDetail bt : quanlyrepository.getAllDanhGiaBaiTap()) {
+			if (bt.getIdNhiemVu() == id) {
+				return bt;
+			}
+		}
+		return null;
+	}
+
+	public List<TroChuyenDetail> getAllTroChuyen(Long id) {
+		List<TroChuyenDetail> list = new ArrayList<TroChuyenDetail>();
+		for (TroChuyenDetail tt : quanlyrepository.getAllTroChuyenDetail()) {
+			if (tt.getIdDeTai() == id) {
+				list.add(tt);
+			}
+		}
+		return list;
+	}
+
+	public BaiDang getInfoBaiDang(Long id) {
+		for (BaiDang bd : quanlyrepository.getAllBaiDang()) {
+			if (bd.getId() == id) {
+				return bd;
+			}
+		}
+		return null;
+	}
 }

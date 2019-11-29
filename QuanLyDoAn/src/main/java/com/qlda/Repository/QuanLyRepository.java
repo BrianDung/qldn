@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.qlda.Entity.BaiDang;
 import com.qlda.Entity.DeTai;
 import com.qlda.Entity.GiangVien;
 import com.qlda.Entity.QuanLy;
@@ -17,6 +18,7 @@ import com.qlda.Model.DoAnDetail;
 import com.qlda.Model.GiangVienDetail;
 import com.qlda.Model.QuanLyDetail;
 import com.qlda.Model.SinhVienDetail;
+import com.qlda.Model.TroChuyenDetail;
 
 @Repository
 public interface QuanLyRepository extends JpaRepository<QuanLy, Long> {
@@ -49,7 +51,19 @@ public interface QuanLyRepository extends JpaRepository<QuanLy, Long> {
 	@Query("SELECT new com.qlda.Model.DoAnDetail(dt.id, dt.ten, gv.id, gv.ten, sv.id, sv.ten, dt.ngaytao,dt.trangthai)"
 			+ "FROM DeTai dt INNER JOIN dt.sinhvien sv INNER JOIN sv.giangvien gv ")
 	List<DoAnDetail> getAllDoAnDetail();
-	@Query("SELECT new com.qlda.Model.BaiTapDetail(nv.id,nv.ten,nv.trangthai,nv.filebt,nv.filehd,nv.ngaytao,dg.id,dg.tieuchi1,dg.tieuchi2,dg.tieuchi3)"+
-	"FROM DanhGia dg INNER JOIN dg.nhiemvu nv INNER JOIN nv.detai dt INNER JOIN dt.sinhvien sv")
+
+	@Query("SELECT new com.qlda.Model.BaiTapDetail(dt.id,nv.ten , nv.filebt , nv.filehd , sv.ten , nv.ngaytao ,dg.tieuchi1, dg.tieuchi2, dg.tieuchi3, dg.id )"
+			+ "FROM DanhGia dg INNER JOIN dg.nhiemvu nv INNER JOIN nv.detai dt INNER JOIN dt.sinhvien sv")
 	List<BaiTapDetail> getAllBaiTapDetail();
+
+	@Query("SELECT new com.qlda.Model.BaiTapDetail(nv.id , nv.ten , nv.filehd , nv.hannop , nv.noidung , dg.noidung , dg.file , dg.tieuchi1 , dg.tieuchi2 , dg.tieuchi1 )"
+			+ "FROM DanhGia dg INNER JOIN dg.nhiemvu nv ")
+	List<BaiTapDetail> getAllDanhGiaBaiTap();
+
+	@Query("SELECT new com.qlda.Model.TroChuyenDetail(bd.ngaytao , bd.ten , bd.noidung, dt.id, bd.id , sv.ten , gv.ten)"
+			+ "FROM BaiDang bd INNER JOIN bd.detai dt INNER JOIN dt.sinhvien sv INNER JOIN sv.giangvien gv")
+	List<TroChuyenDetail> getAllTroChuyenDetail();
+
+	@Query("SELECT new com.qlda.Entity.BaiDang(bd.id,bd.ten,bd.noidung,bd.ngaytao,bd.file)" + "FROM BaiDang bd")
+	List<BaiDang> getAllBaiDang();
 }

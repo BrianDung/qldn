@@ -18,7 +18,7 @@ import lombok.Data;
 public class DeTai {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	private String ten;
 	private String mota;

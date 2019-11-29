@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "baidang")
 public class BaiDang {
@@ -30,53 +33,13 @@ public class BaiDang {
 	@JoinColumn(name = "idTaiKhoan", referencedColumnName = "id")
 	private TaiKhoan taiKhoan;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
+	public BaiDang(Long id, String ten, String noidung, Date ngaytao, String file) {
+		super();
 		this.id = id;
-	}
-
-	public String getTen() {
-		return ten;
-	}
-
-	public void setTen(String ten) {
 		this.ten = ten;
-	}
-
-	public String getNoidung() {
-		return noidung;
-	}
-
-	public void setNoidung(String noidung) {
 		this.noidung = noidung;
-	}
-
-	public Date getNgaytao() {
-		return ngaytao;
-	}
-
-	public void setNgaytao(Date ngaytao) {
 		this.ngaytao = ngaytao;
-	}
-
-	
-
-	public String getFile() {
-		return file;
-	}
-
-	public void setFile(String file) {
 		this.file = file;
 	}
 
-	public DeTai getDetai() {
-		return detai;
-	}
-
-	public void setDetai(DeTai detai) {
-		this.detai = detai;
-	}
 }
