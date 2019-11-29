@@ -13,6 +13,7 @@ import com.qlda.Entity.BaiDang;
 import com.qlda.Entity.DeTai;
 import com.qlda.Entity.GiangVien;
 import com.qlda.Entity.QuanLy;
+import com.qlda.Entity.TaiKhoan;
 import com.qlda.Model.BaiTapDetail;
 import com.qlda.Model.DoAnDetail;
 import com.qlda.Model.GiangVienDetail;
@@ -66,4 +67,6 @@ public interface QuanLyRepository extends JpaRepository<QuanLy, Long> {
 
 	@Query("SELECT new com.qlda.Entity.BaiDang(bd.id,bd.ten,bd.noidung,bd.ngaytao,bd.file)" + "FROM BaiDang bd")
 	List<BaiDang> getAllBaiDang();
+
+
 }

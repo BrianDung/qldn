@@ -6,7 +6,12 @@
 </head>
 <body>
 	<div th:each=" tt : ${listtrochuyensinhvien}">
-		<span th:utext="${tt.getNgayTao()}"></span> 
+
+		<span th:utext="${tt.getNgayTao()}"></span> <span
+			th:utext="${tt.getTenBaiDang()}"></span> <span
+			th:utext="${tt.getNoiDung()}"></span>
+	</div>
+
 	</div>
 	<a th:href="@{|/addtaikhoan/|}"> Add </a>
 	</div>

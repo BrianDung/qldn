@@ -2,10 +2,13 @@ package com.qlda.Model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data
 public class TroChuyenDetail {
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "yyyy-MM-dd")
 	private Date ngayTao;
 	private String tenBaiDang;
 	private String noiDung;

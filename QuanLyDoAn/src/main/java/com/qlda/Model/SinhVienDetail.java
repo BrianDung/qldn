@@ -2,6 +2,8 @@ package com.qlda.Model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 @Data
 public class SinhVienDetail { // Giao dien danh sach sinh vien lam do an
@@ -11,6 +13,7 @@ public class SinhVienDetail { // Giao dien danh sach sinh vien lam do an
 	private int mssv;
 	private String soDienThoaiSv;
 	private String emailSv;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date namSinhSv;
 	private Long idTaiKhoanSv;
 	// Giang vien
@@ -18,6 +21,7 @@ public class SinhVienDetail { // Giao dien danh sach sinh vien lam do an
 	private String tenGv;
 	private String soDienThoaiGv;
 	private String emailGv;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date namSinhGv;
 	private Long idTaiKhoanGv;
 	// De tai

@@ -2,6 +2,8 @@ package com.qlda.Model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data
@@ -12,7 +14,9 @@ public class BaiTapDetail {
 	private String fileBaiTap;
 	private String fileHuongDan;
 	private String tenSinhVien;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngayTao;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date hanNop;
 	private String noiDungNhiemVu;
 	private String noiDungDanhGia;
