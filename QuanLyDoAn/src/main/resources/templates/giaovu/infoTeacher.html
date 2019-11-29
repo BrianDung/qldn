@@ -71,12 +71,12 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                     
                                     <!-- So dien thoai -->
                                     <p>
-                                    	<i class="icon_mobile"></i> Số điện thoại:<span th:utext="${gv.getSoDienThoai()}"></span>
+                                    	<i class="icon_mobile"></i> Số điện thoại:<span th:utext="${giangvien.getSoDienThoai()}"></span>
                                     </p>
                                     
                                     <!-- Email -->
                                     <p>
-                                    	<i class="icon_mail_alt"></i> Email: <span th:utext="${gv.getEmail()}"></span>
+                                    	<i class="icon_mail_alt"></i> Email: <span th:utext="${giangvien.getEmail()}"></span>
                                     </p>
                                     <!-- <h6>
                                         <span><i class="icon_clock_alt"></i>11:05 AM</span>
@@ -115,12 +115,12 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                                  
                                                 	<!-- Ho va ten -->
                                                     <div class="bio-row">
-                                                        <p><span>Họ và tên </span>: <span th:utext="${gv.getTen()}"></span> </p>
+                                                        <p><span>Họ và tên </span>: <span th:utext="${giangvien.getTen()}"></span> </p>
                                                     </div>
 
 													<!-- Nam sinh -->
                                                     <div class="bio-row">
-                                                        <p><span>Năm sinh</span>: <span th:utext="${gv.getNamSinh()}"></span></p>
+                                                        <p><span>Năm sinh</span>: <span th:utext="${giangvien.getNamSinh()}"></span></p>
                                                     </div>
                                                     
 													<!-- Chuc vu -->
@@ -130,12 +130,12 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 							
 													<!-- So dien thoai -->
                                                     <div class="bio-row">
-                                                        <p><span>Số điện thoại </span>: <span th:utext="${gv.getSoDienThoai()}"></span></p>
+                                                        <p><span>Số điện thoại </span>: <span th:utext="${giangvien.getSoDienThoai()}"></span></p>
                                                     </div>
 
 													<!-- Email -->
                                                     <div class="bio-row">
-                                                        <p><span>Email </span>: <span th:utext="${gv.getEmail()}"></span></p>
+                                                        <p><span>Email </span>: <span th:utext="${giangvien.getEmail()}"></span></p>
                                                     </div>
                                                 </div>
                                             </div>
