@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -9,37 +8,130 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
   <meta name="author" content="GeeksLabs">
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
- 
-  <title>Tạo mới giảng viên</title>
 
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
-  <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-      <script src="js/lte-ie7.js"></script>
-    <![endif]-->
+  <title>Tạo mới  giảng viên</title>
 
-  <!-- =======================================================
-      Theme Name: NiceAdmin
-      Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-      Author: BootstrapMade
-      Author URL: https://bootstrapmade.com
-    ======================================================= -->
-  
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="css/bootstrap-theme.css" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="css/elegant-icons-style.css" rel="stylesheet" />
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <!-- Custom styles -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet" />
+
+
+  <link href="css/daterangepicker.css" rel="stylesheet" />
+  <link href="css/bootstrap-datepicker.css" rel="stylesheet" />
+  <link href="css/bootstrap-colorpicker.css" rel="stylesheet" />
 </head>
 
 <body>
-  <th:block th:include="giaovu/head"></th:block>
   <!-- container section start -->
   <section id="container" class="">
-    <!-- header -->
-    	<th:block th:include="giaovu/header"></th:block>
+    <!--header start-->
+    <header class="header dark-bg">
+      <div class="toggle-nav">
+        <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i
+            class="icon_menu"></i></div>
+      </div>
+
+      <!--logo start-->
+      <a href="index.html" class="logo">Quản <span class="lite">lý</span></a>
+      <!--logo end-->
+
+
+
+      <div class="top-nav notification-row">
+        <!-- notificatoin dropdown start-->
+        <ul class="nav pull-right top-menu">
+
+
+          <!-- alert notification end-->
+          <!-- user login dropdown start-->
+          <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+              <span class="profile-ava">
+                <img alt="" src="img/lien-avatar.jpg">
+              </span>
+              <span class="username">Tran Phuong Lien</span>
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu extended logout">
+              <div class="log-arrow-up"></div>
+              <li class="eborder-top">
+                <a href="information.html"><i class="icon_profile"></i> My Profile</a>
+              </li>
+              <li>
+                <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
+              </li>
+            </ul>
+          </li>
+          <!-- user login dropdown end -->
+        </ul>
+        <!-- notificatoin dropdown end-->
+      </div>
+    </header>
     <!--header end-->
 
     <!--sidebar start-->
-     	<th:block th:include="giaovu/sidebar"></th:block>
-    <!--sidebar end-->
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu">
+          <li class="active">
+            <a class="" href="index.html">
+              <i class="icon_house_alt"></i>
+              <span>Trang chủ</span>
+            </a>
+          </li>
+          <li class="active">
+            <a class="" href="information.html">
+              <i class="icon_info"></i>
+              <span>Thông tin</span>
+            </a>
+          </li>
+          <li class="active">
+            <a class="" href="listStudent.html">
+              <i class="icon_group"></i>
+              <span>Danh sách sinh viên</span>
+            </a>
+          </li>
+          <li class="active">
+            <a class="" href="DanhSachGiangVien.html">
+              <i class="icon_group"></i>
+              <span>Danh sách giảng viên</span>
+            </a>
+          </li>
+          <li class="active">
+            <a class="" href="DanhSachDoAn.html">
+              <i class="icon_folder-open_alt"></i>
+              <span>Danh sách đồ án</span>
+            </a>
+          </li>
+          <li class="active">
+            <a class="" href="disscuss.html">
+              <i class="icon_chat_alt"></i>
+              <span>Tạo trò chuyện</span>
+            </a>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;" class="">
+              <i class="icon_plus"></i>
+              <span>Tạo mới</span>
+              <span class="menu-arrow arrow_carrot-right"></span>
+            </a>
+            <ul class="sub">
+              <li><a class="" href="TaoMoiTaiKhoan.html">Tài Khoản</a></li>
+              <li><a class="" href="TaoMoiDoAn.html">Đồ Án</a></li>
+            </ul>
+          </li>
 
+      </div>
+    </aside>
     <!--sidebar end-->
 
     <!--main content start-->
@@ -51,7 +143,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
             <ol class="breadcrumb">
               <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
               <li><i class="icon_plus"></i>Tạo mới</li>
-              <li><i class="icon_group"></i>Sinh Viên</li>
+              <li><i class="icon_group"></i>sinh viên ,giảng viên</li>
             </ol>
           </div>
         </div>
@@ -60,7 +152,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
           <div class="col-lg-12">
             <section class="panel">
               <header class="panel-heading">
-                Thông tin sinh viên
+                Tạo thông tin cho tài khoản
               </header>
               <div class="panel-body">
                 <div class="form ">
@@ -72,61 +164,6 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                         <input class="form-control" id="cname" name="fullname" minlength="5" type="text" required />
                       </div>
                     </div>
-                    
-                       
-                    <div class="form-group ">
-                      <label for="Mobile" class="control-label col-lg-2">MSSV <span
-                          class="required">*</span></label>
-                      <div class="col-lg-10">
-                        <input class=" form-control" id="Mobile" name="Mobile" type="text" />
-                      </div>
-                    </div>
-                    
-                    <div class="form-group ">
-                      <label for="cemail" class="control-label col-lg-2">GV hướng dẫn <span class="required">*</span></label>
-                      <div class="col-lg-10">
-                        <select class="form-control m-bot15">
-                          <option>Name1</option>
-                          <option>Name2</option>
-                          <option>Name3</option>
-                        </select>
-                      </div>
-                    </div>
-                    
-                    <div class="form-group ">
-                        <label for="cname" class="control-label col-lg-2">Tên đề tài (Nhóm Sinh viên)<span class="required">*</span></label>
-                        <div class="col-lg-10">
-                          <input class="form-control" id="cname" name="fullname" minlength="5" type="text" required="">
-                        </div>
-                      </div>
-                      
-                      <div class="form-group ">
-                      <label for="Mobile" class="control-label col-lg-2">Tài khoản đăng nhập: <span></span></label>
-                      <div class="col-lg-10">
-                        <select class="form-control m-bot15">
-                          <option>Name1</option>
-                          <option>Name2</option>
-                          <option>Name3</option>
-                        </select>
-                      </div>
-                    </div>
-                    
-                    <div class="form-group">
-                      <label class="control-label col-lg-2">Ngày sinh</label>
-                      <div class="col-lg-10">
-                        <input id="dp1" type="text" value="28-10-2013" size="16" class="form-control">
-                      </div>
-                    </div>
-                    
-                    
-                    
-                    <div class="form-group ">
-                      <label for="cemail" class="control-label col-lg-2">E-Mail <span class="required">*</span></label>
-                      <div class="col-lg-10">
-                        <input class="form-control " id="cemail" type="email" name="email" required />
-                      </div>
-                    </div>
-                 
                     <div class="form-group ">
                       <label for="Mobile" class="control-label col-lg-2">Số điện thoại <span
                           class="required">*</span></label>
@@ -134,14 +171,30 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                         <input class=" form-control" id="Mobile" name="Mobile" type="text" />
                       </div>
                     </div>
-                   
-                    <div class="form-group ">
-                      <label for="ccomment" class="control-label col-lg-2">Ghi chú</label>
+                    <div class="form-group">
+                      <label class="control-label col-lg-2">Ngày sinh</label>
                       <div class="col-lg-10">
-                        <textarea class="form-control " id="ccomment" name="comment" required></textarea>
+                        <input id="dp1" type="text" value="28-10-2013" size="16" class="form-control">
                       </div>
                     </div>
-                  
+                    <div class="form-group ">
+                        <label for="Mobile" class="control-label col-lg-2">Mã số sinh viên <span
+                            class="required">*</span></label>
+                        <div class="col-lg-10">
+                          <input class=" form-control" id="Mobile" name="Mobile" type="text" />
+                        </div>
+                      </div>
+                      <div class="form-group ">
+                        <label for="Mobile" class="control-label col-lg-2">Giảng viên hướng dẫn <span
+                            class="required">*</span></label>
+                        <div class="col-lg-10">
+                            <select class="form-control m-bot15">
+                                <option>PGS TS Trần Khánh Đức</option>
+                                <option>Đặng Thu Hương</option>
+                             
+                              </select>
+                        </div>
+                      </div>
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button class="btn btn-primary" type="submit">Save</button>
@@ -155,7 +208,6 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
             </section>
           </div>
         </div>
-      
         <!-- page end-->
       </section>
     </section>
