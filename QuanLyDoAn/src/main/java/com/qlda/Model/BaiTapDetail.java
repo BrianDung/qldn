@@ -32,7 +32,7 @@ public class BaiTapDetail {
 
 	// View danh sach bai tap
 	public BaiTapDetail(Long idDeTai, String tenNhiemVu, String fileBaiTap, String fileHuongDan, String tenSinhVien,
-			Date ngayTao, int tieuChi1, int tieuChi2, int tieuChi3, Long idDanhGia) {
+			Date ngayTao, int tieuChi1, int tieuChi2, int tieuChi3, Long idDanhGia, Long idNhiemVu) {
 		super();
 		this.idDeTai = idDeTai;
 		this.tenNhiemVu = tenNhiemVu;
@@ -44,6 +44,7 @@ public class BaiTapDetail {
 		this.tieuChi2 = tieuChi2;
 		this.tieuChi3 = tieuChi3;
 		this.idDanhGia = idDanhGia;
+		this.idNhiemVu = idNhiemVu;
 	}
 
 	// View Chi tiet bai tap va danh gia

@@ -15,8 +15,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <body>
 
- <th:block th:include="giaovu/head"></th:block>
-  <!-- container section start -->
+
   <section id="container" class="">
     <!-- header -->
     	<th:block th:include="giaovu/header"></th:block>
@@ -35,7 +34,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
             <h3 class="page-header"><i class="fa fa-table"></i> Chi tiết đồ án</h3>
             <ol class="breadcrumb">
               <li><i class="fa fa-home"></i><a href="index.html">Danh sách sinh viên</a></li>
-              <li><i class="fa fa-table"></i> <span th:utext="${detai.ten}"></span> </li>
+              <li><i class="fa fa-table"></i> <span th:utext="${detai.getTen()}"></span> </li>
 
             </ol>
           </div>
@@ -56,14 +55,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                 <div id="collapseOne" class="panel-collapse collapse in">
                   <div class="panel-body">
                   
-					<span th:utext="${detai.mota}"></span>
+					<span th:utext="${detai.getMota()}"></span>
 					
-                    Do nhận thấy những khó khăn, hạn chế về sự tương tác giữa giảng viên và sinh viên khi tham gia nhận
-                    đề tài thực hiện đồ án tốt nghiệp và nhu cầu cấp thiết hỗ trợ tốt nhất cho Giáo vụ của Viện SPKT về
-                    quản lý đồ án cho sinh viên, nhóm nghiên cứu nảy sinh ý tưởng xây dựng hệ thống thông tin quản lý đồ
-                    án tốt nghiệp của sinh viên Viện SPKT
-
-
                   </div>
                 </div>
               </div>
@@ -79,15 +72,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                   <div class="panel-body">
                    
                   	<span th:utext="${detai.noidung}"></span>
-                    Đồ án trình bày quy trình xây dựng phần mềm quản lý đồ án tốt nghiệp dựa trên thực trạng quản lý đồ
-                    án tốt nghiệp hiện tại, từ đó đi vào phân tích thiết kế đưa ra sản phẩm có các chức năng đáp ứng yêu
-                    cầu với các nhiệm vụ chính
-                    <ul>
-                      <li> - Tìm hiểu thực trạng quản lỷ đồ án tốt nghiệp sinh viên</li>
-                      <li> - Phân tích yêu cầu, hạn chế, đưa ra các chức năng khắc phục</li>
-                      <li> - Thiết kế hệ thống đưa ra mô hình phần mềm đáp ứng</li>
-                      <li> - Lập trình, viết mã nguồn hoàn chỉnh</li>
-                    </ul>
+                  
 
                   </div>
                 </div>
@@ -104,13 +89,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                   <div class="panel-body">
                   
                   <span th:utext="${detai.thongtin}"></span>
-                    Đối tượng nghiên cứu.<br>
-                    - Các quá trình quản lý đồ án, lưu trữ, thống kê, tìm kiếm đồ án…. qua đó xây dựng chương trình quản
-                    lý đồ án tốt nghiệp của sinh viên.
-                    <br>Phạm vi nghiên cứu đề tài.<br>
-                    - Chương trình được áp dụng quản lý đồ án tốt nghiệp cho sinh viên Viện Sư Phạm Kỹ Thuật – Trường
-                    Đại Học Bách Khoa Hà Nội.
-
+                  
                   </div>
                 </div>
               </div>

@@ -92,14 +92,14 @@ public class QuanLyController {
 	}
 
 	// View danh sach tro chuyen cua 1 sinh vien
-	@GetMapping("trochuyen/{id}")
+	@GetMapping("sinhvien/trochuyen/{id}")
 	public String troChuyens(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("listtrochuyensinhvien", quanlyservice.getAllTroChuyen(id));
 		return "test";
 	}
 
 	// View chi tiet tro chuyen
-	@GetMapping("sinhvien/trochuyen/{id}")
+	@GetMapping("trochuyen/{id}")
 	public String troChuyenDetail(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("baidang", quanlyservice.getInfoBaiDang(id));
 		return "giaovu/disscussDetail";

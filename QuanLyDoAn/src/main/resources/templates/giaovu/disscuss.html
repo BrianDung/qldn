@@ -68,21 +68,23 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 										<th><i class="icon_info_alt"></i> Chủ đề </th>
 										<th><i class="icon_document_alt"></i> Chi tiết</th>
 									</tr>
-									<div>
+									<div th:each="baidang : ${listtrochuyensinhvien}">
 										<tr>
 											<!-- Thời gian đăng -->
-	                                        <td><span th:utext="${baidang.}"></span></td>
+	                                        <td><span th:utext="${baidang.getNgayTao()}"></span></td>
 	                                        
 	                                        <!-- Tên bài đăng -->
-	                                        <td><span th:utext="${baidang.}"></span></td>
+	                                        <td><span th:utext="${baidang.getTenBaiDang()}"></span></td>
 	                                        
 	                                        <!-- Chủ đề -->
-	                                        <td><span th:utext="${baidang.}"></span></td>
+	                                        <td><span th:utext="${baidang.getTenDeTai()}"></span></td>
 	                                        
 	                                        <!-- Chi tiết -->
-	                                        <td><a href="disscussDetail.html">Xem chi tiết</a></td>
+	                                        <td><a th:href="@{|/trangchu_quanly/trochuyen/${baidang.getIdBaiDang()}|}"><p>Xem chi tiết</p></a></td>
                                     	</tr>
+									
 									</div>
+										
                                 </tbody>
                             </table>
                         </section>
@@ -170,7 +172,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
                 </div>
 
-                </div>
+               
                 <!-- project team & activity end -->
 
             </section>
@@ -196,7 +198,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
     <script src="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
     <script src="js/owl.carousel.js"></script>
     <!-- jQuery full calendar -->
-    <<script src="js/fullcalendar.min.js">
+    <script src="js/fullcalendar.min.js">
     </script>
     <!-- Full Google Calendar - Calendar -->
     <script src="assets/fullcalendar/fullcalendar/fullcalendar.js"></script>

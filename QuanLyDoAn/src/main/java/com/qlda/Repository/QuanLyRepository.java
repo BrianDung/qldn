@@ -53,15 +53,15 @@ public interface QuanLyRepository extends JpaRepository<QuanLy, Long> {
 			+ "FROM DeTai dt INNER JOIN dt.sinhvien sv INNER JOIN sv.giangvien gv ")
 	List<DoAnDetail> getAllDoAnDetail();
 
-	@Query("SELECT new com.qlda.Model.BaiTapDetail(dt.id,nv.ten , nv.filebt , nv.filehd , sv.ten , nv.ngaytao ,dg.tieuchi1, dg.tieuchi2, dg.tieuchi3, dg.id )"
+	@Query("SELECT new com.qlda.Model.BaiTapDetail(dt.id,nv.ten , nv.filebt , nv.filehd , sv.ten , nv.ngaytao ,dg.tieuchi1, dg.tieuchi2, dg.tieuchi3, dg.id,nv.id )"
 			+ "FROM DanhGia dg INNER JOIN dg.nhiemvu nv INNER JOIN nv.detai dt INNER JOIN dt.sinhvien sv")
-	List<BaiTapDetail> getAllBaiTapDetail();
+	List<BaiTapDetail> getAllBaiTapDetail(); // thêm nv.id
 
-	@Query("SELECT new com.qlda.Model.BaiTapDetail(nv.id , nv.ten , nv.filehd , nv.hannop , nv.noidung , dg.noidung , dg.file , dg.tieuchi1 , dg.tieuchi2 , dg.tieuchi1 )"
+	@Query("SELECT new com.qlda.Model.BaiTapDetail(nv.id , nv.ten , nv.filehd , nv.hannop , nv.noidung , dg.noidung , dg.file , dg.tieuchi1 , dg.tieuchi2 , dg.tieuchi3 )"
 			+ "FROM DanhGia dg INNER JOIN dg.nhiemvu nv ")
 	List<BaiTapDetail> getAllDanhGiaBaiTap();
 
-	@Query("SELECT new com.qlda.Model.TroChuyenDetail(bd.ngaytao , bd.ten , bd.noidung, dt.id, bd.id , sv.ten , gv.ten)"
+	@Query("SELECT new com.qlda.Model.TroChuyenDetail(bd.ngaytao , bd.ten , bd.noidung, dt.id, bd.id , sv.ten , gv.ten,dt.ten)"
 			+ "FROM BaiDang bd INNER JOIN bd.detai dt INNER JOIN dt.sinhvien sv INNER JOIN sv.giangvien gv")
 	List<TroChuyenDetail> getAllTroChuyenDetail();
 

@@ -61,22 +61,22 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                         <th><i class="icon_cogs"></i> Action</th>
  
                                     </tr>
-                                    <div>
+                                    <div th:each="dt: ${listdoan}">
                                     	<tr>
 	                                    	<!-- Ten de tai - ở đây cần id đề tài -->
-	                                        <td><a th:href="@{|/trangchu_quanly/sinhvien/${dt.getIdDeTai()}|}"><span th:utext="${dt.}"></span></a></td>
+	                                        <td><a th:href="@{|/trangchu_quanly/doan/${dt.getIdDeTai()}|}"><span th:utext="${dt.getTenDeTai()}"></span></a></td>
 	                                        
 	                                        <!-- Ten Sinh Vien - ở đây cần id sinh viên -->
-	                                        <td><a th:href="@{|/trangchu_quanly/sinhvien/${dt.getIdSv()}|}"><span th:utext="${dt.}"></span></a></td>
+	                                        <td><a th:href="@{|/trangchu_quanly/sinhvien/${dt.getIdSv()}|}"><span th:utext="${dt.getTenSv()}"></span></a></td>
 	                                        
 	                                        <!-- Ten Gianh Vien - ở đây cần id giảng viên -->
-	                                        <td><a th:href="@{|/trangchu_quanly/giangvien/${dt.getIdGv()}|}"><span th:utext="${dt.}"></span></a></td>
+	                                        <td><a th:href="@{|/trangchu_quanly/giangvien/${dt.getIdGv()}|}"><span th:utext="${dt.getTenGv()}"></span></a></td>
 	                                        
 	                                        <!-- Ngày tạo của đề tài -->
-	                                        <td><span th:utext="${dt.}"></span></td>
+	                                        <td><span th:utext="${dt.getNgayTao()}"></span></td>
 	                                        
 	                                        <!-- Trạng thái của đề tài -->
-	                                        <td><span th:utext="${dt.}"></span></td>
+	                                        <td><span th:utext="${dt.getTrangThai()}"></span></td>
 	                                        
 	                                      	<!-- File -->
 	                                        <td>final.zar</td>
@@ -84,7 +84,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	                                        <!-- Them sua xoa de tai -->
 	                                        <td>
 	                                            <div class="btn-group">
-	                                                <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
+	                                               
 	                                                <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
 	                                                <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
 	                                            </div>

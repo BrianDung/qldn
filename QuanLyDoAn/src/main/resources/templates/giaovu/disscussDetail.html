@@ -54,14 +54,14 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                         <div class="profile-widget profile-widget-info">
                             <div class="panel-body">
                                 <div class="col-lg-2 col-sm-2">
-                                    <h4><span th:utext="${baidang.}"></span></h4> <!-- Ten sinh vien -->
+                                    <h4>Trần Tiến Dũng</h4> <!-- Ten sinh vien -->
                                     <div class="follow-ava">
                                         <img src="img/profile-avatar-dung.jpg" alt="">
                                     </div>
 
                                 </div>
                                 <div class="col-lg-2 col-sm-2">
-                                    <h4><span th:utext="${baidang.}"></span></h4> <!-- Ten giang vien -->
+                                    <h4>Trần Khánh Đức</span></h4> <!-- Ten giang vien -->
                                     <div class="follow-ava">
                                         <img src="img/profile-avatar-duc.jpg" alt="">
                                     </div>
@@ -95,7 +95,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                             <div class="panel-body">
                                 <div class="tab-content">
                                     <div id="recent-activity" class="tab-pane active">
-                                        <!-- <div class="profile-activity">
+                                        <div class="profile-activity">
                                             <div class="act-time">
                                                 <div class="activity-body act-in">
                                                     <span class="arrow"></span>
@@ -141,7 +141,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                                     <button type="submit" class="btn btn-info">Gửi</button>
                                                 </form>
                                             </div>
-                                        </div> -->
+                                        </div> 
                                     </div>
                                     <!-- edit-profile -->
                                     <div id="edit-profile" class="tab-pane">
@@ -152,13 +152,13 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                                     <div class="form-group">
                                                         <label class="col-lg-2 control-label">Title</label>
                                                         <div class="col-lg-6">
-                                                            <p><span th:utext="${baidang.}"></span></p>
+                                                            <p><span th:utext="${baidang.ten}"></span></p>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-2 control-label">Nội dung</label>
                                                         <div class="col-lg-6">
-                                                            <p><span th:utext="${baidang.}"></span></p>
+                                                            <p><span th:utext="${baidang.noidung}"></span></p>
                                                         </div>
                                                     </div>
                                                    <!--  <div class="form-group">
@@ -171,14 +171,14 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                                     <div class="form-group">
                                                         <label class="col-lg-2 control-label">File</label>
                                                         <div class="col-lg-6">
-                                                            <p><span th:utext="${baidang.}"></span></p>
+                                                            <p><span th:utext="${baidang.file}"></span></p>
                                                         </div>
                                                     </div>
                                                     
                                                     <div class="form-group">
                                                         <label class="col-lg-2 control-label">Ngày Tạo</label>
                                                         <div class="col-lg-6">
-                                                            <p><span th:utext="${baidang.}"></span></p>
+                                                            <p><span th:utext="${baidang.ngaytao}"></span></p>
                                                         </div>
                                                     </div>
                                                     <!-- <div class="form-group">
