@@ -17,12 +17,16 @@ import com.qlda.Repository.TaiKhoanRepository;
 import com.qlda.Service.TaiKhoanService;
 
 @Controller
-@RequestMapping("/trangchu_quanly")
 public class TaiKhoanController {
 
 	@Autowired
 	TaiKhoanService taiKhoanService;
-
+	// form login
+	@GetMapping("/login")
+	public String login(Model model) {
+		return "login";
+	}
+	
 	// View tao 1 tai khoan
 	@GetMapping("/formtaikhoan")
 	public String formTaiKhoan(Model model) {

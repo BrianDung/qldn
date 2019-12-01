@@ -12,5 +12,5 @@ import com.qlda.Model.GiangVienDetail;
 @Repository
 public interface TaiKhoanRepository extends JpaRepository<TaiKhoan, Long> {
 	
-	
+	TaiKhoan findByEmail(String email);
 }

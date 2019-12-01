@@ -67,86 +67,26 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                             </div>
                             <table class="table table-hover personal-task">
                                 <tbody>
-                                    <tr>
-                                        <td>Hôm nay</td>
+                                <div th:each="nhiemvu : ${listnhiemvu}">
+                                	<tr>
+                                        <td><span th:utext="${nhiemvu.getNgayTao()}"></span></td> <!-- Ngay tao -->
                                         <td>
-                                            <a href="ChiTietBaiTap.html">Giao diện hệ thống cho Sinh viên</a>
+                                            <a href="ChiTietBaiTap.html"><span th:utext="${nhiemvu.}"></span></a> <!-- Ten nhiem vu -->
                                         </td>
                                         <td>
-                                            <a href="#nopbai">Nộp bài</a>
+                                            <a href="#nopbai"><span th:utext="{nhiemvu.getTrangThai()}"></span></a> <!-- Trang Thai -->
                                         </td>
                                         <td>
+                                        	
                                         </td>
                                         <td>
+                                        	<a th:href="@{|/yoursource/nhiemvu.getIdNhiemVu()|}">Xem Đánh Gía</a> <!-- Truyen id nhiem vu de xem đánh giá-->
                                         </td>
-                                        <!-- <td>
-                      <span class="profile-ava">
-                                        <img alt="" class="simple" src="img/profile-avatar-dung-user.jpg">
-                                    </span>
-                    </td> -->
+                                        
                                     </tr>
-                                    <tr>
-                                        <td>Ngày mai</td>
-                                        <td>
-                                            Phân tích thiết kế hệ thống
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-success">Hoàn thành</span>
-                                        </td>
-                                        <td>
-                                            <div id="work-progress1"></div>
-                                        </td>
-                                        <td>
-                                            <a href="ChiTietDanhGia.html">Xem đánh giá</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>21-10-19</td>
-                                        <td>
-                                            Đề cương
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-success">Hoàn thành</span>
-                                        </td>
-                                        <td>
-                                            <div id="work-progress3"></div>
-                                        </td>
-                                        <td>
-                                            <a href="#">Xem đánh giá</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>22-10-19</td>
-                                        <td>
-                                            Nghiên cứu các hệ thống liên quan
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-primary">Chưa hoàn thành</span>
-                                        </td>
-                                        <td>
-                                            <!-- <span class="profile-ava">
-                                        <img alt="" class="simple" src="img/avatar1_small.jpg">
-                                      </span> -->
-                                        </td>
-                                        <td>
-                                            <a href="#"></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>24-10-14</td>
-                                        <td>
-                                            Giao diện demo
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-info">Gặp trực tiếp </span>
-                                        </td>
-                                        <td>
-                                            <div id="work-progress4"></div>
-                                        </td>
-                                        <td>
-                                            <a href="#">Xem đánh giá</a>
-                                        </td>
-                                    </tr>
+                                </div>
+                                    
+                                    
                                 </tbody>
                             </table>
                         </section>
