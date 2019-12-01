@@ -1,10 +1,12 @@
 package com.qlda.Controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@RequestMapping("/Trangchu-sinhvien")
+@RequestMapping("/trangchu_sinhvien")
+@Controller
 public class SinhVienController {
 
 	// GET: Hiển thị trang login

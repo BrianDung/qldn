@@ -1,14 +1,17 @@
 package com.qlda.Controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@RequestMapping("/Trangchu-giangvien")
+@RequestMapping("/trangchu_giangvien")
+@Controller
 public class GiangVienController {
 
 	// GET: Hiển thị trang login
-	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
+	@GetMapping("/")
 	public String index(Model model) {
 
 		return "giangvien/TrangChu";
@@ -32,7 +35,7 @@ public class GiangVienController {
 		return "giangvien/GiangVien";
 	}
 
-	@RequestMapping(value = { "/giangvien" }) // chi tiet giang vien
+	@RequestMapping(value = { "/giangvien/{id}" }) // chi tiet giang vien
 	public String giangVienDetail(Model model) {
 
 		return "giangvien/GiangVien";
@@ -56,7 +59,7 @@ public class GiangVienController {
 		return "giangvien/GiangVien";
 	}
 
-	@RequestMapping(value = { "/thongke" }) //chi tiet thong ke
+	@RequestMapping(value = { "/thongke/{id}" }) //chi tiet thong ke
 	public String thongKeDetail(Model model) {
 
 		return "giangvien/GiangVien";

@@ -19,7 +19,12 @@ import com.qlda.Service.TaiKhoanService;
 public class QuanLyController {
 	@Autowired
 	QuanLyService quanlyservice;
-
+	
+	@GetMapping("/")
+	public String index() {
+		return "giaovu/index";
+	}
+	
 	// Giao dien Thong tin Quan ly - Chi tiết của quản lý
 	@GetMapping("/quanly/{id}")
 	public String quanLyDetail(@PathVariable("id") Long id, Model model) {
