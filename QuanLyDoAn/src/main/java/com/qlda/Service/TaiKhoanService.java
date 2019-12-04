@@ -51,7 +51,7 @@ public class TaiKhoanService implements UserDetailsService  {
 
 	// Them 1 tai khoan
 	public TaiKhoan addTaiKhoan(TaiKhoan taikhoan) {
-/*<<<<<<< HEAD
+
 		boolean check = checkEmail(taikhoan);
 		String password = passwordEncoder.encode(taikhoan.getPassword());
 		taikhoan.setPassword(password);
@@ -60,14 +60,14 @@ public class TaiKhoanService implements UserDetailsService  {
 			return taiKhoanRepository.save(taikhoan);
 		else
 			return null;
-=======
-		return taiKhoanRepository.save(taikhoan);
-*/
-		 boolean check = checkEmail(taikhoan);
+
+		
+
+		/* boolean check = checkEmail(taikhoan);
 		if (check == true)
 			return taiKhoanRepository.save(taikhoan);
 		else
-			return null;
+			return null;*/
 
 
 	}
@@ -89,6 +89,14 @@ public class TaiKhoanService implements UserDetailsService  {
 	public TaiKhoan getById(int id) {
 		for (TaiKhoan taikhoan : taiKhoanRepository.findAll()) {
 			if (taikhoan.getId() == id) {
+				return taikhoan;
+			}
+		}
+		return null;
+	}
+	public TaiKhoan getByEmail(String email) {
+		for (TaiKhoan taikhoan : taiKhoanRepository.findAll()) {
+			if (taikhoan.getEmail() == email) {
 				return taikhoan;
 			}
 		}

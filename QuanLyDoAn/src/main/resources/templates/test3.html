@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -20,15 +21,15 @@
 				<option value="ROLE_GIANG_VIEN">Giang Vien</option>
 			</select>
 		</p>
-		<p>
+		 <p>
 			Ten: <input type="text" th:field="*{ten}" />
 		</p>
 		<p>
-			SDT: <input type="tel" th:field="*{sodienthoai}" />
+			SDT: <input type="tel" th:field="*{soDienThoai}" />
 		</p>
 		<p>
-			Nam sinh: <input type="date" th:field="*{namsinh}" />
-		</p>
+			Nam sinh: <input type="date" th:field="*{namSinh}" />
+		</p> 
 		<p>
 			<button type="submit" class="btn btn-success">Add</button>
 		</p>

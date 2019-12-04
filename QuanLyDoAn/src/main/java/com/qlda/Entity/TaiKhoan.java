@@ -18,7 +18,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "taikhoan")
-@SecondaryTable(name = "giangvien", pkJoinColumns = @PrimaryKeyJoinColumn(name = "idtaikhoan"))
+//@SecondaryTable(name = "giangvien", pkJoinColumns = @PrimaryKeyJoinColumn(name = "idtaikhoan"))
 public class TaiKhoan {
 
 	@Id
@@ -31,12 +31,8 @@ public class TaiKhoan {
 	private String password;
 	@Column(name = "role")
 	private String role;
-
-	@Column(table = "giangvien")
-	private String ten;
-	@Column(table = "giangvien")
-	private String sodienthoai;
-	@Column(table = "giangvien")
-	private Date namsinh;
+	public TaiKhoan() {
+		super();
+	}
 
 }

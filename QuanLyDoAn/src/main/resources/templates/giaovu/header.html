@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 
 <head>
@@ -37,7 +37,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
               <span class="profile-ava">
                 <img alt="" src="img/lien-avatar.jpg">
               </span>
-              <span class="username">Tran Phuong Lien</span>
+
+              <span class="username" sec:authentication="name">Tran Phuong Lien</span>
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
