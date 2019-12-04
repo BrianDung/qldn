@@ -14,61 +14,62 @@ import com.qlda.Entity.TaiKhoan;
 import com.qlda.Service.QuanLyService;
 import com.qlda.Service.TaiKhoanService;
 
-@RequestMapping("/trangchu_quanly")
 @Controller
 public class QuanLyController {
 	@Autowired
 	QuanLyService quanlyservice;
-	
-	@GetMapping("/")
+
+
+	@GetMapping("trangchu_quanly/")
 	public String index() {
 		return "giaovu/index";
 	}
-	
+
+
 	// Giao dien Thong tin Quan ly - Chi tiết của quản lý
-	@GetMapping("/quanly/{id}")
+	@GetMapping("trangchu_quanly/quanly/{id}")
 	public String quanLyDetail(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("quanly", quanlyservice.getInfQuanLy(id));
 		return "giaovu/information";
 	}
 
 	// Giao dien Danh sach sinh vien - Lấy ra danh sách các model SinhVienDetail
-	@GetMapping("/sinhvien")
+	@GetMapping("trangchu_quanly/sinhvien")
 	public String sinhViens(Model model) {
 		model.addAttribute("listsinhvien", quanlyservice.getAllSinhVien());
 		return "giaovu/listStudent";
 	}
 
 	// Giao diện thông tin chi tiết sinh viên
-	@GetMapping("/sinhvien/{id}")
+	@GetMapping("trangchu_quanly/sinhvien/{id}")
 	public String sinhVienDetail(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("sinhvien", quanlyservice.getInfoSv(id));
 		return "giaovu/infoStudent";
 	}
 
 	// Giao diện thông tin chi tiết của 1 đề tài (đồ án)
-	@GetMapping("doan/{id}")
+	@GetMapping("trangchu_quanly/doan/{id}")
 	public String doanDetail(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("detai", quanlyservice.getInfDeTai(id));
 		return "giaovu/ChiTietDoAn";
 	}
 
 	// Giao diện thông tin chi tiết của 1 giảng viên
-	@GetMapping("/giangvien/{id}")
+	@GetMapping("trangchu_quanly/giangvien/{id}")
 	public String giangvienDetail(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("giangvien", quanlyservice.getInfoGv(id));
 		return "giaovu/infoTeacher";
 	}
 
 	// Giao diện danh sách giảng viên
-	@GetMapping("/giangvien")
+	@GetMapping("trangchu_quanly/giangvien")
 	public String giangviens(Model model) {
 		model.addAttribute("listgiangvien", quanlyservice.getAllGiangVien());
 		return "giaovu/DanhSachGiangVien";
 	}
 
 	// Giao diện sinh viên của giảng viên
-	@GetMapping("/giangvien/sinhvien/{id}")
+	@GetMapping("trangchu_quanly/giangvien/sinhvien/{id}")
 	public String listStudenOfTeacher(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("listsinhvien", quanlyservice.getStudentOfTeacher(id));
 		return "giaovu/listStudent";
@@ -76,35 +77,35 @@ public class QuanLyController {
 	}
 
 	// Giao diện danh sách đồ án
-	@GetMapping("/doan")
+	@GetMapping("trangchu_quanly/doan")
 	public String listDoAn(Model model) {
 		model.addAttribute("listdoan", quanlyservice.getAllDoAnDetail());
 		return "giaovu/DanhSachDoAn";
 	}
 
 	// Giao dien danh sach bai tap truyen vao id cua detai
-	@GetMapping("sinhvien/baitap/{id}")
+	@GetMapping("trangchu_quanly/sinhvien/baitap/{id}")
 	public String listTaskOfStudent(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("listnhiemvu", quanlyservice.getAllBaiTapDetail(id));
 		return "giaovu/DanhSachBaiTap";
 	}
 
 	// Giao dien xem chi tiet va danh gia bai tap
-	@GetMapping("baitap/{id}")
+	@GetMapping("trangchu_quanly/baitap/{id}")
 	public String baiTapDetail(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("baitapdanhgia", quanlyservice.getBaiTapDanhGia(id));
 		return "giaovu/taskDetail";
 	}
 
 	// View danh sach tro chuyen cua 1 sinh vien
-	@GetMapping("sinhvien/trochuyen/{id}")
+	@GetMapping("trangchu_quanly/sinhvien/trochuyen/{id}")
 	public String troChuyens(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("listtrochuyensinhvien", quanlyservice.getAllTroChuyen(id));
-		return "test";
+		return "giaovu/disscuss";
 	}
 
 	// View chi tiet tro chuyen
-	@GetMapping("trochuyen/{id}")
+	@GetMapping("trangchu_quanly/trochuyen/{id}")
 	public String troChuyenDetail(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("baidang", quanlyservice.getInfoBaiDang(id));
 		return "giaovu/disscussDetail";

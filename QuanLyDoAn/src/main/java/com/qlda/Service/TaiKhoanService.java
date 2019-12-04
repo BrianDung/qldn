@@ -1,6 +1,8 @@
 package com.qlda.Service;
 
+
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.qlda.Entity.GiangVien;
 import com.qlda.Entity.TaiKhoan;
 import com.qlda.Model.TaiKhoanDetails;
 import com.qlda.Repository.TaiKhoanRepository;
@@ -48,6 +51,7 @@ public class TaiKhoanService implements UserDetailsService  {
 
 	// Them 1 tai khoan
 	public TaiKhoan addTaiKhoan(TaiKhoan taikhoan) {
+/*<<<<<<< HEAD
 		boolean check = checkEmail(taikhoan);
 		String password = passwordEncoder.encode(taikhoan.getPassword());
 		taikhoan.setPassword(password);
@@ -56,6 +60,15 @@ public class TaiKhoanService implements UserDetailsService  {
 			return taiKhoanRepository.save(taikhoan);
 		else
 			return null;
+=======
+		return taiKhoanRepository.save(taikhoan);
+*/
+		 boolean check = checkEmail(taikhoan);
+		if (check == true)
+			return taiKhoanRepository.save(taikhoan);
+		else
+			return null;
+
 
 	}
 

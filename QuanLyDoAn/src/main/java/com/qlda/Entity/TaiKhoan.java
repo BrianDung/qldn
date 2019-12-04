@@ -1,44 +1,42 @@
 package com.qlda.Entity;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "taikhoan")
-@Data
+@SecondaryTable(name = "giangvien", pkJoinColumns = @PrimaryKeyJoinColumn(name = "idtaikhoan"))
 public class TaiKhoan {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
+	@Column(name = "email")
 	private String email;
+	@Column(name = "password")
 	private String password;
+	@Column(name = "role")
 	private String role;
 
-	public TaiKhoan(String email, String password, String role) {
-		super();
-
-		this.email = email;
-		this.password = password;
-		this.role = role;
-	}
-
-	public TaiKhoan() {
-		super();
-	}
-
-	public TaiKhoan(Long id, String email, String password, String role) {
-		super();
-		this.id = id;
-		this.email = email;
-		this.password = password;
-		this.role = role;
-	}
+	@Column(table = "giangvien")
+	private String ten;
+	@Column(table = "giangvien")
+	private String sodienthoai;
+	@Column(table = "giangvien")
+	private Date namsinh;
 
 }

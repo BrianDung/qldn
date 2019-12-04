@@ -30,6 +30,11 @@ public class GiangVien {
 	@JoinColumn(name = "idtaikhoan", referencedColumnName = "id")
 	private TaiKhoan taikhoan;
 
+	public GiangVien(TaiKhoan taikhoan) {
+		super();
+		this.taikhoan = taikhoan;
+	}
+	
 	
 	
 }

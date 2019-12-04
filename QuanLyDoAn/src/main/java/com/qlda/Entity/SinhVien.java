@@ -12,6 +12,8 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import lombok.Data;
+@Data
 @Entity
 @Table(name = "sinhvien")
 public class SinhVien {
@@ -26,7 +28,7 @@ public class SinhVien {
 	private String sodienthoai;
 	
 	@OneToOne
-	@JoinColumn(name = "idtaikhoan", referencedColumnName = "id")
+	@JoinColumn(name = "idtaikhoan", referencedColumnName = "id") // Liên kết với khóa ngoài của bảng tài khôản
 	private TaiKhoan taikhoan;
 	
 	@OneToOne
@@ -34,63 +36,6 @@ public class SinhVien {
 	private GiangVien giangvien;
 
 	
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public int getMssv() {
-		return mssv;
-	}
-
-	public void setMssv(int mssv) {
-		this.mssv = mssv;
-	}
-
-	public String getTen() {
-		return ten;
-	}
-
-	public void setTen(String ten) {
-		this.ten = ten;
-	}
-
-	public Date getNamsinh() {
-		return namsinh;
-	}
-
-	public void setNamsinh(Date namsinh) {
-		this.namsinh = namsinh;
-	}
-
-	public String getSodienthoai() {
-		return sodienthoai;
-	}
-
-	public void setSodienthoai(String sodienthoai) {
-		this.sodienthoai = sodienthoai;
-	}
-
-	public TaiKhoan getTaikhoan() {
-		return taikhoan;
-	}
-
-	public void setTaikhoan(TaiKhoan taikhoan) {
-		this.taikhoan = taikhoan;
-	}
-
-	public GiangVien getGiangvien() {
-		return giangvien;
-	}
-
-	public void setGiangvien(GiangVien giangvien) {
-		this.giangvien = giangvien;
-	}
-
 	public SinhVien(Long id, int mssv, String ten, Date namsinh, String sodienthoai) {
 		super();
 		this.id = id;
