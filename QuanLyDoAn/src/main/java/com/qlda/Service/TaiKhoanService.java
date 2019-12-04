@@ -61,13 +61,6 @@ public class TaiKhoanService implements UserDetailsService  {
 		else
 			return null;
 
-		
-
-		/* boolean check = checkEmail(taikhoan);
-		if (check == true)
-			return taiKhoanRepository.save(taikhoan);
-		else
-			return null;*/
 
 
 	}
