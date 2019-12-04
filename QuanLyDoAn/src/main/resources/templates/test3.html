@@ -7,7 +7,7 @@
 <body>
 	<form th:action="@{/trangchu_quanly/taikhoan}" th:object="${taikhoan}"
 		method="post">
-		
+
 		<p>
 			Email: <input type="email" th:field="*{email}" />
 		</p>
@@ -16,7 +16,6 @@
 		</p>
 		<p>
 			Role: <select th:field="*{role}">
-				<option value="ROLE_SINH_VIEN">Sinh Vien</option>
 				<option value="ROLE_GIANG_VIEN">Giang Vien</option>
 			</select>
 		</p>
