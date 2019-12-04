@@ -13,6 +13,8 @@ import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data
@@ -36,6 +38,7 @@ public class TaiKhoan {
 	private String ten;
 	@Column(table = "giangvien")
 	private String sodienthoai;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(table = "giangvien")
 	private Date namsinh;
 
