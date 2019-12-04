@@ -14,9 +14,12 @@ import com.qlda.Repository.TaiKhoanRepository;
 
 @Service
 public class GiangVienService {
-	
+
 	@Autowired
 	GiangVienRepository giangVienRepository;
-	
+
+	public GiangVien addGiangVien(GiangVien giangvien) {
+		return giangVienRepository.save(giangvien);
+	}
 
 }

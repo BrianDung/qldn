@@ -1,11 +1,13 @@
 package com.qlda.Service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import com.qlda.Entity.GiangVien;
 import com.qlda.Entity.TaiKhoan;
 import com.qlda.Repository.TaiKhoanRepository;
 
@@ -16,11 +18,13 @@ public class TaiKhoanService {
 
 	// Them 1 tai khoan
 	public TaiKhoan addTaiKhoan(TaiKhoan taikhoan) {
-		boolean check = checkEmail(taikhoan);
-		if (check == true)
-			return taiKhoanRepository.save(taikhoan);
-		else
-			return null;
+		return taiKhoanRepository.save(taikhoan);
+
+		// boolean check = checkEmail(taikhoan);
+//		if (check == true)
+//			return taiKhoanRepository.save(taikhoan);
+//		else
+//			return null;
 
 	}
 
