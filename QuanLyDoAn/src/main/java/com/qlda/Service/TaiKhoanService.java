@@ -9,6 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +21,8 @@ import com.qlda.Repository.TaiKhoanRepository;
 public class TaiKhoanService implements UserDetailsService  {
 	@Autowired
 	TaiKhoanRepository taiKhoanRepository;
+	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	
 	
 	//Start - Tìm tài khoản trong db phân quyền security
 	@Override
@@ -46,7 +49,10 @@ public class TaiKhoanService implements UserDetailsService  {
 	// Them 1 tai khoan
 	public TaiKhoan addTaiKhoan(TaiKhoan taikhoan) {
 		boolean check = checkEmail(taikhoan);
+		String password = passwordEncoder.encode(taikhoan.getPassword());
+		taikhoan.setPassword(password);
 		if (check == true)
+			
 			return taiKhoanRepository.save(taikhoan);
 		else
 			return null;
