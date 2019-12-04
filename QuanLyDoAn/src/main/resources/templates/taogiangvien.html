@@ -6,29 +6,28 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <title>Insert title here</title>
 </head>
 <body>
-	<form th:action="@{/trangchu_quanly/taikhoan}" th:object="${taikhoan}"
+	<form th:action="@{/trangchu_quanly/addgiangvien}" th:object="${giangvien}"
 		method="post">
-
+		
 		<p>
-			Email: <input type="email" th:field="*{email}" />
+			ten: <input type="text" th:field="*{ten}" />
 		</p>
 		<p>
-			password: <input type="password" th:field="*{password}" />
+			sodienthoai: <input type="text" th:field="*{sodienthoai}" />
 		</p>
 		<p>
-			Role: <select th:field="*{role}">
-				<option value="ROLE_GIANG_VIEN">Giang Vien</option>
-			</select>
+			sodienthoai: <input type="date" th:field="*{namsinh}" />
 		</p>
-		 <p>
+		
+		<!-- <p>
 			Ten: <input type="text" th:field="*{ten}" />
 		</p>
 		<p>
-			SDT: <input type="tel" th:field="*{soDienThoai}" />
+			SDT: <input type="tel" th:field="*{sodienthoai}" />
 		</p>
 		<p>
-			Nam sinh: <input type="date" th:field="*{namSinh}" />
-		</p> 
+			Nam sinh: <input type="text" th:field="*{namsinh}" />
+		</p> -->
 		<p>
 			<button type="submit" class="btn btn-success">Add</button>
 		</p>

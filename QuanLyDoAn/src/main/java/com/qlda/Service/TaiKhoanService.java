@@ -61,9 +61,6 @@ public class TaiKhoanService implements UserDetailsService  {
 		else
 			return null;
 
-		
-
-		
 
 
 	}
@@ -85,6 +82,14 @@ public class TaiKhoanService implements UserDetailsService  {
 	public TaiKhoan getById(int id) {
 		for (TaiKhoan taikhoan : taiKhoanRepository.findAll()) {
 			if (taikhoan.getId() == id) {
+				return taikhoan;
+			}
+		}
+		return null;
+	}
+	public TaiKhoan getByEmail(String email) {
+		for (TaiKhoan taikhoan : taiKhoanRepository.findAll()) {
+			if (taikhoan.getEmail() == email) {
 				return taikhoan;
 			}
 		}

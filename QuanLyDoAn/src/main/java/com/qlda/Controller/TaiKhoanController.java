@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.qlda.Entity.GiangVien;
 import com.qlda.Entity.TaiKhoan;
-
+import com.qlda.Model.GiangVienDetail;
 import com.qlda.Repository.TaiKhoanRepository;
 import com.qlda.Service.GiangVienService;
 import com.qlda.Service.TaiKhoanService;
@@ -27,6 +27,9 @@ public class TaiKhoanController {
 	@Autowired
 	TaiKhoanService taiKhoanService;
 	// form login
+	@Autowired
+	GiangVienService giangVienService;
+	private GiangVien gv;
 	@GetMapping("/login")
 	public String login(Model model) {
 		return "login";
@@ -37,19 +40,37 @@ public class TaiKhoanController {
 		return "403";
 	}
 	
+	
 	// View tao 1 tai khoan
 	@GetMapping("trangchu_quanly/formtaikhoan")
 	public String formTaiKhoan(Model model) {
-		model.addAttribute("taikhoan", new TaiKhoan());
+		GiangVienDetail gv = new GiangVienDetail();
+		model.addAttribute("taikhoan", gv);
 		return "test3";
 	}
 
 	// Luu 1 tai khoan vao database
 	@PostMapping("trangchu_quanly/taikhoan") // Tao 1 oject luu tren database
-	public String submitTaiKhoan(@ModelAttribute TaiKhoan taikhoan, Model model) {
-		model.addAttribute("taikhoan", taiKhoanService.addTaiKhoan(taikhoan));
-		return "test4";
+	public String submitTaiKhoan(@ModelAttribute GiangVienDetail taikhoan, Model model) {
+		TaiKhoan tk = new TaiKhoan() ;
+		tk.setEmail(taikhoan.getEmail());
+		tk.setPassword(taikhoan.getPassword());
+		tk.setRole(taikhoan.getRole());
+		
+		tk = taiKhoanService.addTaiKhoan(tk);
+		
+		GiangVien gv = new GiangVien();
+		gv.setNamsinh(taikhoan.getNamSinh());
+		gv.setTen(taikhoan.getTen());
+		gv.setSodienthoai(taikhoan.getSoDienThoai());
+		gv.setTaikhoan(tk);
+		
+		giangVienService.addGiangVien(gv);
+		
+		return "trangchu_quanly";
 	}
+	
+	
 
 	@GetMapping("trangchu_quanly/update/{id}")
 	public String taiKhoanDetail(@PathVariable("id") int id, Model model) {
