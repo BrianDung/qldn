@@ -26,7 +26,17 @@ public class TaiKhoanController {
 
 	@Autowired
 	TaiKhoanService taiKhoanService;
-
+	// form login
+	@GetMapping("/login")
+	public String login(Model model) {
+		return "login";
+	}
+	// TỪ chối truy cập 
+	@GetMapping("/403")
+	public String accessDenied(Model model) {
+		return "403";
+	}
+	
 	// View tao 1 tai khoan
 	@GetMapping("trangchu_quanly/formtaikhoan")
 	public String formTaiKhoan(Model model) {

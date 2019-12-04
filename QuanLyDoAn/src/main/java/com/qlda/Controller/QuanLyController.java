@@ -19,10 +19,12 @@ public class QuanLyController {
 	@Autowired
 	QuanLyService quanlyservice;
 
+
 	@GetMapping("trangchu_quanly/")
 	public String index() {
 		return "giaovu/index";
 	}
+
 
 	// Giao dien Thong tin Quan ly - Chi tiết của quản lý
 	@GetMapping("trangchu_quanly/quanly/{id}")

@@ -1,20 +1,50 @@
 package com.qlda.Service;
 
-import java.util.Date;
+
+import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.qlda.Entity.GiangVien;
 import com.qlda.Entity.TaiKhoan;
+import com.qlda.Model.TaiKhoanDetails;
 import com.qlda.Repository.TaiKhoanRepository;
 
 @Service
-public class TaiKhoanService {
+public class TaiKhoanService implements UserDetailsService  {
 	@Autowired
 	TaiKhoanRepository taiKhoanRepository;
+	
+	//Start - Tìm tài khoản trong db phân quyền security
+	@Override
+	@Transactional
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		TaiKhoan taikhoan = taiKhoanRepository.findByEmail(username);
+		if(taikhoan == null) {
+			throw new UsernameNotFoundException("Không tìm thấy tài khoản");
+			
+		}
+		String role = taikhoan.getRole();
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
+        GrantedAuthority authority = new SimpleGrantedAuthority(role);
+        grantedAuthorities.add(authority);
+        return new org.springframework.security.core.userdetails.User(
+        		taikhoan.getEmail(), taikhoan.getPassword(), grantedAuthorities);
+	}
+	
+	//End - Tìm tài khoản trong db phân quyền security
+	
+	
+	
 
 	// Them 1 tai khoan
 	public TaiKhoan addTaiKhoan(TaiKhoan taikhoan) {
@@ -67,4 +97,6 @@ public class TaiKhoanService {
 		}
 
 	}
+
+	
 }
