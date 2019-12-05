@@ -22,4 +22,11 @@ public class GiangVienService {
 		return giangVienRepository.save(giangvien);
 	}
 
+	public List<GiangVien> getAllGv() {
+		return giangVienRepository.findAll();
+	}
+
+	public GiangVien getOne(Long id) {
+		return giangVienRepository.getOne(id);
+	}
 }

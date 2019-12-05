@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,10 +27,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.qlda.Entity.GiangVien;
+import com.qlda.Entity.SinhVien;
 import com.qlda.Entity.TaiKhoan;
 import com.qlda.Model.GiangVienDetail;
+import com.qlda.Model.SinhVienDetail;
 import com.qlda.Repository.TaiKhoanRepository;
 import com.qlda.Service.GiangVienService;
+import com.qlda.Service.SinhVienService;
 import com.qlda.Service.TaiKhoanService;
 
 @Controller
@@ -46,7 +50,6 @@ public class TaiKhoanController {
 	@Autowired
 	GiangVienService giangVienService;
 	private GiangVien gv;
-	
 	
 	
 	//test upload file
@@ -102,47 +105,84 @@ public class TaiKhoanController {
 	
 	
 	
+
+
+	@Autowired
+	SinhVienService sinhVienService;
+	private SinhVien sv;
+
+
 	@GetMapping("/login")
 	public String login(Model model) {
 		return "login";
 	}
-	// TỪ chối truy cập 
+
+	// TỪ chối truy cập
 	@GetMapping("/403")
 	public String accessDenied(Model model) {
 		return "403";
 	}
-	
-	
-	// View tao 1 tai khoan
-	@GetMapping("trangchu_quanly/formtaikhoan")
-	public String formTaiKhoan(Model model) {
+
+	// View tao 1 tai khoan Gv
+	@GetMapping("trangchu_quanly/formtaikhoangv")
+	public String formTaiKhoanGv(Model model) {
 		GiangVienDetail gv = new GiangVienDetail();
 		model.addAttribute("taikhoan", gv);
-		return "test3";
+		return "giaovu/TaoMoiGiangVien";
 	}
 
-	// Luu 1 tai khoan vao database
-	@PostMapping("trangchu_quanly/taikhoan") // Tao 1 oject luu tren database
-	public String submitTaiKhoan(@ModelAttribute GiangVienDetail taikhoan, Model model) {
-		TaiKhoan tk = new TaiKhoan() ;
+	// Luu 1 tai khoan giang vien
+	@PostMapping("trangchu_quanly/taikhoangv") // Tao 1 oject luu tren database
+	public String submitTaiKhoanGv(@ModelAttribute GiangVienDetail taikhoan, Model model) {
+		TaiKhoan tk = new TaiKhoan();
 		tk.setEmail(taikhoan.getEmail());
 		tk.setPassword(taikhoan.getPassword());
 		tk.setRole(taikhoan.getRole());
-		
+
 		tk = taiKhoanService.addTaiKhoan(tk);
-		
+
 		GiangVien gv = new GiangVien();
 		gv.setNamsinh(taikhoan.getNamSinh());
 		gv.setTen(taikhoan.getTen());
 		gv.setSodienthoai(taikhoan.getSoDienThoai());
 		gv.setTaikhoan(tk);
-		
+
 		giangVienService.addGiangVien(gv);
-		
-		return "trangchu_quanly";
+
+		return "giaovu/TaoMoiGiangVien";
 	}
-	
-	
+
+	// View tao 1 tai khoan Sv
+	@GetMapping("trangchu_quanly/formtaikhoansv")
+	public String formTaiKhoanSv(Model model) {
+		model.addAttribute("taikhoansv", new SinhVienDetail());
+		model.addAttribute("listgv", giangVienService.getAllGv()); // Lay ra danh sach giang vien
+		return "giaovu/TaoMoiSinhVien";
+	}
+
+	@PostMapping("trangchu_quanly/taikhoansv")
+	public String submitTaiKhoanSv(@ModelAttribute SinhVienDetail sinhviendetail, Model model) {
+		TaiKhoan tk = new TaiKhoan();
+		tk.setEmail(sinhviendetail.getEmailSv());
+		tk.setPassword(sinhviendetail.getPassword());
+		tk.setRole(sinhviendetail.getRole());
+
+		tk = taiKhoanService.addTaiKhoan(tk); // Them tai khoan trong db
+
+		SinhVien sv = new SinhVien();
+		sv.setMssv(sinhviendetail.getMssv());
+		sv.setNamsinh(sinhviendetail.getNamSinhSv());
+		sv.setSodienthoai(sinhviendetail.getSoDienThoaiSv());
+		sv.setTen(sinhviendetail.getTenSv());
+		Long id = sinhviendetail.getIdGv();
+		GiangVien gv = giangVienService.getOne(id);
+
+		sv.setTaikhoan(tk);
+		sv.setGiangvien(gv);
+
+		sinhVienService.save(sv);
+		return "giaovu/TaoMoiSinhVien";
+	}
 
 	@GetMapping("trangchu_quanly/update/{id}")
 	public String taiKhoanDetail(@PathVariable("id") int id, Model model) {

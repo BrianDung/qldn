@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
+
 @Data
 @Entity
 @Table(name = "sinhvien")
@@ -26,16 +27,15 @@ public class SinhVien {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date namsinh;
 	private String sodienthoai;
-	
+
 	@OneToOne
 	@JoinColumn(name = "idtaikhoan", referencedColumnName = "id") // Liên kết với khóa ngoài của bảng tài khôản
 	private TaiKhoan taikhoan;
-	
+
 	@OneToOne
 	@JoinColumn(name = "idgiangvien", referencedColumnName = "id")
 	private GiangVien giangvien;
 
-	
 	public SinhVien(Long id, int mssv, String ten, Date namsinh, String sodienthoai) {
 		super();
 		this.id = id;
@@ -44,6 +44,9 @@ public class SinhVien {
 		this.namsinh = namsinh;
 		this.sodienthoai = sodienthoai;
 	}
-	
-	
+
+	public SinhVien() {
+		super();
+	}
+
 }

@@ -10,21 +10,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.qlda.Entity.DeTai;
+import com.qlda.Entity.SinhVien;
 import com.qlda.Entity.TaiKhoan;
+import com.qlda.Model.DoAnDetail;
+import com.qlda.Model.DoAnDetail;
+import com.qlda.Service.DeTaiService;
 import com.qlda.Service.QuanLyService;
+import com.qlda.Service.SinhVienService;
 import com.qlda.Service.TaiKhoanService;
 
 @Controller
 public class QuanLyController {
 	@Autowired
 	QuanLyService quanlyservice;
-
+	@Autowired
+	SinhVienService sinhvienservice;
+	@Autowired
+	DeTaiService detaiservice;
 
 	@GetMapping("trangchu_quanly/")
 	public String index() {
 		return "giaovu/index";
 	}
-
 
 	// Giao dien Thong tin Quan ly - Chi tiết của quản lý
 	@GetMapping("trangchu_quanly/quanly/{id}")
@@ -111,47 +119,33 @@ public class QuanLyController {
 		return "giaovu/disscussDetail";
 	}
 
-	@RequestMapping(value = { "/thongke" }) // danh sach thong ke
-	public String thongkes(Model model) {
-
-		return "giangvien/GiangVien";
+	// View tao 1 do an
+	@GetMapping("/trangchu_quanly/formdoan")
+	public String formDoAn(Model model) {
+		model.addAttribute("detai", new DoAnDetail());
+		model.addAttribute("listsinhvien", sinhvienservice.findAll());
+		return "FormDoAn";
 	}
 
-	@RequestMapping(value = { "/thongke/{id}" }) // chi tiet thong ke
-	public String thongkeDetail(Model model) {
+	// Luu 1 de tai
+	@PostMapping("/trangchu_quanly/doan")
+	public String taoDoAn(@ModelAttribute DoAnDetail detaidetail, Model model) {
+		DeTai detai = new DeTai();
 
-		return "giangvien/GiangVien";
-	}
+		detai.setTen(detaidetail.getTenDeTai());
+		SinhVien sv = sinhvienservice.getOne(detaidetail.getIdSv()); // Tim 1 sinh vien tuong ung lam do an
+		detai.setSinhvien(sv);
 
-	@RequestMapping(value = { "/danhgia" }, method = RequestMethod.POST) // Tao 1 danh gia bai tap
-	public String taoDanhGia(Model model) {
+		detai.setNgaytao(detaidetail.getNgayTao());
+		detai.setNoidung(detaidetail.getNoiDung());
+		detai.setThongtin(detaidetail.getThongTin());
+		detai.setMota(detaidetail.getMoTa());
+		detai.setTrangthai(detaidetail.getTrangThai());
+		detai.setFile(detaidetail.getFile());
 
-		return "giangvien/GiangVien";
-	}
+		model.addAttribute("taodetai", detaiservice.save(detai));
 
-	@RequestMapping(value = { "/trochuyen" }, method = RequestMethod.POST) // Tao tro chuyen
-	public String taoTroChuyen(Model model) {
-
-		return "giangvien/GiangVien";
-	}
-
-	@RequestMapping(value = { "/nhiemvu" }, method = RequestMethod.POST) // Tao nhiem vu
-	public String taoNhiemVu(Model model) {
-
-		return "giangvien/GiangVien";
-	}
-
-	@RequestMapping(value = { "/taikhoan/giangvien/{id}" }, method = RequestMethod.POST) // Tao tai khoan giang vien
-	public String taoTaiKhoanGiangVien(Model model) {
-
-		return "giangvien/GiangVien";
-	}
-
-	@RequestMapping(value = { "/detai" }, method = RequestMethod.POST) // tao de tai
-	public String taoDeTai(Model model) {
-
-		return "giangvien/GiangVien";
-
+		return "test4";
 	}
 
 }

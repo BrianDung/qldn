@@ -29,7 +29,7 @@ public class DeTai {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngaytao;
 	private String file;
-	private String trangthai; // change boolean
+	private String trangthai; 
 
 	@OneToOne
 	@JoinColumn(name = "idsinhvien", referencedColumnName = "id")
