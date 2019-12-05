@@ -16,9 +16,14 @@ public class DoAnDetail {
 	private String tenGv;
 	private Long idSv;
 	private String tenSv;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngayTao;
+	private String moTa;
+	private String noiDung;
+	private String thongTin;
 	private String trangThai;
+	private String file;
 
 	public DoAnDetail() {
 		super();
