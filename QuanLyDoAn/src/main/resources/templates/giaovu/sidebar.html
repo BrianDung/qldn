@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
 <meta charset="utf-8">
@@ -22,10 +23,10 @@
 		<div id="sidebar" class="nav-collapse ">
 			<!-- sidebar menu start-->
 			<ul class="sidebar-menu">
-				<li class="active"><a class="" href="index.html"> <i
-						class="icon_house_alt"></i> <span>Trang chủ</span>
+				<li class="active"><a class="" th:href="@{|/trangchu_quanly/|}">
+						<i class="icon_house_alt"></i> <span>Trang chủ</span>
 				</a></li>
-				<li class="active"><a class="" href="information.html"> <i
+				<li class="active"><a class="" th:href="@{|/trangchu_quanly/quanly/info|}"> <i
 						class="icon_info"></i> <span>Thông tin</span>
 				</a></li>
 				<li class="active"><a th:href="@{|/trangchu_quanly/sinhvien|}">
@@ -37,16 +38,31 @@
 				<li class="active"><a th:href="@{|/trangchu_quanly/doan|}">
 						<i class="icon_folder-open_alt"></i> <span>Danh sách đồ án</span>
 				</a></li>
-				<li class="active"><a class="" href="disscuss.html"> <i
-						class="icon_chat_alt"></i> <span>Tạo trò chuyện</span>
-				</a></li>
+				
 
-				<li><a th:href="@{|/trangchu_quanly/formtaikhoan|}"><i
+				<li class="dropdown">
+				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Tạo Mới</a>
+					<ul class="dropdown-menu extended logout">
+						<div class="log-arrow-up"></div>
+						<li class="active"><a class=""
+					th:href="@{|/trangchu_quanly/formtaikhoansv|}"><i
+						class="icon_plus"></i><span>Tạo tài khoản Sinh Viên</span> </a></li>
+
+				<li class="active"><a
+					th:href="@{|/trangchu_quanly/formtaikhoangv|}"><i
 						class="icon_plus"></i>Tạo tài khoản Giảng Viên</a></li>
 
-				<li><a class="" href="TaoMoiDoAn.html">Đồ án</a></li>
+				<li class="active"><a 
+					th:href="@{|/trangchu_quanly/formdoan|}"><i class="icon_plus"></i>Tạo đồ án</a></li>
+					</ul>
+				</li>
+			</ul>
+
 		</div>
 	</aside>
+
+
+
 
 	<script>
 		//knob

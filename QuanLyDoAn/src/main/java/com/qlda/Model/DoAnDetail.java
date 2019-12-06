@@ -3,6 +3,7 @@ package com.qlda.Model;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
@@ -23,7 +24,7 @@ public class DoAnDetail {
 	private String noiDung;
 	private String thongTin;
 	private String trangThai;
-	private String file;
+	private MultipartFile  file;
 
 	public DoAnDetail() {
 		super();

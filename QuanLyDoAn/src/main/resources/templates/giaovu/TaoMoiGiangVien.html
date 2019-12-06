@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
 <meta charset="utf-8">
@@ -13,100 +14,18 @@
 
 <title>Tạo mới giảng viên</title>
 
-<!-- Bootstrap CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<!-- bootstrap theme -->
-<link href="css/bootstrap-theme.css" rel="stylesheet">
-<!--external css-->
-<!-- font icon -->
-<link href="css/elegant-icons-style.css" rel="stylesheet" />
-<link href="css/font-awesome.min.css" rel="stylesheet" />
-<!-- Custom styles -->
-<link href="css/style.css" rel="stylesheet">
-<link href="css/style-responsive.css" rel="stylesheet" />
 
-<link href="css/daterangepicker.css" rel="stylesheet" />
-<link href="css/bootstrap-datepicker.css" rel="stylesheet" />
-<link href="css/bootstrap-colorpicker.css" rel="stylesheet" />
 </head>
 
 <body>
 	<!-- container section start -->
 	<section id="container" class="">
-		<!--header start-->
-		<header class="header dark-bg">
-			<div class="toggle-nav">
-				<div class="icon-reorder tooltips"
-					data-original-title="Toggle Navigation" data-placement="bottom">
-					<i class="icon_menu"></i>
-				</div>
-			</div>
-
-			<!--logo start-->
-			<a href="index.html" class="logo">Quản <span class="lite">lý</span></a>
-			<!--logo end-->
-
-
-
-			<div class="top-nav notification-row">
-				<!-- notificatoin dropdown start-->
-				<ul class="nav pull-right top-menu">
-
-
-					<!-- alert notification end-->
-					<!-- user login dropdown start-->
-					<li class="dropdown"><a data-toggle="dropdown"
-						class="dropdown-toggle" href="#"> <span class="profile-ava">
-								<img alt="" src="img/lien-avatar.jpg">
-						</span> <span class="username">Tran Phuong Lien</span> <b class="caret"></b>
-					</a>
-						<ul class="dropdown-menu extended logout">
-							<div class="log-arrow-up"></div>
-							<li class="eborder-top"><a href="information.html"><i
-									class="icon_profile"></i> My Profile</a></li>
-							<li><a href="login.html"><i class="icon_key_alt"></i>
-									Log Out</a></li>
-						</ul></li>
-					<!-- user login dropdown end -->
-				</ul>
-				<!-- notificatoin dropdown end-->
-			</div>
-		</header>
+		<!-- header -->
+		<th:block th:include="giaovu/header"></th:block>
 		<!--header end-->
 
 		<!--sidebar start-->
-		<aside>
-			<div id="sidebar" class="nav-collapse ">
-				<!-- sidebar menu start-->
-				<ul class="sidebar-menu">
-					<li class="active"><a class="" href="index.html"> <i
-							class="icon_house_alt"></i> <span>Trang chủ</span>
-					</a></li>
-					<li class="active"><a class="" href="information.html"> <i
-							class="icon_info"></i> <span>Thông tin</span>
-					</a></li>
-					<li class="active"><a class="" href="listStudent.html"> <i
-							class="icon_group"></i> <span>Danh sách sinh viên</span>
-					</a></li>
-					<li class="active"><a class="" href="DanhSachGiangVien.html">
-							<i class="icon_group"></i> <span>Danh sách giảng viên</span>
-					</a></li>
-					<li class="active"><a class="" href="DanhSachDoAn.html"> <i
-							class="icon_folder-open_alt"></i> <span>Danh sách đồ án</span>
-					</a></li>
-					<li class="active"><a class="" href="disscuss.html"> <i
-							class="icon_chat_alt"></i> <span>Tạo trò chuyện</span>
-					</a></li>
-					<li class="sub-menu"><a href="javascript:;" class=""> <i
-							class="icon_plus"></i> <span>Tạo mới</span> <span
-							class="menu-arrow arrow_carrot-right"></span>
-					</a>
-						<ul class="sub">
-							<li><a class="" href="TaoMoiTaiKhoan.html">Tài Khoản</a></li>
-							<li><a class="" href="TaoMoiDoAn.html">Đồ Án</a></li>
-						</ul></li>
-			</div>
-		</aside>
+		<th:block th:include="giaovu/sidebar"></th:block>
 		<!--sidebar end-->
 
 		<!--main content start-->
@@ -132,14 +51,48 @@
 								khoản </header>
 							<div class="panel-body">
 								<div class="form ">
-									<form class="form-validate form-horizontal" id="feedback_form"
-										method="get" action="">
+									<form class="form-validate form-horizontal" 
+										th:action="@{/trangchu_quanly/taikhoangv}"
+										th:object="${taikhoan}" method="post" >
+
+										<div class="form-group ">
+											<label for="cname" class="control-label col-lg-2">Email<span
+												class="required">*</span>
+											</label>
+											<div class="col-lg-10">
+												<input class="form-control" id="cname" name="fullname"
+													minlength="5" type="email" th:field="*{email}" required />
+											</div>
+										</div>
+										<div class="form-group ">
+											<label for="cname" class="control-label col-lg-2">password<span
+												class="required">*</span>
+											</label>
+											<div class="col-lg-10">
+												<input class="form-control" id="cname" name="fullname"
+													minlength="5" type="password" th:field="*{password}"
+													required />
+											</div>
+										</div>
+										<div class="form-group ">
+											<label for="cname" class="control-label col-lg-2">Role<span
+												class="required">*</span>
+											</label>
+											<div class="col-lg-10">
+												<select th:field="*{role}">
+													<option value="ROLE_GIANG_VIEN">Giang Vien</option>
+												</select>
+
+											</div>
+										</div>
+
+
 										<div class="form-group ">
 											<label for="cname" class="control-label col-lg-2">Họ
 												và tên <span class="required">*</span>
 											</label>
 											<div class="col-lg-10">
-												<input class="form-control" id="cname" name="fullname"
+												<input class="form-control" id="cname" th:field="*{ten}"
 													minlength="5" type="text" required />
 											</div>
 										</div>
@@ -148,14 +101,14 @@
 												điện thoại <span class="required">*</span>
 											</label>
 											<div class="col-lg-10">
-												<input class=" form-control" id="Mobile" name="Mobile"
-													type="text" />
+												<input class=" form-control" id="Mobile" type="text"
+													th:field="*{soDienThoai}" />
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="control-label col-lg-2">Ngày sinh</label>
 											<div class="col-lg-10">
-												<input id="dp1" type="text" value="28-10-2013" size="16"
+												<input id="dp1" type="date" th:field="*{namSinh}" size="16"
 													class="form-control">
 											</div>
 										</div>
@@ -178,46 +131,7 @@
 		<!--main content end-->
 
 	</section>
-	<!-- container section end -->
 
-	<!-- javascripts -->
-	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<!-- nice scroll -->
-	<script src="js/jquery.scrollTo.min.js"></script>
-	<script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-	<!-- jquery validate js -->
-	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
-
-	<!-- custom form validation script for this page-->
-	<script src="js/form-validation-script.js"></script>
-	<!--custome script for all page-->
-	<script src="js/scripts.js"></script>
-
-	<!-- jquery ui -->
-	<script src="js/jquery-ui-1.9.2.custom.min.js"></script>
-
-	<!--custom checkbox & radio-->
-	<script type="text/javascript" src="js/ga.js"></script>
-	<!--custom switch-->
-	<script src="js/bootstrap-switch.js"></script>
-	<!--custom tagsinput-->
-	<script src="js/jquery.tagsinput.js"></script>
-
-	<!-- colorpicker -->
-
-	<!-- bootstrap-wysiwyg -->
-	<script src="js/jquery.hotkeys.js"></script>
-	<script src="js/bootstrap-wysiwyg.js"></script>
-	<script src="js/bootstrap-wysiwyg-custom.js"></script>
-	<script src="js/moment.js"></script>
-	<script src="js/bootstrap-colorpicker.js"></script>
-	<script src="js/daterangepicker.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-	<!-- ck editor -->
-	<script type="text/javascript" src="assets/ckeditor/ckeditor.js"></script>
-	<!-- custom form component script for this page-->
-	<script src="js/form-component.js"></script>
 
 
 </body>

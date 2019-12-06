@@ -38,16 +38,16 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                 <img alt="" src="img/lien-avatar.jpg">
               </span>
 
-              <span class="username" sec:authentication="name">Tran Phuong Lien</span>
+              <span class="username" sec:authentication="name"></span>
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
               <li class="eborder-top">
-                <a href="information.html"><i class="icon_profile"></i> My Profile</a>
+                <a th:href="@{|/trangchu_quanly/quanly/info|}"><i class="icon_profile"></i> My Profile</a>
               </li>
               <li>
-                <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
+                <a th:href="@{/logout}"><i class="icon_key_alt"></i> Log Out</a>
               </li>
             </ul>
           </li>

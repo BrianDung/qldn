@@ -149,7 +149,7 @@ public class TaiKhoanController {
 
 		giangVienService.addGiangVien(gv);
 
-		return "giaovu/TaoMoiGiangVien";
+		return "redirect:/trangchu_quanly/giangvien";
 	}
 
 	// View tao 1 tai khoan Sv

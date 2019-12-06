@@ -87,6 +87,16 @@ public class QuanLyService {
 		return null;
 	}
 
+	public QuanLyDetail getInfQuanLybyEmail(String email) {
+		for (QuanLyDetail ql : quanlyrepository.getAllQuanLy()) {
+			if (ql.getEmail().equals(email)) {
+				return ql;
+			}
+		}
+		return null;
+	}
+
+	
 	public List<DoAnDetail> getAllDoAnDetail() {
 		return quanlyrepository.getAllDoAnDetail();
 	}
