@@ -136,14 +136,14 @@ public class SinhVienController {
 		String email = principal.getName();
 		DoAnDetail doan =  detaiservice.getDoanbyEmailSv(email);
 		DeTai detai = detaiservice.getOne(doan.getIdDeTai());
-		TaiKhoan tk = taikhoanservice.getOne(doan.getIdtkSv());
+		
 		
 		BaiDang bd = new BaiDang();
 		bd.setTen(tt.getTenBaiDang());
 		bd.setNoidung(tt.getNoiDung());
 		bd.setNgaytao(tt.getNgayTao());
 		bd.setDetai(detai);
-		bd.setTaiKhoan(tk);
+		
 		
 		
 		
