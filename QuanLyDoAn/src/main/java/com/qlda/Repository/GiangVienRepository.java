@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.qlda.Entity.DeTai;
 import com.qlda.Entity.GiangVien;
 import com.qlda.Entity.TaiKhoan;
+import com.qlda.Model.BaiTapDetail;
 import com.qlda.Model.GiangVienDetail;
 import com.qlda.Model.NhiemVuDetail;
 import com.qlda.Model.SinhVienDetail;
@@ -25,10 +26,15 @@ public interface GiangVienRepository extends JpaRepository<GiangVien, Long> {
 			+ "FROM DeTai dt")
 	List<DeTai> getAllDeTai();
 
-	@Query("SELECT new com.qlda.Model.NhiemVuDetail(sv.ten, nv.trangthai, nv.ngaytao, nv.hannop, dt.id,"
+	@Query("SELECT new com.qlda.Model.NhiemVuDetail(nv.ten,sv.ten, nv.trangthai, nv.ngaytao, nv.hannop, dt.id,"
 			+ "dt.ten, gv.id,nv.id)"
 			+ "FROM NhiemVu nv INNER JOIN nv.detai dt INNER JOIN dt.sinhvien sv INNER JOIN sv.giangvien gv")
 	List<NhiemVuDetail> getAllNhiemVu();
+	
+
+	@Query("SELECT new com.qlda.Model.BaiTapDetail(dt.id,nv.ten , nv.filebt , nv.filehd , sv.ten , nv.ngaytao ,dg.tieuchi1, dg.tieuchi2, dg.tieuchi3, dg.id,nv.id,gv.id )"
+			+ "FROM DanhGia dg INNER JOIN dg.nhiemvu nv INNER JOIN nv.detai dt INNER JOIN dt.sinhvien sv INNER JOIN sv.giangvien gv")
+	List<BaiTapDetail> getAllBaiTapDetail(); // thêm nv.id
 
 	@Query("SELECT new com.qlda.Model.TroChuyenDetail(bd.ngaytao, bd.ten, dt.id, bd.id, sv.id,"
 			+ "			gv.id, tk.id) "

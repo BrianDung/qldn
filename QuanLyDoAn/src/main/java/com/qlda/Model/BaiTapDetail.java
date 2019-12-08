@@ -25,7 +25,7 @@ public class BaiTapDetail {
 	private int tieuChi2;
 	private int tieuChi3;
 	private Long idDanhGia;
-
+	private Long idGv;
 	public BaiTapDetail() {
 		super();
 	}
@@ -46,6 +46,25 @@ public class BaiTapDetail {
 		this.idDanhGia = idDanhGia;
 		this.idNhiemVu = idNhiemVu;
 	}
+	
+	
+	public BaiTapDetail(Long idDeTai, String tenNhiemVu, String fileBaiTap, String fileHuongDan, String tenSinhVien,
+			Date ngayTao, int tieuChi1, int tieuChi2, int tieuChi3, Long idDanhGia, Long idNhiemVu, Long idGv) {
+		super();
+		this.idDeTai = idDeTai;
+		this.tenNhiemVu = tenNhiemVu;
+		this.fileBaiTap = fileBaiTap;
+		this.fileHuongDan = fileHuongDan;
+		this.tenSinhVien = tenSinhVien;
+		this.ngayTao = ngayTao;
+		this.tieuChi1 = tieuChi1;
+		this.tieuChi2 = tieuChi2;
+		this.tieuChi3 = tieuChi3;
+		this.idDanhGia = idDanhGia;
+		this.idNhiemVu = idNhiemVu;
+		this.idGv = idGv;
+	}
+	
 
 	// View Chi tiet bai tap va danh gia
 	public BaiTapDetail(Long idNhiemVu, String tenNhiemVu, String fileHuongDan, Date hanNop, String noiDungNhiemVu,
@@ -62,5 +81,7 @@ public class BaiTapDetail {
 		this.tieuChi2 = tieuChi2;
 		this.tieuChi3 = tieuChi3;
 	}
+	
+	
 
 }

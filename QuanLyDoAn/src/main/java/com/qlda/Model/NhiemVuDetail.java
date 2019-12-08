@@ -3,6 +3,7 @@ package com.qlda.Model;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
@@ -17,8 +18,8 @@ public class NhiemVuDetail {
 	private String trangThai;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngayTao;
-	private String fileHd;
-	private String fileBt;
+	private MultipartFile fileHd;
+	private MultipartFile fileBt;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date hanNop;
 	private Long idDeTai;
@@ -29,7 +30,7 @@ public class NhiemVuDetail {
 	}
 
 	public NhiemVuDetail(Long idSinhVien, String tenSinhVien, Long idGiangVien, String tenNhiemVu,
-			String noiDungNhiemVu, String trangThai, Date ngayTao, String fileHd, String fileBt, Date hanNop,
+			String noiDungNhiemVu, String trangThai, Date ngayTao, MultipartFile fileHd, MultipartFile fileBt, Date hanNop,
 			Long idDeTai) {
 		super();
 		this.idSinhVien = idSinhVien;
@@ -46,7 +47,7 @@ public class NhiemVuDetail {
 	}
 
 	// View danh sach nhiem vu
-	public NhiemVuDetail(String tenSinhVien, String trangThai, Date ngayTao, Date hanNop, Long idDeTai, String tenDeTai,
+	public NhiemVuDetail(String tenNhiemVu, String tenSinhVien, String trangThai, Date ngayTao, Date hanNop, Long idDeTai, String tenDeTai,
 			Long idGiangVien, Long idNhiemVu) {
 		super();
 		this.tenSinhVien = tenSinhVien;
@@ -57,6 +58,8 @@ public class NhiemVuDetail {
 		this.tenDeTai = tenDeTai;
 		this.idGiangVien = idGiangVien;
 		this.idNhiemVu = idNhiemVu;
+		this.tenNhiemVu = tenNhiemVu;
+		
 	}
 
 }

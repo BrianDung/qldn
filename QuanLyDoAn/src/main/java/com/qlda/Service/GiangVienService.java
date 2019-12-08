@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.qlda.Entity.DeTai;
 import com.qlda.Entity.GiangVien;
 import com.qlda.Entity.TaiKhoan;
+import com.qlda.Model.BaiTapDetail;
 import com.qlda.Model.GiangVienDetail;
 import com.qlda.Model.NhiemVuDetail;
 import com.qlda.Model.SinhVienDetail;
@@ -60,15 +61,15 @@ public class GiangVienService {
 		return null;
 	}
 
-	public List<NhiemVuDetail> getAllNhiemVu() {
-		return giangVienRepository.getAllNhiemVu();
+	public List<BaiTapDetail> getAllNhiemVu() {
+		return giangVienRepository.getAllBaiTapDetail();
 	}
 
-	public List<NhiemVuDetail> getAllNhiemVuSinhVienOfGiangVien(Long id) {
-		List<NhiemVuDetail> list = new ArrayList<NhiemVuDetail>();
-		for (NhiemVuDetail nv : giangVienRepository.getAllNhiemVu()) {
-			if (nv.getIdGiangVien() == id) {
-				list.add(nv);
+	public List<BaiTapDetail> getAllNhiemVuSinhVienOfGiangVien(Long id) {
+		List<BaiTapDetail> list = new ArrayList<BaiTapDetail>();
+		for (BaiTapDetail bt : giangVienRepository.getAllBaiTapDetail()) {
+			if (bt.getIdGv() == id) {
+				list.add(bt);
 			}
 		}
 		return list;

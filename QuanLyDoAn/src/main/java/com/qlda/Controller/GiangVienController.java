@@ -1,5 +1,9 @@
 package com.qlda.Controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.qlda.Entity.BaiDang;
 import com.qlda.Entity.DanhGia;
@@ -32,6 +38,10 @@ import com.qlda.Service.TroChuyenService;
 
 @Controller
 public class GiangVienController {
+	
+	private static String UPLOADED_FOLDER_baitap = "..//QuanLyDoAn//src//main//resources//File//baitap//";
+	private static String UPLOADED_FOLDER_trochuyen = "..//QuanLyDoAn//src//main//resources//File//trochuyen//";
+
 	@Autowired
 	GiangVienService giangvienservice;
 	@Autowired
@@ -120,47 +130,89 @@ public class GiangVienController {
 	// View tao nhiem vu
 	@GetMapping("trangchu_giangvien/nhiemvu")
 	public String formNhiemVu(Model model) {
-		model.addAttribute("listdetai", detaiservice.getAllDeTai());
+		model.addAttribute("listdetai", detaiservice.getAllDeTai()); //bug !!! list detai phải chỉ của gv, ở đây là tất cả đề tài
 		model.addAttribute("nhiemvu", new NhiemVuDetail());
-		return "FormNhiemVu_GiangVien";
+		return "giangvien/NhiemVu";
 	}
 
 	// Luu 1 nhiem vu
 	@PostMapping("trangchu_giangvien/nhiemvu")
-	public String nhiemVu(@ModelAttribute NhiemVuDetail nhiemvudetail, Model model) {
+	public String nhiemVu(@ModelAttribute NhiemVuDetail nhiemvudetail, Model model, RedirectAttributes redirectAttributes) {
 		NhiemVu nhiemvu = new NhiemVu();
 		nhiemvu.setTen(nhiemvudetail.getTenNhiemVu());
+		
 		nhiemvu.setNoidung(nhiemvudetail.getNoiDungNhiemVu());
-		nhiemvu.setFilebt(nhiemvudetail.getFileBt());
-		nhiemvu.setFilehd(nhiemvudetail.getFileHd());
+		//nhiemvu.setFilebt(nhiemvudetail.getFileBt());
+		//nhiemvu.setFilehd(nhiemvudetail.getFileHd());
 		nhiemvu.setHannop(nhiemvudetail.getHanNop());
 		nhiemvu.setNgaytao(nhiemvudetail.getNgayTao());
 		nhiemvu.setTrangthai(nhiemvudetail.getTrangThai());
 		nhiemvu.setDetai(giangvienservice.getDeTaiById(nhiemvudetail.getIdDeTai())); // save de tai
+		
+		try {
+			MultipartFile file = nhiemvudetail.getFileHd();
+			 byte[] bytes = file.getBytes();
+			// Get the file and save it somewhere byte[] bytes = file.getBytes(); Path
+			Path path = Paths.get(UPLOADED_FOLDER_baitap + file.getOriginalFilename());
+			Files.write(path, bytes);
+			String filename = file.getOriginalFilename();
+			System.out.println(filename);
+			nhiemvu.setFilehd(UPLOADED_FOLDER_baitap + filename);
+			redirectAttributes.addFlashAttribute("message",
+					"You successfully uploaded '" + file.getOriginalFilename() + "'");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
 		nhiemvuservice.save(nhiemvu);
-		return "ThongBaoNhiemVu_GiangVien";
+		return "redirect:/trangchu_giangvien/nhiemvu";
 	}
 
 	// View tao tro chuyen
 	@GetMapping("trangchu_giangvien/trochuyen")
-	public String formTroChuyen(Model model) {
-		model.addAttribute("listdetai", detaiservice.getAllDeTai());
+	public String formTroChuyen(Model model,Principal principal) {
+		
+		String email = principal.getName();// Email GV
+		Long idGv = taikhoanservice.getIdTaiKhoanGiangVien(email);
+		model.addAttribute("listtrochuyen", giangvienservice.getAllTroChuyenSinhVienOfGiangVien(idGv));
+		
+		model.addAttribute("listdetai", detaiservice.getAllDeTai()); //bug !!! list detai phải chỉ của gv, ở đây là tất cả đề tài
 		model.addAttribute("trochuyen", new TroChuyenDetail());
-		return "FormTroChuyen_GiangVien";
+		return "giangvien/TroChuyen";
 	}
 
 	// Luu 1 bai dang
 	@PostMapping("trangchu_giangvien/trochuyen")
-	public String troChuyen(@ModelAttribute TroChuyenDetail trochuyendetail, Model model) {
-		BaiDang tt = new BaiDang();
-		tt.setTen(trochuyendetail.getTenBaiDang());
-		tt.setNoidung(trochuyendetail.getNoiDung());
-		tt.setNgaytao(trochuyendetail.getNgayTao());
+	public String troChuyen(@ModelAttribute TroChuyenDetail trochuyendetail, Model model, RedirectAttributes redirectAttributes) {
+		BaiDang bd = new BaiDang();
+		bd.setTen(trochuyendetail.getTenBaiDang());
+		bd.setNoidung(trochuyendetail.getNoiDung());
+		bd.setNgaytao(trochuyendetail.getNgayTao());
 //		tt.setFile(trochuyendetail.getFile());
-		tt.setDetai(giangvienservice.getDeTaiById(trochuyendetail.getIdDeTai()));// Truyen id de tai
-		trochuyenservice.save(tt);
+		bd.setDetai(giangvienservice.getDeTaiById(trochuyendetail.getIdDeTai()));// Truyen id de tai
+		
+		
+		try {
+			MultipartFile file = trochuyendetail.getFile();
+			 byte[] bytes = file.getBytes();
+			// Get the file and save it somewhere byte[] bytes = file.getBytes(); Path
+			Path path = Paths.get(UPLOADED_FOLDER_trochuyen + file.getOriginalFilename());
+			Files.write(path, bytes);
+			String filename = file.getOriginalFilename();
+			System.out.println(filename);
+			bd.setFile(UPLOADED_FOLDER_trochuyen + filename);
+			redirectAttributes.addFlashAttribute("message",
+					"You successfully uploaded '" + file.getOriginalFilename() + "'");
 
-		return "ThongBaoBaiDang_GiangVien";
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		trochuyenservice.save(bd);
+
+		return "redirect:/trangchu_giangvien/trochuyen";
 	}
 
 	// View Danh sach nhiem vu cua sinh vien dc gv huong dan
@@ -169,7 +221,7 @@ public class GiangVienController {
 		String email = principal.getName();// Email GV
 		Long idGv = taikhoanservice.getIdTaiKhoanGiangVien(email);
 		model.addAttribute("listnhiemvu", giangvienservice.getAllNhiemVuSinhVienOfGiangVien(idGv));
-		return "DanhSachNhiemVu_GiangVien";
+		return "giangvien/DanhSachNhiemVuCuaSinhVien";
 	}
 
 	// View chi tiet nhiem vu
@@ -191,6 +243,6 @@ public class GiangVienController {
 	@GetMapping("trangchu_giangvien/trochuyen/{id}")
 	public String troChuyenDetail(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("trochuyen", trochuyenservice.getTroChuyen(id));
-		return "ChiTietTroChuyen_GiangVien";
+		return "giangvien/ChiTietTroChuyen";
 	}
 }

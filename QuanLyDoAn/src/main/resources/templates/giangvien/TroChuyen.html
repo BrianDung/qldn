@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-    <meta name="author" content="GeeksLabs">
-    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-    <link rel="shortcut icon" href="img/favicon.png">
- 
-    <title>Trò chuyện</title>
-    <!-- =======================================================
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+	content="Creative - Bootstrap 3 Responsive Admin Template">
+<meta name="author" content="GeeksLabs">
+<meta name="keyword"
+	content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+<link rel="shortcut icon" href="img/favicon.png">
+
+<title>Trò chuyện</title>
+<!-- =======================================================
     Theme Name: NiceAdmin
     Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
     Author: BootstrapMade
@@ -20,243 +22,233 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 </head>
 
 <body>
-    <!-- container section start -->
-  
- 	<th:block th:include="/giangvien/head"></th:block>
-  <!-- container section start -->
-  <section id="container" class="">
-    <!-- header -->
-    	<th:block th:include="/giangvien/header"></th:block>
-    <!--header end-->
+	<!-- container section start -->
 
-    <!--sidebar start-->
-     	<th:block th:include="/giangvien/sidebar"></th:block>
-    <!--sidebar end-->
+	<th:block th:include="/giangvien/head"></th:block>
+	<!-- container section start -->
+	<section id="container" class="">
+		<!-- header -->
+		<th:block th:include="/giangvien/header"></th:block>
+		<!--header end-->
 
-        <!--main content start-->
-        <section id="main-content">
-            <section class="wrapper">
-                <!--overview start-->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h3 class="page-header"><i class="icon_chat_alt"></i> Trò chuyện</h3>
-                        <ol class="breadcrumb">
-                            <li><i class="fa fa-home"></i><a href="index.html">Trang chủ</a></li>
-                            <li><i class="icon_chat_alt"></i>Trò chuyện</li>
-                        </ol>
-                    </div>
-                </div>
+		<!--sidebar start-->
+		<th:block th:include="/giangvien/sidebar"></th:block>
+		<!--sidebar end-->
 
-                <!-- project team & activity start -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!--Project Activity start-->
-                        <section class="panel">
-                            <div class="panel-body progress-panel">
-                                <div class="row">
-                                    <div class="col-lg-8 task-progress pull-left">
-                                        <h1>Danh sách trò chuyện</h1>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <span class="profile-ava pull-right">
-                                            <img alt="" class="simple" src="img/profile-avatar-dung-user. ">
-                                            Trần Tiến Dũng
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <table class="table table-hover personal-task">
-                                <tbody>
-                                    <tr>
-                                        <td>Hôm nay</td>
-                                        <td>
-                                            Hỏi đáp về đề cương
-                                        </td>
-                                        <td>
-                                            <a href="ChiTietTroChuyen.html">Xem chi tiết</a>
-                                        </td>
+		<!--main content start-->
+		<section id="main-content">
+			<section class="wrapper">
+				<!--overview start-->
+				<div class="row">
+					<div class="col-lg-12">
+						<h3 class="page-header">
+							<i class="icon_chat_alt"></i> Trò chuyện
+						</h3>
+						<ol class="breadcrumb">
+							<li><i class="fa fa-home"></i><a href="index.html">Trang
+									chủ</a></li>
+							<li><i class="icon_chat_alt"></i>Trò chuyện</li>
+						</ol>
+					</div>
+				</div>
 
-                                    </tr>
-                                    <tr>
-                                        <td>Hôm qua</td>
-                                        <td>
-                                            Phân tích thiết kế hệ thống
-                                        </td>
+				<!-- project team & activity start -->
+				<div class="row">
+					<div class="col-lg-12">
+						<!--Project Activity start-->
+						<section class="panel">
+							<div class="panel-body progress-panel">
+								<div class="row">
+									<div class="col-lg-8 task-progress pull-left">
+										<h1>Danh sách trò chuyện</h1>
+									</div>
+									<div class="col-lg-4">
+										<span class="profile-ava pull-right"> <img alt=""
+											class="simple" src="img/profile-avatar-dung-user. ">
+											Trần Tiến Dũng
+										</span>
+									</div>
+								</div>
+							</div>
+							<table class="table table-hover personal-task">
+								<tbody>
+									<tr>
 
-                                        <td>
-                                            <a href="#">Xem chi tiết</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>21-10-19</td>
-                                        <td>
-                                            Đề cương
-                                        </td>
-                                        <td>
-                                            <a href="#">Xem chi tiết</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>22-10-19</td>
-                                        <td>
-                                            Nghiên cứu các hệ thống liên quan
-                                        </td>
-                                        <td>
-                                            <a href="#">Xem chi tiết</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>24-10-14</td>
-                                        <td>
-                                            Giao diện demo
-                                        </td>
-                                        <td>
-                                            <a href="#">Xem chi tiết</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </section>
-                        <!--Project Activity end-->
-                    </div>
-                </div><br><br>
+										<th><i class="icon_clock_alt"></i> Thời gian</th>
+										<th><i class="icon_document_alt"></i> Tên</th>
+										
+										<th></th>
+									</tr>
+
+									<div th:each="baidang : ${listtrochuyen}">
+										<tr>
+											<!-- Thời gian đăng -->
+											<td><span th:utext="${baidang.getNgayTao()}"></span></td>
+
+											<!-- Tên bài đăng -->
+											<td><span th:utext="${baidang.getTenBaiDang()}"></span></td>
+
+											<!-- Chi tiết -->
+											<td><a
+												th:href="@{|/trangchu_giangvien/trochuyen/${baidang.getIdBaiDang()}|}"><p>Xem
+														chi tiết</p></a></td>
+										</tr>
+									</div>
+
+
+								</tbody>
+							</table>
+						</section>
+						<!--Project Activity end-->
+					</div>
+				</div>
+				<br> <br>
 
 
 
-                <div class="col-md-12 portlets">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="pull-left">Đăng bài</div>
-                            <div class="widget-icons pull-right">
-                                <a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a>
-                                <a href="#" class="wclose"><i class="fa fa-times"></i></a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="panel-body">
-                            <div class="padd">
+				<div class="col-md-12 portlets">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<div class="pull-left">Đăng bài</div>
+							<div class="widget-icons pull-right">
+								<a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a>
+								<a href="#" class="wclose"><i class="fa fa-times"></i></a>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="panel-body">
+							<div class="padd">
 
-                                <div class="form quick-post">
-                                    <!-- Edit profile form (not working)-->
-                                    <form class="form-horizontal">
-                                        <!-- Title -->
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-2" for="title">Tiêu đề</label>
-                                            <div class="col-lg-10">
-                                                <input type="text" class="form-control" id="title">
-                                            </div>
-                                        </div>
-                                        <!-- Content -->
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-2" for="content">Nội dung</label>
-                                            <div class="col-lg-10">
-                                                <textarea class="form-control" id="content"></textarea>
-                                            </div>
-                                        </div>
-                                        <!-- Cateogry -->
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-2">Liên quan</label>
-                                            <div class="col-lg-10">
-                                                <select class="form-control">
-                                                    <option value="">- Bài tập -</option>
-                                                    <option value="1">Vấn đề khác</option>
+								<div class="form quick-post">
+									<!-- Edit profile form (not working)-->
+									<form th:action="@{/trangchu_giangvien/trochuyen}"
+										th:object="${trochuyen}" method="post"
+										enctype="multipart/form-data" class="form-horizontal">
+										<!-- Title -->
+										<div class="form-group">
+											<label class="control-label col-lg-2" for="title">Tiêu
+												đề</label>
+											<div class="col-lg-10">
+												<input type="text" th:field="*{tenBaiDang}"
+													class="form-control" id="title">
+											</div>
+										</div>
+										<!-- Content -->
+										<div class="form-group">
+											<label class="control-label col-lg-2" for="content">Nội
+												dung</label>
+											<div class="col-lg-10">
+												<textarea class="form-control" id="content"
+													th:field="*{noiDung}"></textarea>
+											</div>
+										</div>
+										<!-- Cateogry -->
+										<div class="form-group">
+											<label class="control-label col-lg-2">Ngày Tạo</label>
+											<div class="col-lg-10">
+												Ngay tao: <input type="date" th:field="*{ngayTao}" />
+											</div>
+										</div>
+										<!-- Tags -->
+										<div class="form-group">
+											<label class="control-label col-lg-2" for="tags">Tags</label>
+											<div class="col-lg-10">
+												<select th:field="*{idDeTai}">
+													<option th:each="listdetai : ${listdetai}"
+														th:value="${listdetai.id}" th:text="${listdetai.ten}"></option>
+												</select>
+											</div>
+										</div>
+										<!-- upload -->
+										<div class="form-group">
+											<label class="control-label col-lg-2" for="tags">Upload
+												File</label>
+											<div class="col-lg-10">
+												<input type="file" th:field="*{file}" class="form-control"
+													id="upload">
+											</div>
+										</div>
 
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!-- Tags -->
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-2" for="tags">Tags</label>
-                                            <div class="col-lg-10">
-                                                <input type="text" class="form-control" id="tags">
-                                            </div>
-                                        </div>
-                                        <!-- upload -->
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-2" for="tags">Upload File</label>
-                                            <div class="col-lg-10">
-                                                <input type="file" class="form-control" id="upload">
-                                            </div>
-                                        </div>
-
-                                        <!-- Buttons -->
-                                        <div class="form-group">
-                                            <!-- Buttons -->
-                                            <div class="col-lg-offset-2 col-lg-9">
-                                                <button type="submit" class="btn btn-primary">Đăng</button>
-                                                <button type="submit" class="btn btn-danger">Lưu bản nháp</button>
-                                                <button type="reset" class="btn btn-default">Làm mới</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+										<!-- Buttons -->
+										<div class="form-group">
+											<!-- Buttons -->
+											<div class="col-lg-offset-2 col-lg-9">
+												<button type="submit" class="btn btn-primary">Đăng</button>
+												<button type="submit" class="btn btn-danger">Lưu
+													bản nháp</button>
+												<button type="reset" class="btn btn-default">Làm
+													mới</button>
+											</div>
+										</div>
+									</form>
+								</div>
 
 
-                            </div>
-                            <div class="widget-foot">
-                                <!-- Footer goes here -->
-                            </div>
-                        </div>
-                    </div>
+							</div>
+							<div class="widget-foot">
+								<!-- Footer goes here -->
+							</div>
+						</div>
+					</div>
 
-                </div>
+				</div>
 
-                </div>
-                <!-- project team & activity end -->
+				</div>
+				<!-- project team & activity end -->
 
-            </section>
+			</section>
 
-        </section>
-        <!--main content end-->
-    </section>
-    <!-- container section start -->
+		</section>
+		<!--main content end-->
+	</section>
+	<!-- container section start -->
 
-    <!-- javascripts -->
-    <script>
-        //knob
-        $(function () {
-            $(".knob").knob({
-                'draw': function () {
-                    $(this.i).val(this.cv + '%')
-                }
-            })
-        });
+	<!-- javascripts -->
+	<script>
+		//knob
+		$(function() {
+			$(".knob").knob({
+				'draw' : function() {
+					$(this.i).val(this.cv + '%')
+				}
+			})
+		});
 
-        //carousel
-        $(document).ready(function () {
-            $("#owl-slider").owlCarousel({
-                navigation: true,
-                slideSpeed: 300,
-                paginationSpeed: 400,
-                singleItem: true
+		//carousel
+		$(document).ready(function() {
+			$("#owl-slider").owlCarousel({
+				navigation : true,
+				slideSpeed : 300,
+				paginationSpeed : 400,
+				singleItem : true
 
-            });
-        });
+			});
+		});
 
-        //custom select box
+		//custom select box
 
-        $(function () {
-            $('select.styled').customSelect();
-        });
+		$(function() {
+			$('select.styled').customSelect();
+		});
 
-        /* ---------- Map ---------- */
-        $(function () {
-            $('#map').vectorMap({
-                map: 'world_mill_en',
-                series: {
-                    regions: [{
-                        values: gdpData,
-                        scale: ['#000', '#000'],
-                        normalizeFunction: 'polynomial'
-                    }]
-                },
-                backgroundColor: '#eef3f7',
-                onLabelShow: function (e, el, code) {
-                    el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
-                }
-            });
-        });
-    </script>
+		/* ---------- Map ---------- */
+		$(function() {
+			$('#map').vectorMap({
+				map : 'world_mill_en',
+				series : {
+					regions : [ {
+						values : gdpData,
+						scale : [ '#000', '#000' ],
+						normalizeFunction : 'polynomial'
+					} ]
+				},
+				backgroundColor : '#eef3f7',
+				onLabelShow : function(e, el, code) {
+					el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
+				}
+			});
+		});
+	</script>
 
 </body>
 

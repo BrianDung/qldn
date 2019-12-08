@@ -13,7 +13,7 @@
 <link rel="shortcut icon" href="img/favicon.png">
 
 <title>Nhiệm vụ</title>
- 
+
 </head>
 </head>
 
@@ -136,13 +136,15 @@
 
 									<div class="form quick-post">
 										<!-- Edit profile form (not working)-->
-										<form class="form-horizontal">
+										<form th:action="@{/trangchu_giangvien/nhiemvu}"
+											th:object="${nhiemvu}" method="post" class="form-horizontal" enctype="multipart/form-data">
 											<!-- Title -->
 											<div class="form-group">
 												<label class="control-label col-lg-2" for="title">Tiêu
 													đề</label>
 												<div class="col-lg-10">
-													<input type="text" class="form-control" id="title">
+													<input type="text" class="form-control" id="title"
+														th:field="*{tenNhiemVu}">
 												</div>
 											</div>
 											<!-- Content -->
@@ -150,15 +152,24 @@
 												<label class="control-label col-lg-2" for="content">Nội
 													dung</label>
 												<div class="col-lg-10">
-													<textarea class="form-control" id="content"></textarea>
+													<textarea class="form-control" id="content"
+														th:field="*{noiDungNhiemVu}"></textarea>
 												</div>
 											</div>
 											<!-- Cateogry -->
 											<div class="form-group">
-												<label class="control-label col-lg-2"> Dealine</label>
+												<label class="control-label col-lg-2"> Ngày Tạo</label>
 												<div class="col-lg-10">
-													<div class="input-prepend">
-														<input id="reservation" type="text" class=" form-control" />
+													<div>
+														<input type="date" th:field="*{ngayTao}" />
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="control-label col-lg-2"> Hạn Nộp</label>
+												<div class="col-lg-10">
+													<div>
+														<input type="date" th:field="*{hanNop}" />
 													</div>
 												</div>
 											</div>
@@ -167,11 +178,19 @@
 											<div class="form-group">
 												<label class="control-label col-lg-2" for="tags">Tags</label>
 												<div class="col-lg-10">
-													<select class="form-control m-bot15">
-														<option>Trần Tiến Dũng</option>
-														<option>SV A</option>
-														<option>SV B</option>
+													<select class="form-control m-bot15" th:field="*{idDeTai}">
+														<option th:each="listdetai : ${listdetai}"
+															th:value="${listdetai.id}" th:text="${listdetai.ten}"></option>
 													</select>
+												</div>
+											</div>
+												<div class="form-group">
+												<label class="control-label col-lg-2" for="tags">Trạng thái</label>
+												<div class="col-lg-10">
+													<select th:field="*{trangThai}">
+													<option value="HOAN_THANH">Hoan Thanh</option>
+													<option value="CHUA_HOAN_THANH">Chua Hoan Thanh</option>
+												</select>
 												</div>
 											</div>
 
@@ -180,10 +199,12 @@
 												<label class="control-label col-lg-2" for="tags">Upload
 													File</label>
 												<div class="col-lg-10">
-													<input type="file" class="form-control" id="upload">
+													<input type="file" class="form-control" id="upload"
+														th:field="*{fileHd}">
 												</div>
 											</div>
 											<!-- Buttons -->
+										
 											<div class="form-group">
 												<!-- Buttons -->
 												<div class="col-lg-offset-2 col-lg-9">
