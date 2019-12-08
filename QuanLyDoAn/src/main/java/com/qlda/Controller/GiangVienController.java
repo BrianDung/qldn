@@ -1,5 +1,7 @@
 package com.qlda.Controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,17 +12,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.qlda.Entity.BaiDang;
 import com.qlda.Entity.DanhGia;
 import com.qlda.Entity.DeTai;
 import com.qlda.Entity.GiangVien;
 import com.qlda.Entity.NhiemVu;
 import com.qlda.Entity.TaiKhoan;
 import com.qlda.Model.DanhGiaDetail;
+import com.qlda.Model.NhiemVuDetail;
+import com.qlda.Model.TroChuyenDetail;
 import com.qlda.Repository.GiangVienRepository;
 import com.qlda.Service.DanhGiaService;
+import com.qlda.Service.DeTaiService;
 import com.qlda.Service.GiangVienService;
 import com.qlda.Service.NhiemVuService;
 import com.qlda.Service.QuanLyService;
+import com.qlda.Service.TaiKhoanService;
+import com.qlda.Service.TroChuyenService;
 
 @Controller
 public class GiangVienController {
@@ -32,11 +40,19 @@ public class GiangVienController {
 	NhiemVuService nhiemvuservice;
 	@Autowired
 	DanhGiaService danhgiaservice;
+	@Autowired
+	DeTaiService detaiservice;
+	@Autowired
+	TroChuyenService trochuyenservice;
+	@Autowired
+	TaiKhoanService taikhoanservice;
 
 	// View Danh sach sinh vien
 	@GetMapping("trangchu_giangvien/sinhvien")
-	public String getAllSinhVienHuongDan(Model model) {
-		model.addAttribute("listsinhvienhuongdan", giangvienservice.getAllSinhVienHuongDan());
+	public String getAllSinhVienHuongDan(Model model, Principal principal) {
+		String email = principal.getName();// Email GV
+		Long idGv = taikhoanservice.getIdTaiKhoanGiangVien(email);
+		model.addAttribute("listsinhvien", quanlyservice.getStudentOfTeacher(idGv));
 		return "DanhSachSinhVien_GiangVien";
 	}
 
@@ -94,5 +110,51 @@ public class GiangVienController {
 		model.addAttribute("danhgia", danhgiaservice.save(dg));
 		return "ThongBaoDanhGia_GiangVien";
 
+	}
+
+	// View tao nhiem vu
+	@GetMapping("trangchu_giangvien/nhiemvu")
+	public String formNhiemVu(Model model) {
+		model.addAttribute("listdetai", detaiservice.getAllDeTai());
+		model.addAttribute("nhiemvu", new NhiemVuDetail());
+		return "FormNhiemVu_GiangVien";
+	}
+
+	// Luu 1 nhiem vu
+	@PostMapping("trangchu_giangvien/nhiemvu")
+	public String nhiemVu(@ModelAttribute NhiemVuDetail nhiemvudetail, Model model) {
+		NhiemVu nhiemvu = new NhiemVu();
+		nhiemvu.setTen(nhiemvudetail.getTenNhiemVu());
+		nhiemvu.setNoidung(nhiemvudetail.getNoiDungNhiemVu());
+		nhiemvu.setFilebt(nhiemvudetail.getFileBt());
+		nhiemvu.setFilehd(nhiemvudetail.getFileHd());
+		nhiemvu.setHannop(nhiemvudetail.getHanNop());
+		nhiemvu.setNgaytao(nhiemvudetail.getNgayTao());
+		nhiemvu.setTrangthai(nhiemvudetail.getTrangThai());
+		nhiemvu.setDetai(giangvienservice.getDeTaiById(nhiemvudetail.getIdDeTai())); // save de tai
+		nhiemvuservice.save(nhiemvu);
+		return "ThongBaoNhiemVu_GiangVien";
+	}
+
+	// View tao tro chuyen
+	@GetMapping("trangchu_giangvien/trochuyen")
+	public String formTroChuyen(Model model) {
+		model.addAttribute("listdetai", detaiservice.getAllDeTai());
+		model.addAttribute("trochuyen", new TroChuyenDetail());
+		return "FormTroChuyen_GiangVien";
+	}
+
+	// Luu 1 bai dang
+	@PostMapping("trangchu_giangvien/trochuyen")
+	public String troChuyen(@ModelAttribute TroChuyenDetail trochuyendetail, Model model) {
+		BaiDang tt = new BaiDang();
+		tt.setTen(trochuyendetail.getTenBaiDang());
+		tt.setNoidung(trochuyendetail.getNoiDung());
+		tt.setNgaytao(trochuyendetail.getNgayTao());
+		tt.setFile(trochuyendetail.getFile());
+		tt.setDetai(giangvienservice.getDeTaiById(trochuyendetail.getIdBaiDang()));
+		trochuyenservice.save(tt);
+
+		return "ThongBaoBaiDang_GiangVien";
 	}
 }

@@ -32,9 +32,7 @@ public class BaiDang {
 	@JoinColumn(name = "iddetai", referencedColumnName = "id")
 	private DeTai detai;
 
-	@OneToOne
-	@JoinColumn(name = "idTaiKhoan", referencedColumnName = "id")
-	private TaiKhoan taiKhoan;
+	
 
 	public BaiDang(Long id, String ten, String noidung, Date ngaytao, String file) {
 		super();
@@ -43,6 +41,12 @@ public class BaiDang {
 		this.noidung = noidung;
 		this.ngaytao = ngaytao;
 		this.file = file;
+	}
+
+
+
+	public BaiDang() {
+		super();
 	}
 
 }

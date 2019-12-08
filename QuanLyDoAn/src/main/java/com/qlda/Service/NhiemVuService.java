@@ -20,4 +20,8 @@ public class NhiemVuService {
 	public List<NhiemVu> getAllNhiemVu() {
 		return nhiemvurepository.findAll();
 	}
+
+	public NhiemVu save(NhiemVu nhiemvu) {
+		return nhiemvurepository.save(nhiemvu);
+	}
 }

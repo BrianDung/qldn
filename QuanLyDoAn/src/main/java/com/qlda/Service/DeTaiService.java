@@ -1,5 +1,7 @@
 package com.qlda.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,9 @@ public class DeTaiService {
 	public DeTai save(DeTai detai) {
 
 		return detairepository.save(detai);
+	}
+
+	public List<DeTai> getAllDeTai() {
+		return detairepository.findAll();
 	}
 }

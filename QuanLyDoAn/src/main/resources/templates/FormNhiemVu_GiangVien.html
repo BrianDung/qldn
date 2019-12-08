@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+	<form th:action="@{/trangchu_giangvien/nhiemvu}" th:object="${nhiemvu}"
+		method="post">
+		<p>
+			Ten nhiem vu: <input type="text" th:field="*{tenNhiemVu}" />
+		</p>
+		<p>
+			Đề tài : <select th:field="*{idDeTai}">
+				<option th:each="listdetai : ${listdetai}"
+					th:value="${listdetai.id}" th:text="${listdetai.ten}"></option>
+			</select>
+		</p>
+		<p>
+			Noi dung: <input type="text" th:field="*{noiDungNhiemVu}" />
+		</p>
+		<p>
+			Ngay tao: <input type="date" th:field="*{ngayTao}" />
+		</p>
+		<p>
+			Han nop: <input type="date" th:field="*{hanNop}" />
+		</p>
+		<p>
+			File BT: <input type="text" th:field="*{fileBt}" />
+		</p>
+		<p>
+			File HD: <input type="text" th:field="*{fileHd}" />
+		</p>
+		<p>
+			Trang thai: <select th:field="*{trangThai}">
+				<option value="HOAN_THANH">Hoan Thanh</option>
+				<option value="CHUA_HOAN_THANH">Chua Hoan Thanh</option>
+			</select>
+		</p>
+		<p>
+			<button type="submit" class="btn btn-success">Add</button>
+		</p>
+	</form>
+
+
+</body>
+</html>

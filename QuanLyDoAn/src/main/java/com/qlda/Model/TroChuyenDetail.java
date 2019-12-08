@@ -17,9 +17,12 @@ public class TroChuyenDetail {
 	private String tenSv;
 	private String tenGv;
 	private String tenDeTai;
+	private String file;
+
 	public TroChuyenDetail() {
 		super();
 	}
+
 	public TroChuyenDetail(Date ngayTao, String tenBaiDang, String noiDung, Long idDeTai, Long idBaiDang, String tenSv,
 			String tenGv, String tenDeTai) {
 		super();
@@ -33,5 +36,4 @@ public class TroChuyenDetail {
 		this.tenDeTai = tenDeTai;
 	}
 
-	
 }
