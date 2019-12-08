@@ -33,41 +33,47 @@ public class GiangVienController {
 	@Autowired
 	DanhGiaService danhgiaservice;
 
+	@GetMapping("/trangchu_giangvien")
+	public String home() {
+		return "TrangChu";
+	}
+	
 	// View Danh sach sinh vien
 	@GetMapping("trangchu_giangvien/sinhvien")
 	public String getAllSinhVienHuongDan(Model model) {
+		
 		model.addAttribute("listsinhvienhuongdan", giangvienservice.getAllSinhVienHuongDan());
-		return "DanhSachSinhVien_GiangVien";
+		return "giangvien/DanhSachSinhVien";
 	}
 
 	// Chi tiết 1 sv
 	@GetMapping("trangchu_giangvien/sinhvien/{id}")
 	public String getSinhVienById(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("sinhvien", giangvienservice.getSinhVienById(id));
-		return "ChiTietSinhVien_GiangVien";
+		model.addAttribute("sinhvien", quanlyservice.getInfoSv(id));
+		return "giangvien/ThongTinSinhVien";
 	}
 
 	// Chi tiết đề tài của sinh vien
 	@GetMapping("trangchu_giangvien/detai/{id}")
 	public String getDeTaiById(@PathVariable("id") Long id, Model model) {
-		DeTai dt = giangvienservice.getDeTaiById(id);
+		DeTai dt = quanlyservice.getInfDeTai(id);
 		model.addAttribute("detai", dt);
-		System.out.println(dt);
-		return "ChiTietDeTai_GiangVien";
+		
+		return "giangvien/ChiTietDoAn";
 	}
 
 	// Danh sach bai tap truyen theo id de tai
 	@GetMapping("trangchu_giangvien/sinhvien/baitap/{id}")
 	public String getAllBaiTap(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("listbaitap", quanlyservice.getAllBaiTapDetail(id));
-		return "DanhSachBaiTap_GiangVien";
+		model.addAttribute("listnhiemvu", quanlyservice.getAllBaiTapDetail(id));
+		return "giangvien/DanhSachNhiemVuCuaSinhVien";
 	}
 
 	// CHi tiet bai tap cua sinh vien
 	@GetMapping("trangchu_giangvien/baitap/{id}")
 	public String getBaiTap(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("baitap", nhiemvuservice.GetNhiemVu(id));
-		return "ChiTietBaiTap_GiangVien";
+		model.addAttribute("baitapdanhgia", quanlyservice.getBaiTapDanhGia(id));
+		return "giangvien/ChiTietNhiemVu";
 
 	}
 

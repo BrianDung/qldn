@@ -5,13 +5,22 @@ import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.qlda.Entity.BaiDang;
+import com.qlda.Entity.DeTai;
+import com.qlda.Entity.TaiKhoan;
+import com.qlda.Model.BaiTapDetail;
+import com.qlda.Model.DoAnDetail;
+import com.qlda.Model.TroChuyenDetail;
+import com.qlda.Service.BaiDangService;
 import com.qlda.Service.DeTaiService;
 import com.qlda.Service.QuanLyService;
 import com.qlda.Service.SinhVienService;
+import com.qlda.Service.TaiKhoanService;
 
 @RequestMapping("/trangchu_sinhvien")
 @Controller
@@ -24,6 +33,11 @@ public class SinhVienController {
 	SinhVienService sinhvienservice;
 	@Autowired
 	DeTaiService detaiservice;
+	@Autowired
+	BaiDangService baidangservice;
+	@Autowired
+	TaiKhoanService taikhoanservice;
+	
 	
 	// GET: Hiển thị trang login
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
@@ -42,6 +56,7 @@ public class SinhVienController {
 	public String studentDetail(Model model, Principal principal) {
 		String email = principal.getName();
 		System.out.println(email);
+		
 		model.addAttribute("sinhvien", quanlyservice.getInfoSVbyEmail(email));
 		
 		return "sinhvien/ThongTin"; 
@@ -117,8 +132,22 @@ public class SinhVienController {
 	}
 
 	@RequestMapping(value = { "/trochuyen" }, method = RequestMethod.POST) // Tao tro chuyen
-	public String taoTroChuyen(Model model) {
-
-		return "giangvien/GiangVien";
+	public String taoTroChuyen(Model model,@ModelAttribute TroChuyenDetail tt,Principal principal ) {
+		String email = principal.getName();
+		DoAnDetail doan =  detaiservice.getDoanbyEmailSv(email);
+		DeTai detai = detaiservice.getOne(doan.getIdDeTai());
+		TaiKhoan tk = taikhoanservice.getOne(doan.getIdtkSv());
+		
+		BaiDang bd = new BaiDang();
+		bd.setTen(tt.getTenBaiDang());
+		bd.setNoidung(tt.getNoiDung());
+		bd.setNgaytao(tt.getNgayTao());
+		bd.setDetai(detai);
+		bd.setTaiKhoan(tk);
+		
+		
+		
+		baidangservice.save(bd);
+		return "sinhvien/TroChuyen";
 	}
 }

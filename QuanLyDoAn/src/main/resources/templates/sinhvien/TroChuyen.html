@@ -112,7 +112,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
                 <div class="form quick-post">
                   <!-- Edit profile form (not working)-->
-                  <form th:action="" method="post" th:object="${baidang}" class="form-horizontal">
+                  <form th:action="@{/trangchu_sinhvien/trochuyen}" method="post" th:object="${baidang}" class="form-horizontal">
                     <!-- Title -->
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="title">Tiêu đề</label>
@@ -140,7 +140,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="tags">Upload File</label>
                       <div class="col-lg-10">
-                        <input type="file" class="form-control" id="upload" type="file" name="*{file}">
+                        <input type="file" class="form-control" id="upload" name="*{file}">
                       </div>
                     </div>
 
