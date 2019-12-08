@@ -44,30 +44,30 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-            <a href="thongke.html">
+            <a th:href="@{|/trangchu_giangvien/sinhvien|}">
               <div class="info-box blue-bg">
                 <i class="icon_datareport"></i>
-                <div class="count">6.674</div>
-                <div class="title">Thống kê</div>
+                <div class="count">2</div>
+                <div class="title">Sinh Viên</div>
               </div>
             </a>
             <!--/.info-box-->
           </div>
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-            <a href="DanhSachBaiTap.html">
+            <a th:href="@{|/trangchu_giangvien/listnhiemvu|}">
               <div class="info-box red-bg">
                 <i class="icon_folder-alt"></i>
                 <div class="count">2</div>
-                <div class="title">Bài tập</div>
+                <div class="title">Nhiệm Vụ</div>
               </div>
             </a>
             <!--/.info-box-->
           </div>
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-            <a href="ChiTietTroChuyen.html">
+            <a th:href="@{|/trangchu_giangvien/trochuyen|}">
               <div class="info-box green-bg">
                 <i class="icon_chat_alt"></i>
-                <div class="count">1</div>
+               <div class="count">3</div>
                 <div class="title">Trò chuyện</div>
               </div>
             </a>
@@ -167,7 +167,48 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
   <!-- container section start -->
 
   <!-- javascripts -->
-  <script>
+  <script th:src="@{/js/jquery.js}"></script>
+  <script th:src="@{/js/jquery-ui-1.10.4.min.js}"></script>
+  <script th:src="@{/js/jquery-1.8.3.min.js}"></script>
+  <script type="text/javascript" th:src="@{/js/jquery-ui-1.9.2.custom.min.js}"></script>
+  <!-- bootstrap -->
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+  <!-- nice scroll -->
+  <script th:src="@{/js/jquery.scrollTo.min.js}"></script>
+  <script th:src="@{/js/jquery.nicescroll.js}" type="text/javascript"></script>
+  <!-- charts scripts -->
+  <script th:src="@{/assets/jquery-knob/js/jquery.knob.js}"></script>
+  <script th:src="@{/js/jquery.sparkline.js}" type="text/javascript"></script>
+  <script th:src="@{/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js}"></script>
+  <script th:src="@{/js/owl.carousel.js}"></script>
+  <!-- jQuery full calendar -->
+  <script th:src="@{/js/fullcalendar.min.js}">
+  </script>
+  <!-- Full Google Calendar - Calendar -->
+  <script th:src="@{/assets/fullcalendar/fullcalendar/fullcalendar.js}"></script>
+  <!--script for this page only-->
+  <script th:src="@{/js/calendar-custom.js}"></script>
+  <script th:src="@{/js/jquery.rateit.min.js}"></script>
+  <!-- custom select -->
+  <script th:src="@{/js/jquery.customSelect.min.js}"></script>
+  <script th:src="@{/assets/chart-master/Chart.js}"></script>
+
+  <!--custome script for all page-->
+  <script th:src="@{/js/scripts.js}"></script>
+  <!-- custom script for this page-->
+  <script th:src="@{/js/sparkline-chart.js}"></script>
+  <script th:src="@{/js/easy-pie-chart.js}"></script>
+  <script th:src="@{/js/jquery-jvectormap-1.2.2.min.js}"></script>
+  <script th:src="@{/js/jquery-jvectormap-world-mill-en.js}"></script>
+  <script th:src="@{/js/xcharts.min.js}"></script>
+  <script th:src="@{/js/jquery.autosize.min.js}"></script>
+  <script th:src="@{/js/jquery.placeholder.min.js}"></script>
+  <script th:src="@{/js/gdp-data.js}"></script>
+  <script th:src="@{/js/morris.min.js}"></script>
+  <script th:src="@{/js/sparklines.js}"></script>
+  <script th:src="@{/js/charts.js}"></script>
+  <script th:src="@{/js/jquery.slimscroll.min.js}"></script>
+    <script>
     //knob
     $(function () {
       $(".knob").knob({

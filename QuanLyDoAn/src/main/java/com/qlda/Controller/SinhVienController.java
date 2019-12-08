@@ -24,6 +24,7 @@ import com.qlda.Model.DoAnDetail;
 import com.qlda.Model.TroChuyenDetail;
 import com.qlda.Service.BaiDangService;
 import com.qlda.Service.DeTaiService;
+import com.qlda.Service.GiangVienService;
 import com.qlda.Service.QuanLyService;
 import com.qlda.Service.SinhVienService;
 import com.qlda.Service.TaiKhoanService;
@@ -45,7 +46,8 @@ public class SinhVienController {
 	BaiDangService baidangservice;
 	@Autowired
 	TaiKhoanService taikhoanservice;
-	
+	@Autowired
+	GiangVienService giangvienservice;
 	
 	// GET: Hiển thị trang login
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
@@ -112,10 +114,16 @@ public class SinhVienController {
 		return "giangvien/GiangVien";
 	}
 
-	@RequestMapping(value = { "/thongke/{id}" }) // lay ra chi tiet thong ke
-	public String thongKeDetail(Model model) {
-
-		return "giangvien/GiangVien";
+	@RequestMapping(value = { "/thongke" }) // lay ra chi tiet thong ke
+	public String thongKeDetail(Model model, Principal principal) {
+		String email = principal.getName();
+		Long id = quanlyservice.getInfoSVbyEmail(email).getId();
+		model.addAttribute("sinhvien", giangvienservice.getSinhVien(id)); // lay ra thong tin cua sinh vien
+		model.addAttribute("thongke", giangvienservice.hoanThanh(id)); // show ra so luong nhiem vu hoan thanh/ tong
+																		// nhiem vu
+		model.addAttribute("listdanhgiahoanthanhsv", giangvienservice.getAllNhiemVuDuocDanhGiaSinhVien(id));
+		return "DanhSachThongKe_GiangVien";
+		
 	}
 
 	@RequestMapping(value = { "/trochuyen" }) // lay ra danh sach tro chuyen

@@ -60,7 +60,18 @@ public class GiangVienController {
 	@GetMapping("/trangchu_giangvien")
 	public String home() {
 		return "giangvien/TrangChu";
-
+		
+	}
+	
+	
+	@GetMapping("/trangchu_giangvien/info")
+	public String info(Model model, Principal principal){
+		String email = principal.getName();
+		Long idGv = taikhoanservice.getIdTaiKhoanGiangVien(email);
+		model.addAttribute("giangvien",giangvienservice.getOne(idGv));
+		model.addAttribute("email",email);
+		return "giangvien/ThongTin";
+		
 	}
 
 	// View Danh sach sinh vien

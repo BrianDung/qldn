@@ -19,13 +19,13 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
           <li class="active">
-            <a class="" href="index-GiangVien.html">
+            <a class="" th:href="@{|/trangchu_giangvien|}">
               <i class="icon_house_alt"></i>
               <span>Trang chủ</span>
             </a>
           </li>
           <li class="active">
-            <a class="" href="ThongTin.html">
+            <a class="" th:href="@{|/trangchu_giangvien/info|}">
               <i class="icon_info"></i>
               <span>Thông tin</span>
             </a>
@@ -48,12 +48,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
               <span>Giao nhiệm vụ</span>
             </a>
           </li>
-          <li class="active">
-            <a class="" href="ThongKe.html">
-              <i class="icon_datareport"></i>
-              <span>Thống Kê</span>
-            </a>
-          </li>
+          
           <li class="active">
             <a class="" th:href="@{|/trangchu_giangvien/trochuyen|}">
               <i class="icon_chat_alt"></i>
