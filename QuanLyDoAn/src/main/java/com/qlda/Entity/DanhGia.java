@@ -35,13 +35,14 @@ public class DanhGia {
 	private int tieuchi2;
 	private int tieuchi3;
 	private String file;
+	private String trangthai;
 
 	public DanhGia() {
 		super();
 	}
 
-	public DanhGia(long id, NhiemVu nhiemvu, String ten, String noidung, int tieuchi1, int tieuchi2,
-			int tieuchi3, String file) {
+	public DanhGia(long id, NhiemVu nhiemvu, String ten, String noidung, int tieuchi1, int tieuchi2, int tieuchi3,
+			String file) {
 		super();
 		this.id = id;
 		this.nhiemvu = nhiemvu;

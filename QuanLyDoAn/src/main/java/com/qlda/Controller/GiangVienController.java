@@ -60,6 +60,7 @@ public class GiangVienController {
 	@GetMapping("/trangchu_giangvien")
 	public String home() {
 		return "giangvien/TrangChu";
+
 	}
 
 	// View Danh sach sinh vien
@@ -119,6 +120,7 @@ public class GiangVienController {
 		dg.setTieuchi1(danhgia.getTieuChi1());
 		dg.setTieuchi2(danhgia.getTieuChi2());
 		dg.setTieuchi3(danhgia.getTieuChi3());
+		dg.setTrangthai(danhgia.getTrangThai());
 		NhiemVu nv = new NhiemVu();
 		nv.setId(danhgia.getIdNhiemVu());
 		dg.setNhiemvu(nv);
@@ -240,9 +242,27 @@ public class GiangVienController {
 		return "DanhSachTroChuyen_GiangVien";
 	}
 
+	// View chi tiet tro chuyen
 	@GetMapping("trangchu_giangvien/trochuyen/{id}")
 	public String troChuyenDetail(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("trochuyen", trochuyenservice.getTroChuyen(id));
 		return "giangvien/ChiTietTroChuyen";
+	}
+
+	// View Thong ke tong quan cua 1 sinh vien
+	@GetMapping("trangchu_giangvien/thongke/{id}")
+	public String listThongKe(Model model, @PathVariable Long id) {
+		model.addAttribute("sinhvien", giangvienservice.getSinhVien(id)); // lay ra thong tin cua sinh vien
+		model.addAttribute("thongke", giangvienservice.hoanThanh(id)); // show ra so luong nhiem vu hoan thanh/ tong
+																		// nhiem vu
+		model.addAttribute("listdanhgiahoanthanhsv", giangvienservice.getAllNhiemVuDuocDanhGiaSinhVien(id));
+		return "DanhSachThongKe_GiangVien";
+	}
+
+	// Chi tiet danh gia
+	@GetMapping("trangchu_giangvien/danhgia/{id}")
+	public String danhGia(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("danhgia", danhgiaservice.getOne(id));
+		return "ChiTietDanhGia_GiangVien";
 	}
 }

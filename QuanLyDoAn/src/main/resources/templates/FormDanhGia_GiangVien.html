@@ -49,6 +49,12 @@
 			File: <input type="text" th:field="*{file}" />
 		</p>
 		<p>
+			Trang thai: <select th:field="*{trangThai}">
+				<option value="HOAN_THANH">Hoan Thanh</option>
+				<option value="CHUA_HOAN_THANH">Chua Hoan Thanh</option>
+			</select>
+		</p>
+		<p>
 			<button type="submit" class="btn btn-success">Add</button>
 		</p>
 	</form>
