@@ -57,7 +57,7 @@ public class SinhVienDetail { // Giao dien danh sach sinh vien lam do an
 
 	// Contructor cho view chi tiet sinh vien lam do an
 	public SinhVienDetail(Long idSv, String tenSv, int mssv, String soDienThoaiSv, String emailSv, Date namSinhSv,
-			String tenGv, String soDienThoaiGv, String tenDeTai) {
+			String tenGv, String soDienThoaiGv, String tenDeTai,Long idDeTai) {
 		super();
 		this.idSv = idSv;
 		this.tenSv = tenSv;
@@ -68,6 +68,20 @@ public class SinhVienDetail { // Giao dien danh sach sinh vien lam do an
 		this.tenGv = tenGv;
 		this.soDienThoaiGv = soDienThoaiGv;
 		this.tenDeTai = tenDeTai;
+		this.idDeTai = idDeTai;
+	}
+	public SinhVienDetail(Long idSv, String tenSv, int mssv, String soDienThoaiSv, String emailSv, Date namSinhSv,
+			String tenGv, String soDienThoaiGv,Long idDetai) {
+		super();
+		this.idSv = idSv;
+		this.tenSv = tenSv;
+		this.mssv = mssv;
+		this.soDienThoaiSv = soDienThoaiSv;
+		this.emailSv = emailSv;
+		this.namSinhSv = namSinhSv;
+		this.tenGv = tenGv;
+		this.soDienThoaiGv = soDienThoaiGv;
+		this.idDeTai = idDetai;
 	}
 
 	public SinhVienDetail() {

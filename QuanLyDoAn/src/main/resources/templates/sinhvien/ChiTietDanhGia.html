@@ -103,23 +103,28 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                                 <!-- <h1>Bio Graph</h1> -->
                                                 <div class="row">
                                                     <div class="bio-row">
-                                                        <p><span>Tên bài tập</span>: xxx </p>
+                                                        <p>
+                                                        	<span>Tên bài tập</span>:<span th:utext="${baitapdanhgia.getTenNhiemVu()}"></span> 
+                                                        </p>
                                                     </div>
 
                                                     <div class="bio-row">
-                                                        <p><span>Nội dung</span>: xxx</p>
+                                                        <p>
+                                                        	<span>Nội dung</span>:<span th:utext="${baitapdanhgia.getNoiDungNhiemVu()}"></span>
+                                                        </p>
                                                     </div>
 
                                                     <div class="bio-row">
-                                                        <p><span>Hạn nộp bài : </span>: xxx</p>
+                                                        <p>
+                                                        	<span>Hạn nộp bài : </span>: <span th:utext="${baitapdanhgia.getHanNop()}"></span>
+                                                        </p>
                                                     </div>
 
+                                                   
                                                     <div class="bio-row">
-                                                        <p><span>Sinh viên thực hiện</span>: xxx</p>
-                                                    </div>
-
-                                                    <div class="bio-row">
-                                                        <p><span>File </span>:xxx</p>
+                                                        <p>
+                                                        	<span>File </span>:<span th:utext="${baitapdanhgia.getFileHuongDan()}"></span>
+                                                        </p>
                                                     </div>
 
                                                 </div>

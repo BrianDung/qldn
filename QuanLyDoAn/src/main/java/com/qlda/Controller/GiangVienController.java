@@ -151,7 +151,7 @@ public class GiangVienController {
 		tt.setTen(trochuyendetail.getTenBaiDang());
 		tt.setNoidung(trochuyendetail.getNoiDung());
 		tt.setNgaytao(trochuyendetail.getNgayTao());
-		tt.setFile(trochuyendetail.getFile());
+//		tt.setFile(trochuyendetail.getFile());
 		tt.setDetai(giangvienservice.getDeTaiById(trochuyendetail.getIdBaiDang()));
 		trochuyenservice.save(tt);
 
