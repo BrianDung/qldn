@@ -48,8 +48,9 @@ public class GiangVienController {
 	TaiKhoanService taikhoanservice;
 
 	@GetMapping("/trangchu_giangvien")
-	public String index() {
-		return "index";
+	public String home() {
+		return "giangvien/TrangChu";
+
 	}
 
 	// View Danh sach sinh vien
