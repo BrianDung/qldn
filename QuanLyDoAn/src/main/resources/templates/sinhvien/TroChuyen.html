@@ -58,66 +58,38 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                   <div class="col-lg-4">
                     <span class="profile-ava pull-right">
                       <img alt="" class="simple" src="img/profile-avatar-dung-user. ">
-                      Trần Tiến Dũng
+                      <span th:utext="${sinhvien.getTenSv()}"><</span>
                     </span>
                   </div>
                 </div>
               </div>
               <table class="table table-hover personal-task">
-                <tbody>
-                  <tr>
-                    <td>Hôm nay</td>
-                    <td>
-                      Hỏi đáp về đề cương
-                    </td>
-                    <td>Chủ đề</td>
-                    <td>
-                      <a href="ChiTietTroChuyen.html">Xem chi tiết</a>
-                    </td>
-
-                  </tr>
-                  <tr>
-                    <td>Hôm qua</td>
-                    <td>
-                      Phân tích thiết kế hệ thống
-                    </td>
-                    <td>Chủ đề</td>
-                    <td>
-                      <a href="ChiTietTroChuyen.html">Xem chi tiết</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>21-10-19</td>
-                    <td>
-                      Đề cương
-                    </td>
-                    <td>Chủ đề</td>
-                    <td>
-                      <a href="disscussDetail.html">Xem chi tiết</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>22-10-19</td>
-                    <td>
-                      Nghiên cứu các hệ thống liên quan
-                    </td>
-                    <td>Chủ đề</td>
-                    <td>
-                      <a href="disscussDetail.html">Xem chi tiết</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>24-10-14</td>
-                    <td>
-                      Giao diện demo
-                    </td>
-                    <td>Chủ đề</td>
-                    <td>
-                      <a href="disscussDetail.html">Xem chi tiết</a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                                <tbody>
+	                                <tr>
+										<th><i class="icon_clock_alt"></i> Thời gian</th>
+										<th><i class="icon_document_alt"></i> Tên </th>
+										<th><i class="icon_info_alt"></i> Chủ đề </th>
+										<th><i class="icon_document_alt"></i> Chi tiết</th>
+									</tr>
+									<div th:each="baidang : ${listtrochuyensinhvien}">
+										<tr>
+											<!-- Thời gian đăng -->
+	                                        <td><span th:utext="${baidang.getNgayTao()}"></span></td>
+	                                        
+	                                        <!-- Tên bài đăng -->
+	                                        <td><span th:utext="${baidang.getTenBaiDang()}"></span></td>
+	                                        
+	                                        <!-- Chủ đề -->
+	                                        <td><span th:utext="${baidang.getTenDeTai()}"></span></td>
+	                                        
+	                                        <!-- Chi tiết -->
+	                                        <td><a th:href="@{|/trangchu_quanly/trochuyen/${baidang.getIdBaiDang()}|}"><p>Xem chi tiết</p></a></td>
+                                    	</tr>
+									
+									</div>
+										
+                                </tbody>
+                            </table>
             </section>
             <!--Project Activity end-->
           </div>
@@ -140,44 +112,35 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
                 <div class="form quick-post">
                   <!-- Edit profile form (not working)-->
-                  <form class="form-horizontal">
+                  <form th:action="" method="post" th:object="${baidang}" class="form-horizontal">
                     <!-- Title -->
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="title">Tiêu đề</label>
                       <div class="col-lg-10">
-                        <input type="text" class="form-control" id="title">
+                        <input type="text" class="form-control" name="*{tenBaiDang}">
                       </div>
                     </div>
                     <!-- Content -->
                     <div class="form-group">
-                      <label class="control-label col-lg-2" for="content">Nội dung</label>
+                      <label class="control-label col-lg-2" for="content" >Nội dung</label>
                       <div class="col-lg-10">
-                        <textarea class="form-control" id="content"></textarea>
+                        <textarea class="form-control" id="content" name="*{noiDung}"></textarea>
                       </div>
                     </div>
-                    <!-- Cateogry -->
+             
+                     <!-- Content -->
                     <div class="form-group">
-                      <label class="control-label col-lg-2">Chủ đề</label>
+                      <label class="control-label col-lg-2" for="content">Ngày tạo</label>
                       <div class="col-lg-10">
-                        <select class="form-control">
-                          <option value="">- Bài tập -</option>
-                          <option value="1">Vấn đề khác</option>
-
-                        </select>
+                        <input class="form-control" id="content" type="date">
                       </div>
                     </div>
-                    <!-- Tags -->
-                    <div class="form-group">
-                      <label class="control-label col-lg-2" for="tags">Tags</label>
-                      <div class="col-lg-10">
-                        <input type="text" class="form-control" id="tags">
-                      </div>
-                    </div>
+                    
                     <!-- upload -->
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="tags">Upload File</label>
                       <div class="col-lg-10">
-                        <input type="file" class="form-control" id="upload">
+                        <input type="file" class="form-control" id="upload" type="file" name="*{file}">
                       </div>
                     </div>
 

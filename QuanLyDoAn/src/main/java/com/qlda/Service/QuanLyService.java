@@ -44,6 +44,16 @@ public class QuanLyService {
 		}
 		return null;
 	}
+	
+	//Get Info SV by Email
+	public SinhVienDetail getInfoSVbyEmail(String email) {
+		for (SinhVienDetail sv : quanlyrepository.getListInfo()) {
+			if (sv.getEmailSv().equals(email)) {
+				return sv;
+			}
+		}
+		return null;
+	}
 
 	public List<GiangVienDetail> getAllGiangVien() {
 		return quanlyrepository.getAllListGv();
@@ -111,6 +121,21 @@ public class QuanLyService {
 		return list;
 
 	}
+	
+	public List<BaiTapDetail> getAllBaiTapSV(String email) {
+		
+		Long idDetai = this.getInfoSVbyEmail(email).getIdDeTai();
+		System.out.println(idDetai);
+		List<BaiTapDetail> list = new ArrayList<BaiTapDetail>();
+		for (BaiTapDetail bt : quanlyrepository.getAllBaiTapDetail()) {
+			if (bt.getIdDeTai() == idDetai) {
+				System.out.println(bt);
+				list.add(bt);
+			}
+		}
+		return list;
+
+	}
 
 	public BaiTapDetail getBaiTapDanhGia(Long id) {
 		for (BaiTapDetail bt : quanlyrepository.getAllDanhGiaBaiTap()) {
@@ -125,6 +150,18 @@ public class QuanLyService {
 		List<TroChuyenDetail> list = new ArrayList<TroChuyenDetail>();
 		for (TroChuyenDetail tt : quanlyrepository.getAllTroChuyenDetail()) {
 			if (tt.getIdDeTai() == id) {
+				list.add(tt);
+			}
+		}
+		
+		return list;
+	}
+	
+	public List<TroChuyenDetail> getAllTroChuyenSV(String email) {
+		Long idDetai = this.getInfoSVbyEmail(email).getIdDeTai();
+		List<TroChuyenDetail> list = new ArrayList<TroChuyenDetail>();
+		for (TroChuyenDetail tt : quanlyrepository.getAllTroChuyenDetail()) {
+			if (tt.getIdDeTai()== idDetai) {
 				list.add(tt);
 			}
 		}

@@ -33,9 +33,12 @@ public interface QuanLyRepository extends JpaRepository<QuanLy, Long> {
 			+ " FROM DeTai dt INNER JOIN dt.sinhvien sv INNER JOIN sv.taikhoan tk INNER JOIN sv.giangvien gv ")
 	List<SinhVienDetail> getAllListStudentDoAn();
 
-	@Query("SELECT new com.qlda.Model.SinhVienDetail(sv.id,sv.ten, sv.mssv, sv.sodienthoai, tk.email, sv.namsinh, gv.ten, gv.sodienthoai, dt.ten)"
+	@Query("SELECT new com.qlda.Model.SinhVienDetail(sv.id,sv.ten, sv.mssv, sv.sodienthoai, tk.email, sv.namsinh, gv.ten, gv.sodienthoai, dt.ten,dt.id)"
 			+ " FROM DeTai dt INNER JOIN dt.sinhvien sv INNER JOIN sv.taikhoan tk INNER JOIN sv.giangvien gv ")
 	List<SinhVienDetail> getListInfo();
+	
+	
+	
 
 	@Query("SELECT new com.qlda.Model.GiangVienDetail(gv.ten, gv.namsinh, tk.email, gv.sodienthoai, gv.id)"
 			+ "FROM GiangVien gv INNER JOIN gv.taikhoan tk")

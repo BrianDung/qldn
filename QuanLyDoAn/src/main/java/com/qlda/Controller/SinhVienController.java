@@ -1,19 +1,35 @@
 package com.qlda.Controller;
 
+import java.security.Principal;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.qlda.Service.DeTaiService;
+import com.qlda.Service.QuanLyService;
+import com.qlda.Service.SinhVienService;
 
 @RequestMapping("/trangchu_sinhvien")
 @Controller
 public class SinhVienController {
 
+	
+	@Autowired
+	QuanLyService quanlyservice;
+	@Autowired
+	SinhVienService sinhvienservice;
+	@Autowired
+	DeTaiService detaiservice;
+	
 	// GET: Hiển thị trang login
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String index(Model model) {
 
-		return "giangvien/TrangChu";
+		return "sinhvien/index-SinhVien";
 	}
 
 	@RequestMapping(value = { "/sinhvien" }) // lay danh sach sinh vien
@@ -22,16 +38,30 @@ public class SinhVienController {
 		return "giangvien/GiangVien";
 	}
 
-	@RequestMapping(value = { "/sinhvien/{id}" }) // lay chi tiet sinh vien
-	public String studentDetail(Model model) {
-
-		return "giangvien/GiangVien";
+	@RequestMapping(value = { "/info" }) // lay chi tiet sinh vien
+	public String studentDetail(Model model, Principal principal) {
+		String email = principal.getName();
+		System.out.println(email);
+		model.addAttribute("sinhvien", quanlyservice.getInfoSVbyEmail(email));
+		
+		return "sinhvien/ThongTin"; 
 	}
 
-	@RequestMapping(value = { "/giangvien" }) // lay ra danh sach giang vien
-	public String giangViens(Model model) {
+	@RequestMapping(value = { "/nhiemvu" }) // lay ra danh sach giang vien
+	public String giangViens(Model model, Principal principal) {
+		String email = principal.getName();
+		System.out.println(email);
+		
+		model.addAttribute("sinhvien", quanlyservice.getInfoSVbyEmail(email));
+		model.addAttribute("listnhiemvu", quanlyservice.getAllBaiTapSV(email));
+		return "sinhvien/NhiemVu";
+	}
 
-		return "giangvien/GiangVien";
+	@RequestMapping(value = { "/nhiemvu/{id}" }) // lay ra chi tiet bai tap
+	public String baiTapDetail(Model model, @PathVariable("id") Long id) {
+		model.addAttribute("baitapdanhgia", quanlyservice.getBaiTapDanhGia(id));
+		
+		return "sinhvien/ChiTietDanhGia";
 	}
 
 	@RequestMapping(value = { "/giangvien/{id}" }) // lay ra chi tiet giang vien
@@ -40,17 +70,6 @@ public class SinhVienController {
 		return "giangvien/GiangVien";
 	}
 
-	@RequestMapping(value = { "/baitap" }) // lay ra danh sach bai tap
-	public String baiTaps(Model model) {
-
-		return "giangvien/GiangVien";
-	}
-
-	@RequestMapping(value = { "/baitap/{id}" }) // lay ra chi tiet bai tap
-	public String baiTapDetail(Model model) {
-
-		return "giangvien/GiangVien";
-	}
 
 	@RequestMapping(value = { "/danhgia" }) // lay ra danh sach danh gia
 	public String danhGias(Model model) {
@@ -77,9 +96,12 @@ public class SinhVienController {
 	}
 
 	@RequestMapping(value = { "/trochuyen" }) // lay ra danh sach tro chuyen
-	public String troChuyens(Model model) {
-
-		return "giangvien/GiangVien";
+	public String troChuyens(Model model, Principal principal) {
+		String email = principal.getName();
+		System.out.println(email);
+		model.addAttribute("sinhvien", quanlyservice.getInfoSVbyEmail(email));
+		model.addAttribute("listtrochuyensinhvien", quanlyservice.getAllTroChuyenSV(email));
+		return "sinhvien/TroChuyen";
 	}
 
 	@RequestMapping(value = { "/trochuyen/{id}" }) // lay ra chi tiet tro chuyen
