@@ -17,7 +17,7 @@ public interface TaiKhoanRepository extends JpaRepository<TaiKhoan, Long> {
 	TaiKhoan findByEmail(String email);
 
 	@Query("SELECT new com.qlda.Model.TaiKhoanDetails(gv.id,tk.id,tk.email)"
-			+ "FROM TaiKhoan tk INNER JOIN tk.giangvien gv")
+			+ "FROM GiangVien gv INNER JOIN gv.taikhoan tk")
 	List<TaiKhoanDetails> listGiangVien();
 
 }

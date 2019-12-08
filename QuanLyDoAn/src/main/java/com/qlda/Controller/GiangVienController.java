@@ -54,9 +54,6 @@ public class GiangVienController {
 	
 	// View Danh sach sinh vien
 	@GetMapping("trangchu_giangvien/sinhvien")
-
-
-		
 	public String getAllSinhVienHuongDan(Model model, Principal principal) {
 		String email = principal.getName();// Email GV
 		Long idGv = taikhoanservice.getIdTaiKhoanGiangVien(email);
