@@ -14,7 +14,9 @@
 			th:utext="${listsvhd.getEmailSv()}"></span> <a
 			th:href="@{|/trangchu_giangvien/detai/${listsvhd.idDeTai}|}"> <span
 			th:utext="${listsvhd.getTenDeTai() }"> </span>
-		</a> <span th:utext="${listsvhd.getTenNhiemVu()}"></span>
+		</a> <a
+			th:href="@{|/trangchu_giangvien/sinhvien/baitap/${listsvhd.idDeTai}|}">Danh
+			sach bai tap</a>
 	</div>
 
 
