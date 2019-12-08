@@ -83,7 +83,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	                                        <td><span th:utext="${baidang.getTenDeTai()}"></span></td>
 	                                        
 	                                        <!-- Chi tiết -->
-	                                        <td><a th:href="@{|/trangchu_quanly/trochuyen/${baidang.getIdBaiDang()}|}"><p>Xem chi tiết</p></a></td>
+	                                        <td><a th:href="@{|/trangchu_sinhvien/trochuyen/${baidang.getIdBaiDang()}|}"><p>Xem chi tiết</p></a></td>
                                     	</tr>
 									
 									</div>
@@ -112,19 +112,19 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
                 <div class="form quick-post">
                   <!-- Edit profile form (not working)-->
-                  <form th:action="@{/trangchu_sinhvien/trochuyen}" method="post" th:object="${baidang}" class="form-horizontal">
+                  <form th:action="@{/trangchu_sinhvien/trochuyen}" method="post" th:object="${baidang}" class="form-horizontal" enctype="multipart/form-data">
                     <!-- Title -->
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="title">Tiêu đề</label>
                       <div class="col-lg-10">
-                        <input type="text" class="form-control" name="*{tenBaiDang}">
+                        <input type="text" class="form-control" th:field="*{tenBaiDang}">
                       </div>
                     </div>
                     <!-- Content -->
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="content" >Nội dung</label>
                       <div class="col-lg-10">
-                        <textarea class="form-control" id="content" name="*{noiDung}"></textarea>
+                        <textarea class="form-control" id="content" th:field="*{noiDung}"></textarea>
                       </div>
                     </div>
              
@@ -132,7 +132,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="content">Ngày tạo</label>
                       <div class="col-lg-10">
-                        <input class="form-control" id="content" type="date">
+                        <input class="form-control" id="content" type="date" th:field="*{ngayTao}">
                       </div>
                     </div>
                     
@@ -140,7 +140,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="tags">Upload File</label>
                       <div class="col-lg-10">
-                        <input type="file" class="form-control" id="upload" name="*{file}">
+                        <input type="file" th:field="*{file}" class="form-control" id="upload" >
                       </div>
                     </div>
 
@@ -149,7 +149,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                       <!-- Buttons -->
                       <div class="col-lg-offset-2 col-lg-9">
                         <button type="submit" class="btn btn-primary">Đăng</button>
-                        <button type="submit" class="btn btn-danger">Lưu bản nháp</button>
+                        
                         <button type="reset" class="btn btn-default">Làm mới</button>
                       </div>
                     </div>

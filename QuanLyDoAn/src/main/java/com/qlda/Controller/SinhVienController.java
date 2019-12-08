@@ -1,5 +1,9 @@
 package com.qlda.Controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.qlda.Entity.BaiDang;
 import com.qlda.Entity.DeTai;
@@ -25,6 +31,8 @@ import com.qlda.Service.TaiKhoanService;
 @RequestMapping("/trangchu_sinhvien")
 @Controller
 public class SinhVienController {
+
+	private static String UPLOADED_FOLDER_trochuyen = "..//QuanLyDoAn//src//main//resources//File//trochuyen//";
 
 	
 	@Autowired
@@ -116,13 +124,14 @@ public class SinhVienController {
 		System.out.println(email);
 		model.addAttribute("sinhvien", quanlyservice.getInfoSVbyEmail(email));
 		model.addAttribute("listtrochuyensinhvien", quanlyservice.getAllTroChuyenSV(email));
+		model.addAttribute("baidang",new TroChuyenDetail());
 		return "sinhvien/TroChuyen";
 	}
 
 	@RequestMapping(value = { "/trochuyen/{id}" }) // lay ra chi tiet tro chuyen
-	public String troChuyenDetail(Model model) {
-
-		return "giangvien/GiangVien";
+	public String troChuyenDetail(@PathVariable("id") Long id,Model model) {
+		model.addAttribute("baidang", quanlyservice.getInfoBaiDang(id));
+		return "sinhvien/ChiTietTroChuyen";
 	}
 
 	@RequestMapping(value = { "/baitap" }, method = RequestMethod.POST) // Tao bai tap
@@ -132,7 +141,7 @@ public class SinhVienController {
 	}
 
 	@RequestMapping(value = { "/trochuyen" }, method = RequestMethod.POST) // Tao tro chuyen
-	public String taoTroChuyen(Model model,@ModelAttribute TroChuyenDetail tt,Principal principal ) {
+	public String taoTroChuyen(Model model,@ModelAttribute TroChuyenDetail tt,Principal principal ,RedirectAttributes redirectAttributes) {
 		String email = principal.getName();
 		DoAnDetail doan =  detaiservice.getDoanbyEmailSv(email);
 		DeTai detai = detaiservice.getOne(doan.getIdDeTai());
@@ -144,10 +153,25 @@ public class SinhVienController {
 		bd.setNgaytao(tt.getNgayTao());
 		bd.setDetai(detai);
 		
+		try {
+			MultipartFile file = tt.getFile();
+			 byte[] bytes = file.getBytes();
+			// Get the file and save it somewhere byte[] bytes = file.getBytes(); Path
+			Path path = Paths.get(UPLOADED_FOLDER_trochuyen + file.getOriginalFilename());
+			Files.write(path, bytes);
+			String filename = file.getOriginalFilename();
+			System.out.println(filename);
+			bd.setFile(UPLOADED_FOLDER_trochuyen + filename);
+			redirectAttributes.addFlashAttribute("message",
+					"You successfully uploaded '" + file.getOriginalFilename() + "'");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		
 		
 		baidangservice.save(bd);
-		return "sinhvien/TroChuyen";
+		return "redirect:/trangchu_sinhvien/trochuyen";
 	}
 }

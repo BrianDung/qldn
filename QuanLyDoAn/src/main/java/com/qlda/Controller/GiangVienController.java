@@ -49,7 +49,7 @@ public class GiangVienController {
 
 	@GetMapping("/trangchu_giangvien")
 	public String home() {
-		return "TrangChu";
+		return "giangvien/TrangChu";
 	}
 	
 	// View Danh sach sinh vien
