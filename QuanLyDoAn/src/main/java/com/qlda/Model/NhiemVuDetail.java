@@ -11,6 +11,7 @@ public class NhiemVuDetail {
 	private Long idSinhVien;
 	private String tenSinhVien;
 	private Long idGiangVien;
+	private Long idNhiemVu;
 	private String tenNhiemVu;
 	private String noiDungNhiemVu;
 	private String trangThai;
@@ -21,6 +22,7 @@ public class NhiemVuDetail {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date hanNop;
 	private Long idDeTai;
+	private String tenDeTai;
 
 	public NhiemVuDetail() {
 		super();
@@ -41,6 +43,20 @@ public class NhiemVuDetail {
 		this.fileBt = fileBt;
 		this.hanNop = hanNop;
 		this.idDeTai = idDeTai;
+	}
+
+	// View danh sach nhiem vu
+	public NhiemVuDetail(String tenSinhVien, String trangThai, Date ngayTao, Date hanNop, Long idDeTai, String tenDeTai,
+			Long idGiangVien, Long idNhiemVu) {
+		super();
+		this.tenSinhVien = tenSinhVien;
+		this.trangThai = trangThai;
+		this.ngayTao = ngayTao;
+		this.hanNop = hanNop;
+		this.idDeTai = idDeTai;
+		this.tenDeTai = tenDeTai;
+		this.idGiangVien = idGiangVien;
+		this.idNhiemVu = idNhiemVu;
 	}
 
 }

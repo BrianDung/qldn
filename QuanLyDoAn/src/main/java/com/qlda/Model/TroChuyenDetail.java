@@ -16,6 +16,10 @@ public class TroChuyenDetail {
 	private String noiDung;
 	private Long idDeTai;
 	private Long idBaiDang;
+
+	private Long idSinhVien;
+	private Long idGiangVien;
+
 	private Long idTaiKhoan;
 	private String tenSv;
 	private String tenGv;
@@ -47,6 +51,18 @@ public class TroChuyenDetail {
 		this.noiDung = noiDung;
 
 		this.file = file;
+	}
+
+	public TroChuyenDetail(Date ngayTao, String tenBaiDang, Long idDeTai, Long idBaiDang, Long idSinhVien,
+			Long idGiangVien, Long idTaiKhoan) {
+		super();
+		this.ngayTao = ngayTao;
+		this.tenBaiDang = tenBaiDang;
+		this.idDeTai = idDeTai;
+		this.idBaiDang = idBaiDang;
+		this.idSinhVien = idSinhVien;
+		this.idGiangVien = idGiangVien;
+		this.idTaiKhoan = idTaiKhoan;
 	}
 
 }

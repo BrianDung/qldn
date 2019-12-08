@@ -51,7 +51,7 @@ public class GiangVienController {
 	public String home() {
 		return "giangvien/TrangChu";
 	}
-	
+
 	// View Danh sach sinh vien
 	@GetMapping("trangchu_giangvien/sinhvien")
 	public String getAllSinhVienHuongDan(Model model, Principal principal) {
@@ -73,7 +73,7 @@ public class GiangVienController {
 	public String getDeTaiById(@PathVariable("id") Long id, Model model) {
 		DeTai dt = quanlyservice.getInfDeTai(id);
 		model.addAttribute("detai", dt);
-		
+
 		return "giangvien/ChiTietDoAn";
 	}
 
@@ -157,9 +157,40 @@ public class GiangVienController {
 		tt.setNoidung(trochuyendetail.getNoiDung());
 		tt.setNgaytao(trochuyendetail.getNgayTao());
 //		tt.setFile(trochuyendetail.getFile());
-		tt.setDetai(giangvienservice.getDeTaiById(trochuyendetail.getIdBaiDang()));
+		tt.setDetai(giangvienservice.getDeTaiById(trochuyendetail.getIdDeTai()));// Truyen id de tai
 		trochuyenservice.save(tt);
 
 		return "ThongBaoBaiDang_GiangVien";
+	}
+
+	// View Danh sach nhiem vu cua sinh vien dc gv huong dan
+	@GetMapping("trangchu_giangvien/listnhiemvu")
+	public String listNhiemVu(Model model, Principal principal) {
+		String email = principal.getName();// Email GV
+		Long idGv = taikhoanservice.getIdTaiKhoanGiangVien(email);
+		model.addAttribute("listnhiemvu", giangvienservice.getAllNhiemVuSinhVienOfGiangVien(idGv));
+		return "DanhSachNhiemVu_GiangVien";
+	}
+
+	// View chi tiet nhiem vu
+	@GetMapping("trangchu_giangvien/nhiemvu/{id}")
+	public String nhiemVu(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("nhiemvu", nhiemvuservice.GetNhiemVu(id));
+		return "ChiTietNhiemVu_GiangVien";
+	}
+
+	// View danh sach cuoc tro chuyen
+	@GetMapping("trangchu_giangvien/listtrochuyen")
+	public String listTroChuyen(Model model, Principal principal) {
+		String email = principal.getName();// Email GV
+		Long idGv = taikhoanservice.getIdTaiKhoanGiangVien(email);
+		model.addAttribute("listtrochuyen", giangvienservice.getAllTroChuyenSinhVienOfGiangVien(idGv));
+		return "DanhSachTroChuyen_GiangVien";
+	}
+
+	@GetMapping("trangchu_giangvien/trochuyen/{id}")
+	public String troChuyenDetail(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("trochuyen", trochuyenservice.getTroChuyen(id));
+		return "ChiTietTroChuyen_GiangVien";
 	}
 }

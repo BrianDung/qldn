@@ -1,5 +1,6 @@
 package com.qlda.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,9 @@ import com.qlda.Entity.DeTai;
 import com.qlda.Entity.GiangVien;
 import com.qlda.Entity.TaiKhoan;
 import com.qlda.Model.GiangVienDetail;
+import com.qlda.Model.NhiemVuDetail;
 import com.qlda.Model.SinhVienDetail;
+import com.qlda.Model.TroChuyenDetail;
 import com.qlda.Repository.DeTaiRepository;
 import com.qlda.Repository.GiangVienRepository;
 import com.qlda.Repository.TaiKhoanRepository;
@@ -57,5 +60,27 @@ public class GiangVienService {
 		return null;
 	}
 
-	
+	public List<NhiemVuDetail> getAllNhiemVu() {
+		return giangVienRepository.getAllNhiemVu();
+	}
+
+	public List<NhiemVuDetail> getAllNhiemVuSinhVienOfGiangVien(Long id) {
+		List<NhiemVuDetail> list = new ArrayList<NhiemVuDetail>();
+		for (NhiemVuDetail nv : giangVienRepository.getAllNhiemVu()) {
+			if (nv.getIdGiangVien() == id) {
+				list.add(nv);
+			}
+		}
+		return list;
+	}
+
+	public List<TroChuyenDetail> getAllTroChuyenSinhVienOfGiangVien(Long id) {
+		List<TroChuyenDetail> list = new ArrayList<TroChuyenDetail>();
+		for (TroChuyenDetail tt : giangVienRepository.getAllTroChuyen()) {
+			if (tt.getIdGiangVien() == id) {
+				list.add(tt);
+			}
+		}
+		return list;
+	}
 }

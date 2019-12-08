@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	RESULT
+	<div th:each=" listtrochuyen : ${listtrochuyen}">
+		<span th:utext="${listtrochuyen.getNgayTao()}"></span> <span
+			th:utext="${listtrochuyen.getTenBaiDang()}"></span> <a
+			th:href="@{|/trangchu_giangvien/trochuyen/${listtrochuyen.idBaiDang}|}">Chi
+			tiet</a>
+	</div>
+
+
+</body>
+</html>
