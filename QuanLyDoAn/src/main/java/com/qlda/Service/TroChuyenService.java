@@ -20,4 +20,8 @@ public class TroChuyenService {
 	public BaiDang save(BaiDang baidang) {
 		return trochuyenrepository.save(baidang);
 	}
+
+	public BaiDang getTroChuyen(Long id) {
+		return trochuyenrepository.getOne(id);
+	}
 }
