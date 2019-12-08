@@ -14,4 +14,8 @@ public class DanhGiaService {
 	public DanhGia save(DanhGia danhgia) {
 		return danhgiarepository.save(danhgia);
 	}
+
+	public DanhGia getOne(Long id) {
+		return danhgiarepository.getOne(id);
+	}
 }

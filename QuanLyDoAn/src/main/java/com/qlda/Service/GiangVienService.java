@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.qlda.Entity.DeTai;
 import com.qlda.Entity.GiangVien;
 import com.qlda.Entity.TaiKhoan;
+import com.qlda.Model.DanhGiaDetail;
 import com.qlda.Model.GiangVienDetail;
 import com.qlda.Model.NhiemVuDetail;
 import com.qlda.Model.SinhVienDetail;
@@ -83,4 +84,50 @@ public class GiangVienService {
 		}
 		return list;
 	}
+
+	public int tongNhiemVuSinhVien(Long id) {
+		int count = 0;
+		for (DanhGiaDetail dg : giangVienRepository.getAllSinhVienDanhGia()) {
+			if (dg.getIdSinhVien() == id) {
+				count++;
+			}
+		}
+		return count;
+	}
+
+	public String hoanThanh(Long id) {
+		int hoanThanh = 0;
+		for (DanhGiaDetail dg : giangVienRepository.getAllSinhVienDanhGia()) {
+			if (dg.getIdSinhVien() == id) {
+				if (dg.getTrangThai().equals("HOAN_THANH")) {
+					hoanThanh++;
+				}
+			}
+		}
+		return hoanThanh + "/" + tongNhiemVuSinhVien(id);
+	}
+
+	public DanhGiaDetail getSinhVien(Long id) {
+		for (DanhGiaDetail dg : giangVienRepository.getAllSinhVienDanhGia()) {
+			if (dg.getIdSinhVien() == id) {
+				return dg;
+			}
+		}
+		return null;
+	}
+
+	// Lay danh sach cac nhiem vu duoc danh gia
+	public List<DanhGiaDetail> getAllNhiemVuDuocDanhGiaSinhVien(Long id) {
+		List<DanhGiaDetail> list = new ArrayList<DanhGiaDetail>();
+		for (DanhGiaDetail dg : giangVienRepository.getAllSinhVienDanhGia()) {
+			if (dg.getIdSinhVien() == id) {
+				if (dg.getTrangThai().equals("HOAN_THANH")) {
+					list.add(dg);
+				}
+			}
+		}
+		return list;
+	}
+
+	// Tong danh gia cua 1 nhiem vu
 }

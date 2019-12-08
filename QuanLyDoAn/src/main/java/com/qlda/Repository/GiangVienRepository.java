@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.qlda.Entity.DeTai;
 import com.qlda.Entity.GiangVien;
 import com.qlda.Entity.TaiKhoan;
+import com.qlda.Model.DanhGiaDetail;
 import com.qlda.Model.GiangVienDetail;
 import com.qlda.Model.NhiemVuDetail;
 import com.qlda.Model.SinhVienDetail;
@@ -34,4 +35,9 @@ public interface GiangVienRepository extends JpaRepository<GiangVien, Long> {
 			+ "			gv.id, tk.id) "
 			+ "FROM BaiDang bd INNER JOIN bd.detai dt INNER JOIN dt.sinhvien sv INNER JOIN sv.giangvien gv INNER JOIN gv.taikhoan tk")
 	List<TroChuyenDetail> getAllTroChuyen();
+
+	@Query("SELECT new com.qlda.Model.DanhGiaDetail(nv.id, sv.id, gv.id, dg.id, dt.id,\r\n"
+			+ "	dt.ten, sv.ten,dg.trangthai,dg.file,dg.tieuchi1,dg.tieuchi2,dg.tieuchi3,nv.hannop,nv.ngaytao,nv.ten)"
+			+ "FROM DanhGia dg INNER JOIN dg.nhiemvu nv INNER JOIN nv.detai dt INNER JOIN dt.sinhvien sv INNER JOIN sv.giangvien gv ")
+	List<DanhGiaDetail> getAllSinhVienDanhGia();
 }
