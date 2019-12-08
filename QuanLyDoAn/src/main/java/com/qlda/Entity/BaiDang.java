@@ -32,7 +32,7 @@ public class BaiDang {
 	@JoinColumn(name = "iddetai", referencedColumnName = "id")
 	private DeTai detai;
 
-	
+
 
 	public BaiDang(Long id, String ten, String noidung, Date ngaytao, String file) {
 		super();
@@ -42,7 +42,6 @@ public class BaiDang {
 		this.ngaytao = ngaytao;
 		this.file = file;
 	}
-
 
 
 	public BaiDang() {

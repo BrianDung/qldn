@@ -17,6 +17,8 @@ public class DoAnDetail {
 	private String tenGv;
 	private Long idSv;
 	private String tenSv;
+	private Long idtkSv;
+	private String emailSv;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngayTao;
@@ -41,6 +43,16 @@ public class DoAnDetail {
 		this.tenSv = tenSv;
 		this.ngayTao = ngayTao;
 		this.trangThai = trangThai;
+	}
+
+	public DoAnDetail(Long idDeTai, Long idSv, String tenSv, Long idtkSv, String emailSv) {
+		super();
+		this.idDeTai = idDeTai;
+		
+		this.idSv = idSv;
+		this.tenSv = tenSv;
+		this.idtkSv = idtkSv;
+		this.emailSv = emailSv;
 	}
 
 }

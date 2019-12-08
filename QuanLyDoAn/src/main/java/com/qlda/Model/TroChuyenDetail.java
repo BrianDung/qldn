@@ -16,14 +16,16 @@ public class TroChuyenDetail {
 	private String noiDung;
 	private Long idDeTai;
 	private Long idBaiDang;
+
 	private Long idSinhVien;
 	private Long idGiangVien;
+
 	private Long idTaiKhoan;
 	private String tenSv;
 	private String tenGv;
 	private String tenDeTai;
+	private String emailTaiKhoan;
 	private MultipartFile file;
-
 
 	public TroChuyenDetail() {
 		super();
@@ -62,5 +64,5 @@ public class TroChuyenDetail {
 		this.idGiangVien = idGiangVien;
 		this.idTaiKhoan = idTaiKhoan;
 	}
-	
+
 }

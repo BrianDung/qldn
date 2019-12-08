@@ -42,7 +42,14 @@ public class TaiKhoanService implements UserDetailsService {
 				grantedAuthorities);
 	}
 
-	// End - Tìm tài khoản trong db phân quyền security
+	
+	//End - Tìm tài khoản trong db phân quyền security
+	public TaiKhoan getOne(Long id) {
+		return taiKhoanRepository.getOne(id);
+	}
+	
+	
+
 
 	// Them 1 tai khoan
 	public TaiKhoan addTaiKhoan(TaiKhoan taikhoan) {

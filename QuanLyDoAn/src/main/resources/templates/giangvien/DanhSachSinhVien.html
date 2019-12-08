@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-  <meta name="author" content="GeeksLabs">
-  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-  <link rel="shortcut icon" href="img/favicon.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+	content="Creative - Bootstrap 3 Responsive Admin Template">
+<meta name="author" content="GeeksLabs">
+<meta name="keyword"
+	content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+<link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Danh sách sinh viên</title>
+<title>Danh sách sinh viên</title>
 
-   
-  <!-- =======================================================
+
+<!-- =======================================================
       Theme Name: NiceAdmin
       Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
       Author: BootstrapMade
@@ -22,115 +24,117 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 </head>
 
 <body>
-  <!-- container section start -->
-  <!-- container section start -->
-  
- 	<th:block th:include="/giangvien/head"></th:block>
-  <!-- container section start -->
-  <section id="container" class="">
-    <!-- header -->
-    	<th:block th:include="/giangvien/header"></th:block>
-    <!--header end-->
+	<!-- container section start -->
+	<!-- container section start -->
 
-    <!--sidebar start-->
-     	<th:block th:include="/giangvien/sidebar"></th:block>
-    <!--sidebar end-->
-    <!--main content start-->
-    <section id="main-content">
-      <section class="wrapper">
-        <div class="row">
-          <div class="col-lg-12">
-            <h3 class="page-header"><i class="icon_group"></i> Danh sách sinh viên</h3>
-            <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i><a href="index.html">Trang chủ</a></li>
-              <li><i class="icon_group"></i>Danh sách sinh viên </li>
 
-            </ol>
-          </div>
-        </div>
-        <!-- page start-->
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="row">
-              <div class="col-lg-1">
-                <label style="margin-top: 5px;"><b>Kỳ học</b></label>
-              </div>
-              <div class="col-lg-2">
-                <select class="form-control m-bot15">
-                  <option>20191</option>
-                  <option>20192</option>
-                  <option>20193</option>
-                </select>
-              </div>
-            </div>
-            <table class="table table-striped table-advance table-hover">
-              <tbody>
-                <tr>
-                  <th><i class="icon_profile"></i> Họ và tên</th>
-                  <th><i class="icon_document_alt"></i> Tên đề tài</th>
-                  <th><i class="icon_mail_alt"></i> Email</th>
-                  <th><i class="icon_pin_alt"></i> MSSV</th>
-                  <th><i class="icon_mobile"></i> SĐT</th>
-                  <th><i class="icon_datareport"></i> Thông tin chi tiết</th>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="ThongTinSinhVien.html">Trần Tiến Dũng</a>
-                  </td>
-                  <td>Hệ thống quản lý đồ án</td>
-                  <td>dungtt@.com</td>
-                  <td>20155287</td>
-                  <td>0968628851</td>
-                  <td>
-                    <li class="dropdown">
-                      <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">Xem thêm<b
-                          class="caret"></b></a>
-                      <ul class="dropdown-menu">
-                        <li><a href="DanhSachBaiTapCuaSinhVien.html">Danh sách bài tập</a></li>
-                        <li><a href="#">Thống kê</a></li>
-                      
-                      </ul>
-                    </li>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Trần Phúc Hậu</td>
-                  <td>Hệ thống quản lý đò án</td>
-                  <td>hautp@gmail.com</td>
-                  <td>2015538</td>
-                  <td>098888888</td>
-                  <td>
-                    <li class="dropdown">
-                      <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">Xem thêm<b
-                          class="caret"></b></a>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">Danh sách bài tập </a></li>
-                        <li><a href="#">Thống kê</a></li>
-                    
-                      </ul>
-                    </li>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-      </section>
-      </div>
-      </div>
-      <!-- page end-->
-    </section>
-  </section>
-  <!--main content end-->
+	<!-- container section start -->
+	<section id="container" class="">
+		<!-- header -->
+		<th:block th:include="/giangvien/header"></th:block>
+		<!--header end-->
 
-  </section>
-  <!-- container section end -->
-  <!-- javascripts -->
-  <script src="js/jquery.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <!-- nicescroll -->
-  <script src="js/jquery.scrollTo.min.js"></script>
-  <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-  <!--custome script for all page-->
-  <script src="js/scripts.js"></script>
+		<!--sidebar start-->
+		<th:block th:include="/giangvien/sidebar"></th:block>
+		<!--sidebar end-->
+		<!--main content start-->
+		<section id="main-content">
+			<section class="wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+						<h3 class="page-header">
+							<i class="icon_group"></i> Danh sách sinh viên
+						</h3>
+						<ol class="breadcrumb">
+							<li><i class="fa fa-home"></i><a href="index.html">Trang
+									chủ</a></li>
+							<li><i class="icon_group"></i>Danh sách sinh viên</li>
+
+						</ol>
+					</div>
+				</div>
+				<!-- page start-->
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row">
+							<div class="col-lg-1">
+								<label style="margin-top: 5px;"><b>Kỳ học</b></label>
+							</div>
+							<div class="col-lg-2">
+								<select class="form-control m-bot15">
+									<option>20191</option>
+									<option>20192</option>
+									<option>20193</option>
+								</select>
+							</div>
+						</div>
+						<table class="table table-striped table-advance table-hover">
+							<tbody>
+								<tr>
+									<th><i class="icon_profile"></i> Họ và tên</th>
+									<th><i class="icon_document_alt"></i> Tên đề tài</th>
+									<th><i class="icon_mail_alt"></i> Email</th>
+									<th><i class="icon_pin_alt"></i> MSSV</th>
+									<th><i class="icon_mobile"></i> SĐT</th>
+									<th><i class="icon_datareport"></i> Thông tin chi tiết</th>
+								</tr>
+								<div th:each=" listsvhd : ${listsinhvien}">
+									<tr>
+										<td><a
+											th:href="@{|/trangchu_giangvien/sinhvien/${listsvhd.idSv}|}">
+												<span th:utext="${listsvhd.getTenSv() }"> </span>
+										</a></td>
+
+										<td><a
+											th:href="@{|/trangchu_giangvien/detai/${listsvhd.idDeTai}|}">
+												<span th:utext="${listsvhd.getTenDeTai() }"> </span>
+										</a></td>
+
+										<td><span th:utext="${listsvhd.getEmailSv()}"></span></td>
+
+
+										<td><span th:utext="${listsvhd.getMssv()}"></span></td>
+
+										<td><span th:utext="${listsvhd.getSoDienThoaiSv()}"></span></td>
+
+										<td>
+											<li class="dropdown"><a href="javascript:;"
+												class="dropdown-toggle" data-toggle="dropdown">Xem thêm<b
+													class="caret"></b></a>
+												<ul class="dropdown-menu">
+													<li><a
+														th:href="@{|/trangchu_giangvien/sinhvien/baitap/${listsvhd.idDeTai}|}">Danh
+															sach bai tap</a></li>
+													<li><a href="#">Thống kê</a></li>
+
+												</ul></li>
+										</td>
+									</tr>
+								</div>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</section>
+
+			<!-- page end-->
+		</section>
+	</section>
+	<!--main content end-->
+
+<script th:src="@{/js/jquery.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+  <script th:src="@{/js/jquery.scrollTo.min.js}"></script>
+  <script src="@{/js/jquery.nicescroll.js}" type="text/javascript"></script>
+  <script th:src="@{/js/scripts.js}"></script>
+
+<script>
+        //knob
+        $(".knob").knob();
+    </script>
+
+	
 
 
 </body>

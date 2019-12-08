@@ -24,4 +24,6 @@ public class SinhVienService {
 	public SinhVien getOne(Long id) {
 		return sinhvienrepository.getOne(id);
 	}
+	
+	
 }

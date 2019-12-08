@@ -74,7 +74,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                     </li>
                                 </ul>
                             </header>
-                            <div class="panel-body">
+                             <div class="panel-body">
                                 <div class="tab-content">
                                     <!-- profile -->
                                     <div id="profile" class="tab-pane">
@@ -83,23 +83,28 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                                 <!-- <h1>Bio Graph</h1> -->
                                                 <div class="row">
                                                     <div class="bio-row">
-                                                        <p><span>Tên bài tập</span>: xxx </p>
+                                                        <p>
+                                                        	<span>Tên bài tập</span>:<span th:utext="${baitapdanhgia.getTenNhiemVu()}"></span> 
+                                                        </p>
                                                     </div>
 
                                                     <div class="bio-row">
-                                                        <p><span>Nội dung</span>: xxx</p>
+                                                        <p>
+                                                        	<span>Nội dung</span>:<span th:utext="${baitapdanhgia.getNoiDungNhiemVu()}"></span>
+                                                        </p>
                                                     </div>
 
                                                     <div class="bio-row">
-                                                        <p><span>Hạn nộp bài : </span>: xxx</p>
+                                                        <p>
+                                                        	<span>Hạn nộp bài : </span>: <span th:utext="${baitapdanhgia.getHanNop()}"></span>
+                                                        </p>
                                                     </div>
 
+                                                   
                                                     <div class="bio-row">
-                                                        <p><span>Sinh viên thực hiện</span>: xxx</p>
-                                                    </div>
-
-                                                    <div class="bio-row">
-                                                        <p><span>File </span>:xxx</p>
+                                                        <p>
+                                                        	<span>File </span>:<span th:utext="${baitapdanhgia.getFileHuongDan()}"></span>
+                                                        </p>
                                                     </div>
 
                                                 </div>
@@ -110,45 +115,34 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                     <div id="edit-profile" class="tab-pane">
                                         <section class="panel">
                                             <div class="panel-body bio-graph-info">
-                                                <h1>Đánh giá bài tập</h1>
+                                                <h1></h1> <!-- Tên đánh giá -->
                                                 <form class="form-horizontal" role="form">
                                                     <div class="form-group">
                                                         <div class="form-group">
                                                             <label class="control-label col-sm-2">Nội
                                                                 dung</label>
                                                             <div class="col-sm-10">
-                                                                <textarea class="form-control ckeditor" name="editor1"
-                                                                    rows="6"></textarea>
+                                                                <span th:utext="${baitapdanhgia.getNoiDungDanhGia()}"></span> <!-- Nội dung đánh giá -->
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="form-group">
                                                             <label class="control-label col-sm-2 "
-                                                                for="exampleInputFile">File input</label>
+                                                                for="exampleInputFile">File </label>
                                                             <div class="col-sm-10">
-                                                                <input type="file" id="exampleInputFile">
+                                                                <span th:utext="${baitapdanhgia.getFileDanhGia()}"></span> <!-- File đính kèm -->
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="control-label col-lg-2"
-                                                            for="inputSuccess">Thang điểm</label>
+                                                        <label class="control-label col-lg-2" for="inputSuccess">Thang
+                                                            điểm</label>
                                                         <div class="col-sm-10">
-                                                            <select class="form-control m-bot15">
-                                                                <option>Tốt</option>
-                                                                <option>Khá</option>
-                                                                <option>Trung bình</option>
-                                                                <option>Yếu</option>
-                                                            </select>
+                                                            Tốt , Khá , Trung bình , Yếu
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <div class="col-lg-offset-2 col-lg-10">
-                                                            <button type="submit" class="btn btn-primary">Đánh giá</button>
-                                                            <button type="button" class="btn btn-danger">Hủy</button>
-                                                        </div>
-                                                    </div>
+
                                                 </form>
                                             </div>
                                         </section>
