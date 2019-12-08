@@ -1,5 +1,7 @@
 package com.qlda.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ public class DeTaiService {
 
 		return detairepository.save(detai);
 	}
+
 	
 	public DeTai getOne(Long id) {
 		return detairepository.getOne(id);
@@ -30,5 +33,9 @@ public class DeTaiService {
 			
 		}
 		return null;
+	}
+	public List<DeTai> getAllDeTai() {
+		return detairepository.findAll();
+
 	}
 }

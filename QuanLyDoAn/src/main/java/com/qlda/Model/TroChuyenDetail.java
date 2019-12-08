@@ -22,9 +22,11 @@ public class TroChuyenDetail {
 	private String tenDeTai;
 	private String emailTaiKhoan;
 	private MultipartFile file;
+
 	public TroChuyenDetail() {
 		super();
 	}
+
 	public TroChuyenDetail(Date ngayTao, String tenBaiDang, String noiDung, Long idDeTai, Long idBaiDang, String tenSv,
 			String tenGv, String tenDeTai) {
 		super();
@@ -37,28 +39,14 @@ public class TroChuyenDetail {
 		this.tenGv = tenGv;
 		this.tenDeTai = tenDeTai;
 	}
-	public TroChuyenDetail(Date ngayTao, String tenBaiDang, String noiDung,MultipartFile file) {
+
+	public TroChuyenDetail(Date ngayTao, String tenBaiDang, String noiDung, MultipartFile file) {
 		super();
 		this.ngayTao = ngayTao;
 		this.tenBaiDang = tenBaiDang;
 		this.noiDung = noiDung;
-		
+
 		this.file = file;
 	}
-	
-	public TroChuyenDetail(Date ngayTao, String tenBaiDang, String noiDung, Long idDeTai, Long idBaiDang, String tenSv,
-			Long idTaiKhoan,String emailTaiKhoan, String tenDeTai) {
-		super();
-		this.ngayTao = ngayTao;
-		this.tenBaiDang = tenBaiDang;
-		this.noiDung = noiDung;
-		this.idDeTai = idDeTai;
-		this.idBaiDang = idBaiDang;
-		this.tenSv = tenSv;
-		this.idTaiKhoan = idTaiKhoan;
-		this.emailTaiKhoan = emailTaiKhoan;
-		this.tenDeTai = tenDeTai;
-	}
 
-	
 }

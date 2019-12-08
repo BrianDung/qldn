@@ -1,6 +1,5 @@
 package com.qlda.Service;
 
-
 import java.util.ArrayList;
 
 import java.util.List;
@@ -21,28 +20,28 @@ import com.qlda.Model.TaiKhoanDetails;
 import com.qlda.Repository.TaiKhoanRepository;
 
 @Service
-public class TaiKhoanService implements UserDetailsService  {
+public class TaiKhoanService implements UserDetailsService {
 	@Autowired
 	TaiKhoanRepository taiKhoanRepository;
 	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-	
-	
-	//Start - Tìm tài khoản trong db phân quyền security
+
+	// Start - Tìm tài khoản trong db phân quyền security
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		TaiKhoan taikhoan = taiKhoanRepository.findByEmail(username);
-		if(taikhoan == null) {
+		if (taikhoan == null) {
 			throw new UsernameNotFoundException("Không tìm thấy tài khoản");
-			
+
 		}
 		String role = taikhoan.getRole();
-        List<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
-        GrantedAuthority authority = new SimpleGrantedAuthority(role);
-        grantedAuthorities.add(authority);
-        return new org.springframework.security.core.userdetails.User(
-        		taikhoan.getEmail(), taikhoan.getPassword(), grantedAuthorities);
+		List<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
+		GrantedAuthority authority = new SimpleGrantedAuthority(role);
+		grantedAuthorities.add(authority);
+		return new org.springframework.security.core.userdetails.User(taikhoan.getEmail(), taikhoan.getPassword(),
+				grantedAuthorities);
 	}
+
 	
 	//End - Tìm tài khoản trong db phân quyền security
 	public TaiKhoan getOne(Long id) {
@@ -51,6 +50,7 @@ public class TaiKhoanService implements UserDetailsService  {
 	
 	
 
+
 	// Them 1 tai khoan
 	public TaiKhoan addTaiKhoan(TaiKhoan taikhoan) {
 
@@ -58,12 +58,10 @@ public class TaiKhoanService implements UserDetailsService  {
 		String password = passwordEncoder.encode(taikhoan.getPassword());
 		taikhoan.setPassword(password);
 		if (check == true)
-			
+
 			return taiKhoanRepository.save(taikhoan);
 		else
 			return null;
-
-
 
 	}
 
@@ -89,6 +87,7 @@ public class TaiKhoanService implements UserDetailsService  {
 		}
 		return null;
 	}
+
 	public TaiKhoan getByEmail(String email) {
 		for (TaiKhoan taikhoan : taiKhoanRepository.findAll()) {
 			if (taikhoan.getEmail() == email) {
@@ -115,5 +114,12 @@ public class TaiKhoanService implements UserDetailsService  {
 
 	}
 
-	
+	public Long getIdTaiKhoanGiangVien(String email) {
+		for (TaiKhoanDetails tk : taiKhoanRepository.listGiangVien()) {
+			if (tk.getEmail().equals(email)) {
+				return tk.getIdGiangVien();
+			}
+		}
+		return null;
+	}
 }

@@ -10,6 +10,7 @@ import com.qlda.Entity.GiangVien;
 import com.qlda.Entity.TaiKhoan;
 import com.qlda.Model.GiangVienDetail;
 import com.qlda.Model.SinhVienDetail;
+import com.qlda.Repository.DeTaiRepository;
 import com.qlda.Repository.GiangVienRepository;
 import com.qlda.Repository.TaiKhoanRepository;
 
@@ -18,6 +19,8 @@ public class GiangVienService {
 
 	@Autowired
 	GiangVienRepository giangVienRepository;
+	@Autowired
+	DeTaiRepository detairepository;
 
 	public GiangVien addGiangVien(GiangVien giangvien) { // Them 1 gv
 		return giangVienRepository.save(giangvien);
@@ -43,6 +46,7 @@ public class GiangVienService {
 		}
 		return null;
 	}
+
 	// Lay r chi tiet 1 de tai cua sinh vien trong gv huong dan
 	public DeTai getDeTaiById(Long id) {
 		for (DeTai dt : giangVienRepository.getAllDeTai()) {
@@ -52,4 +56,6 @@ public class GiangVienService {
 		}
 		return null;
 	}
+
+	
 }

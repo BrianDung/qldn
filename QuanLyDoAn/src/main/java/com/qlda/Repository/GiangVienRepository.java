@@ -21,5 +21,6 @@ public interface GiangVienRepository extends JpaRepository<GiangVien, Long> {
 	@Query("SELECT new com.qlda.Entity.DeTai(dt.id ,dt.ten , dt.mota , dt.noidung , dt.thongtin,dt.ngaytao,dt.file, dt.trangthai )"
 			+ "FROM DeTai dt")
 	List<DeTai> getAllDeTai();
-
+	
+	
 }
