@@ -108,11 +108,7 @@ public class SinhVienController {
 		return "giangvien/GiangVien";
 	}
 
-	@RequestMapping(value = { "/thongke" }) // lay ra danh sach thong ke
-	public String thongKes(Model model) {
-
-		return "giangvien/GiangVien";
-	}
+	
 
 	@RequestMapping(value = { "/thongke" }) // lay ra chi tiet thong ke
 	public String thongKeDetail(Model model, Principal principal) {
