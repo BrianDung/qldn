@@ -35,7 +35,6 @@ public class SinhVienController {
 
 	private static String UPLOADED_FOLDER_trochuyen = "..//QuanLyDoAn//src//main//resources//File//trochuyen//";
 
-	
 	@Autowired
 	QuanLyService quanlyservice;
 	@Autowired
@@ -48,7 +47,7 @@ public class SinhVienController {
 	TaiKhoanService taikhoanservice;
 	@Autowired
 	GiangVienService giangvienservice;
-	
+
 	// GET: Hiển thị trang login
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String index(Model model) {
@@ -56,27 +55,21 @@ public class SinhVienController {
 		return "sinhvien/index-SinhVien";
 	}
 
-	@RequestMapping(value = { "/sinhvien" }) // lay danh sach sinh vien
-	public String students(Model model) {
-
-		return "giangvien/GiangVien";
-	}
-
 	@RequestMapping(value = { "/info" }) // lay chi tiet sinh vien
 	public String studentDetail(Model model, Principal principal) {
 		String email = principal.getName();
 		System.out.println(email);
-		
+
 		model.addAttribute("sinhvien", quanlyservice.getInfoSVbyEmail(email));
-		
-		return "sinhvien/ThongTin"; 
+
+		return "sinhvien/ThongTin";
 	}
 
 	@RequestMapping(value = { "/nhiemvu" }) // lay ra danh sach giang vien
 	public String giangViens(Model model, Principal principal) {
 		String email = principal.getName();
 		System.out.println(email);
-		
+
 		model.addAttribute("sinhvien", quanlyservice.getInfoSVbyEmail(email));
 		model.addAttribute("listnhiemvu", quanlyservice.getAllBaiTapSV(email));
 		return "sinhvien/NhiemVu";
@@ -85,9 +78,10 @@ public class SinhVienController {
 	@RequestMapping(value = { "/nhiemvu/{id}" }) // lay ra chi tiet bai tap
 	public String baiTapDetail(Model model, @PathVariable("id") Long id) {
 		model.addAttribute("baitapdanhgia", quanlyservice.getBaiTapDanhGia(id));
-		
+
 		return "sinhvien/ChiTietDanhGia";
 	}
+
 
 	@RequestMapping(value = { "/giangvien/{id}" }) // lay ra chi tiet giang vien
 	public String giangVienDetail(Model model) {
@@ -110,6 +104,7 @@ public class SinhVienController {
 
 	
 
+
 	@RequestMapping(value = { "/thongke" }) // lay ra chi tiet thong ke
 	public String thongKeDetail(Model model, Principal principal) {
 		String email = principal.getName();
@@ -118,8 +113,8 @@ public class SinhVienController {
 		model.addAttribute("thongke", giangvienservice.hoanThanh(id)); // show ra so luong nhiem vu hoan thanh/ tong
 																		// nhiem vu
 		model.addAttribute("listdanhgiahoanthanhsv", giangvienservice.getAllNhiemVuDuocDanhGiaSinhVien(id));
-		return "DanhSachThongKe_GiangVien";
-		
+		return "sinhvien/thongke";
+
 	}
 
 	@RequestMapping(value = { "/trochuyen" }) // lay ra danh sach tro chuyen
@@ -128,38 +123,32 @@ public class SinhVienController {
 		System.out.println(email);
 		model.addAttribute("sinhvien", quanlyservice.getInfoSVbyEmail(email));
 		model.addAttribute("listtrochuyensinhvien", quanlyservice.getAllTroChuyenSV(email));
-		model.addAttribute("baidang",new TroChuyenDetail());
+		model.addAttribute("baidang", new TroChuyenDetail());
 		return "sinhvien/TroChuyen";
 	}
 
 	@RequestMapping(value = { "/trochuyen/{id}" }) // lay ra chi tiet tro chuyen
-	public String troChuyenDetail(@PathVariable("id") Long id,Model model) {
+	public String troChuyenDetail(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("baidang", quanlyservice.getInfoBaiDang(id));
 		return "sinhvien/ChiTietTroChuyen";
 	}
 
-	@RequestMapping(value = { "/baitap" }, method = RequestMethod.POST) // Tao bai tap
-	public String taoBaiTap(Model model) {
-
-		return "giangvien/GiangVien";
-	}
-
 	@RequestMapping(value = { "/trochuyen" }, method = RequestMethod.POST) // Tao tro chuyen
-	public String taoTroChuyen(Model model,@ModelAttribute TroChuyenDetail tt,Principal principal ,RedirectAttributes redirectAttributes) {
+	public String taoTroChuyen(Model model, @ModelAttribute TroChuyenDetail tt, Principal principal,
+			RedirectAttributes redirectAttributes) {
 		String email = principal.getName();
-		DoAnDetail doan =  detaiservice.getDoanbyEmailSv(email);
+		DoAnDetail doan = detaiservice.getDoanbyEmailSv(email);
 		DeTai detai = detaiservice.getOne(doan.getIdDeTai());
-		
-		
+
 		BaiDang bd = new BaiDang();
 		bd.setTen(tt.getTenBaiDang());
 		bd.setNoidung(tt.getNoiDung());
 		bd.setNgaytao(tt.getNgayTao());
 		bd.setDetai(detai);
-		
+
 		try {
 			MultipartFile file = tt.getFile();
-			 byte[] bytes = file.getBytes();
+			byte[] bytes = file.getBytes();
 			// Get the file and save it somewhere byte[] bytes = file.getBytes(); Path
 			Path path = Paths.get(UPLOADED_FOLDER_trochuyen + file.getOriginalFilename());
 			Files.write(path, bytes);
@@ -172,9 +161,7 @@ public class SinhVienController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
+
 		baidangservice.save(bd);
 		return "redirect:/trangchu_sinhvien/trochuyen";
 	}
