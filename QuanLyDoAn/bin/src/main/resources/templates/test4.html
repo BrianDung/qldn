@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-
-
-	<h1>Result</h1>
-	<p th:text="'id: ' + ${taikhoan.id}" />
-	<p th:text="'email: ' + ${taikhoan.email}" />
-	<p th:text="'password: ' + ${taikhoan.password}" />
-	<p th:text="'role: ' + ${taikhoan.role}" />
-
+	RESULT
+	<span th:utext="${taodetai.getTen()}"></span>
+	<span th:utext="${taodetai.getMota()}"></span>
+	<span th:utext="${taodetai.getNoidung()}"></span>
+	<span th:utext="${taodetai.getThongtin()}"></span>
+	<span th:utext="${taodetai.getNgaytao()}"></span>
+	<span th:utext="${taodetai.getFile()}"></span>
+	<span th:utext="${taodetai.getTrangthai()}"></span>
+	<span th:utext="${taodetai.getSinhvien()}"></span>
 </body>
 </html>

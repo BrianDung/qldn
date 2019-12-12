@@ -1,0 +1,30 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<span th:utext="${sinhvieninf.getIdSv()}"></span>
+
+	<span th:utext="${sinhvieninf.getTenSv()}"></span>
+	<span th:utext="${sinhvieninf.getMssv()}"></span>
+	<span th:utext="${sinhvieninf.getSoDienThoaiSv()}"></span>
+	<span th:utext="${sinhvieninf.getEmailSv()}"></span>
+	<span th:utext="${sinhvieninf.getNamSinhSv()}"></span>
+	<span th:utext="${sinhvieninf.getTenGv()}"></span>
+	<span th:utext="${sinhvieninf.getSoDienThoaiGv()}"></span>
+
+	<span th:utext="${sinhvieninf.getTenDeTai()}"></span>
+
+
+
+
+
+	<div>
+		<a th:href="@{|/addtaikhoan/|}"> Add </a>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+    <meta name="author" content="GeeksLabs">
+    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <title>Thông tin sinh viên</title>
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+      <script src="js/lte-ie7.js"></script>
+    <![endif]-->
+
+    <!-- =======================================================
+      Theme Name: NiceAdmin
+      Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+      Author: BootstrapMade
+      Author URL: https://bootstrapmade.com
+    ======================================================= -->
+</head>
+
+<body>
+   
+  <!-- container section start -->
+  <section id="container" class="">
+    <!-- header -->
+    	<th:block th:include="sinhvien/header"></th:block>
+    <!--header end-->
+
+    <!--sidebar start-->
+     	<th:block th:include="sinhvien/sidebar"></th:block>
+    <!--sidebar end-->
+
+        <!--main content start-->
+          <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header"><i class="fa fa-user-md"></i> Thông tin</h3>
+                        <ol class="breadcrumb">
+                            <li><i class="fa fa-home"></i><a href="index.html">Trang chủ</a></li>
+                            <li><i class="fa fa-user-md"></i>Thông tin</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- profile-widget -->
+                    <div class="col-lg-12">
+                        <div class="profile-widget profile-widget-info">
+                            <div class="panel-body">
+                                <div class="col-lg-2 col-sm-2">
+                                    <h4>
+                                    	<span th:utext="${sinhvien.getTenSv()}"></span>
+                                    </h4>
+                                    <div class="follow-ava">
+                                        <img src="img/profile-avatar-dung.jpg" alt="">
+                                    </div>
+                                    <h6>Sinh viên</h6>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 follow-info">
+                                    <p>Sinh viên Viện Sư Phạm Kỹ Thuật</p>
+                                    <p>Lớp SPKT- CNTT</p>
+                                    <p>
+                                    	<i class="fa fa-user-md"> MSSV :<span th:utext="${sinhvien.getMssv()}"></span></i>
+                                    </p>
+                                    <!-- <h6>
+                                        <span><i class="icon_clock_alt"></i>11:05 AM</span>
+                                        <span><i class="icon_calendar"></i>30.10.19</span>
+                                        <span><i class="icon_pin_alt"></i>VN</span>
+                                    </h6> -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- page start-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <section class="panel">
+                            <header class="panel-heading tab-bg-info">
+                                <ul class="nav nav-tabs">
+
+                                    <li>
+                                        <a data-toggle="tab" href="#profile">
+                                            <i class="icon-user"></i>
+                                            Thông tin cá nhân
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </header>
+                            <div class="panel-body">
+                                <div class="tab-content">
+
+                                    <!-- profile -->
+                                    <div id="profile" class="tab-pane">
+                                        <section class="panel">
+                                            <!-- <div class="bio-graph-heading">
+                        Hello I’m Jenifer Smith, a leading expert in interactive and creative design specializing in the mobile medium. My graduation from Massey University with a Bachelor of Design majoring in visual communication.
+                      </div> -->
+                                            <div class="panel-body bio-graph-info">
+                                                <!-- <h1>Bio Graph</h1> -->
+                                                <div class="row">
+                                                    <div class="bio-row">
+                                                        <p>
+                                                        	<span>Họ và tên </span>: <span th:utext="${sinhvien.getTenSv()}"></span>
+                                                        </p>
+                                                    
+                                                    <div class="bio-row">
+                                                        <p>
+                                                        	<span>Đề tài </span>: <span th:utext="${sinhvien.getTenDeTai()}"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="bio-row">
+                                                        <p>
+                                                        	<span>Năm sinh</span>: <span th:utext="${sinhvien.getNamSinhSv()}"></span>
+                                                        </p>
+                                                    </div> 
+                                                    <div class="bio-row">
+                                                        <p>
+                                                        	<span>GVHD </span>: <span th:utext="${sinhvien.getTenGv()}"></a>
+                                                         </p>
+                                                    </div>
+                                                    <div class="bio-row">
+                                                        <p>
+                                                        	<span>MSSV </span>: <span th:utext="${sinhvien.getMssv()}"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="bio-row">
+                                                        <p>
+                                                        	<span>Số điện thoại Giảng Viên</span>: <span th:utext="${sinhvien.getSoDienThoaiGv()}"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="bio-row">
+                                                        <p>
+                                                        	<span>Số điện thoại Sinh Viên </span>: <span th:utext="${sinhvien.getSoDienThoaiSv()}"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="bio-row">
+                                                        <p><br></br></p>
+                                                    </div>
+                                                    <div class="bio-row">
+                                                        <p>
+                                                        	<span>Email </span>:<span th:utext="${sinhvien.getEmailSv()}"></span>
+                                                        </p>
+                                                    </div>
+                                                    <!-- <div class="bio-row">
+                            <p><span>Phone </span>: (+021) 956 789123</p>
+                          </div> -->
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <section>
+                                            <div class="row">
+                                            </div>
+                                        </section>
+                                    </div>
+                                    <!-- edit-profile -->
+
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- page end-->
+            </section>
+        </section>
+
+
+    </section>
+
+   
+    <script>
+        //knob
+        $(".knob").knob();
+    </script>
+
+
+</body>
+
+</html>

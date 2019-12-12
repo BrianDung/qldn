@@ -44,8 +44,8 @@ public class QuanLyService {
 		}
 		return null;
 	}
-	
-	//Get Info SV by Email
+
+	// Get Info SV by Email
 	public SinhVienDetail getInfoSVbyEmail(String email) {
 		for (SinhVienDetail sv : quanlyrepository.getListInfo()) {
 			if (sv.getEmailSv().equals(email)) {
@@ -106,7 +106,6 @@ public class QuanLyService {
 		return null;
 	}
 
-	
 	public List<DoAnDetail> getAllDoAnDetail() {
 		return quanlyrepository.getAllDoAnDetail();
 	}
@@ -121,15 +120,13 @@ public class QuanLyService {
 		return list;
 
 	}
-	
+
 	public List<BaiTapDetail> getAllBaiTapSV(String email) {
-		
+
 		Long idDetai = this.getInfoSVbyEmail(email).getIdDeTai();
-		System.out.println(idDetai);
 		List<BaiTapDetail> list = new ArrayList<BaiTapDetail>();
 		for (BaiTapDetail bt : quanlyrepository.getAllBaiTapDetail()) {
 			if (bt.getIdDeTai() == idDetai) {
-				System.out.println(bt);
 				list.add(bt);
 			}
 		}
@@ -153,19 +150,19 @@ public class QuanLyService {
 				list.add(tt);
 			}
 		}
-		
+
 		return list;
 	}
-	
+
 	public List<TroChuyenDetail> getAllTroChuyenSV(String email) {
 		Long idDetai = this.getInfoSVbyEmail(email).getIdDeTai();
 		List<TroChuyenDetail> list = new ArrayList<TroChuyenDetail>();
 		for (TroChuyenDetail tt : quanlyrepository.getAllTroChuyenDetail()) {
-			if (tt.getIdDeTai()== idDetai) {
+			if (tt.getIdDeTai() == idDetai) {
 				list.add(tt);
 			}
 		}
-		
+
 		return list;
 	}
 

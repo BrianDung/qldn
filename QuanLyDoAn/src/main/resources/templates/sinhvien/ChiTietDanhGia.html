@@ -50,7 +50,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                 <div class="col-lg-3 col-sm-2">
                                     <h4>PGS TS Tran Khanh Duc</h4>
                                     <div class="follow-ava">
-                                        <img src="img/profile-avatar-duc.jpg" alt="">
+                                      	<img src="/img/avatar.jpg" alt="avatar">
                                     </div>
                                     <h6>Giảng viên chính</h6>
                                 </div>
@@ -88,26 +88,26 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                                 <div class="row">
                                                     <div class="bio-row">
                                                         <p>
-                                                        	<span>Tên bài tập</span>:<span th:utext="${baitapdanhgia.getTenNhiemVu()}"></span> 
+                                                        	<span>Tên bài tập</span>:<label th:utext="${baitapdanhgia.getTenNhiemVu()}"></label> 
                                                         </p>
                                                     </div>
 
                                                     <div class="bio-row">
                                                         <p>
-                                                        	<span>Nội dung</span>:<span th:utext="${baitapdanhgia.getNoiDungNhiemVu()}"></span>
+                                                        	<span>Nội dung</span>:<label th:utext="${baitapdanhgia.getNoiDungNhiemVu()}"></label>
                                                         </p>
                                                     </div>
 
                                                     <div class="bio-row">
                                                         <p>
-                                                        	<span>Hạn nộp bài : </span>: <span th:utext="${baitapdanhgia.getHanNop()}"></span>
+                                                        	<span>Hạn nộp bài : </span>: <label th:utext="${baitapdanhgia.getHanNop()}"></label>
                                                         </p>
                                                     </div>
 
                                                    
                                                     <div class="bio-row">
                                                         <p>
-                                                        	<span>File </span>:<span th:utext="${baitapdanhgia.getFileHuongDan()}"></span>
+                                                        	<span>File </span>:<label th:utext="${baitapdanhgia.getFileHuongDan()}"></label>
                                                         </p>
                                                     </div>
 

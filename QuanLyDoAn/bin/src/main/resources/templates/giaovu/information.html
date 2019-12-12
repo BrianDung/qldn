@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+    <meta name="author" content="GeeksLabs">
+    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <title>Thông tin quản lý</title>
+
+</head>
+
+<body> 
+    <th:block th:include="giaovu/head"></th:block>
+  <!-- container section start -->
+  <section id="container" class="">
+    <!-- header -->
+    	<th:block th:include="giaovu/header"></th:block>
+    <!--header end-->
+
+    <!--sidebar start-->
+     	<th:block th:include="giaovu/sidebar"></th:block>
+    <!--sidebar end-->
+
+        <!--sidebar end-->
+
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header"><i class="icon_info"></i> Thông tin</h3>
+                        <ol class="breadcrumb">
+                            <li><i class="fa fa-home"></i><a href="index.html">Trang chủ</a></li>
+                            <li><i class="icon_info"></i>Thông tin</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- profile-widget -->
+                    <div class="col-lg-12">
+                        <div class="profile-widget profile-widget-info">
+                            <div class="panel-body">
+                                <div class="col-lg-3 col-sm-2">
+                                    <h4><span th:utext="${quanly.ten}"></span></h4> <!-- Tên quản lý -->
+                                    <div class="follow-ava">
+                                        <img src="img/lien-avatar.jpg" alt="">
+                                    </div>
+                                    <h6>Quản lý</h6>
+                                </div>
+                                <div class="col-lg-17 col-sm-9 follow-info">
+                                    <p>Kế toán Viện Sư Phạm Kỹ Thuật Trường Đại Học Bách Khoa Hà Nội</p>
+                                    <p><i class="icon_mobile"></i> Số điện thoại: <span th:utext="${quanly.getSoDienThoai()}"></span></p>
+                                    <p><i class="icon_mail_alt"></i> Email: <span th:utext="${quanly.getEmail()}"></span></p>
+                                    <h6>
+                                        <span><i class="icon_clock_alt"></i>11:05 AM</span>
+                                        <span><i class="icon_calendar"></i>30.10.19</span>
+                                        <span><i class="icon_pin_alt"></i>VN</span>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- page start-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <section class="panel">
+                            <header class="panel-heading tab-bg-info">
+                                <ul class="nav nav-tabs">
+                                    <li>
+                                        <a data-toggle="tab" href="#profile">
+                                            <i class="icon-user"></i>
+                                            Thông tin cá nhân
+                                        </a>
+                                    </li>
+                                 
+                                </ul>
+                            </header>
+                            <div class="panel-body">
+                                <div class="tab-content">
+                                    <!-- profile -->
+                                    <div id="profile" class="tab-pane">
+                                        <section class="panel">
+                                            <!-- <div class="bio-graph-heading">
+                        Hello I’m Jenifer Smith, a leading expert in interactive and creative design specializing in the mobile medium. My graduation from Massey University with a Bachelor of Design majoring in visual communication.
+                      </div> -->
+                                            <div class="panel-body bio-graph-info">
+                                                <!-- <h1>Bio Graph</h1> -->
+                                                <div class="row">
+                                                    <div class="bio-row">
+                                                        <p><span>Họ và tên </span>: <span th:utext="${quanly.getTen()}"></span> </p>
+                                                    </div>
+
+                                                    <div class="bio-row">
+                                                        <p><span>Năm sinh</span>: <span th:utext="${quanly.getNamSinh()}"></span></p>
+                                                    </div>
+
+                                                    <div class="bio-row">
+                                                        <p><span>Chức vụ : </span>: Kế toán</p>
+                                                    </div>
+
+                                                    <div class="bio-row">
+                                                        <p><span>Số điện thoại </span>: <span th:utext="${quanly.getSoDienThoai()}"></span></p>
+                                                    </div>
+
+                                                    <div class="bio-row">
+                                                        <p><span>Email </span>:  <span th:utext="${quanly.getEmail()}"></span> </p>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <section>
+                                            <div class="row">
+                                            </div>
+                                        </section>
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- page end-->
+            </section>
+        </section>
+
+
+    </section>
+
+    <script>
+        //knob
+        $(".knob").knob();
+    </script>
+
+
+</body>
+
+</html>

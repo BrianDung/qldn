@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+	content="Creative - Bootstrap 3 Responsive Admin Template">
+<meta name="author" content="GeeksLabs">
+<meta name="keyword"
+	content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+<link rel="shortcut icon" href="img/favicon.png">
+
+<title>Tạo mới giảng viên</title>
+
+
+</head>
+
+<body>
+	<!-- container section start -->
+	<section id="container" class="">
+		<!-- header -->
+		<th:block th:include="giaovu/header"></th:block>
+		<!--header end-->
+
+		<!--sidebar start-->
+		<th:block th:include="giaovu/sidebar"></th:block>
+		<!--sidebar end-->
+
+		<!--main content start-->
+		<section id="main-content">
+			<section class="wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+						<h3 class="page-header">
+							<i class="icon_group"></i>Tạo mới giảng viên
+						</h3>
+						<ol class="breadcrumb">
+							<li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+							<li><i class="icon_plus"></i>Tạo mới</li>
+							<li><i class="icon_group"></i>sinh viên ,giảng viên</li>
+						</ol>
+					</div>
+				</div>
+				<!-- Form validations -->
+				<div class="row">
+					<div class="col-lg-12">
+						<section class="panel">
+							<header class="panel-heading"> Tạo thông tin cho tài
+								khoản </header>
+							<div class="panel-body">
+								<div class="form ">
+									<form class="form-validate form-horizontal" 
+										th:action="@{/trangchu_quanly/taikhoangv}"
+										th:object="${taikhoan}" method="post" >
+
+										<div class="form-group ">
+											<label for="cname" class="control-label col-lg-2">Email<span
+												class="required">*</span>
+											</label>
+											<div class="col-lg-10">
+												<input class="form-control" id="cname" name="fullname"
+													minlength="5" type="email" th:field="*{email}" required />
+											</div>
+										</div>
+										<div class="form-group ">
+											<label for="cname" class="control-label col-lg-2">password<span
+												class="required">*</span>
+											</label>
+											<div class="col-lg-10">
+												<input class="form-control" id="cname" name="fullname"
+													minlength="5" type="password" th:field="*{password}"
+													required />
+											</div>
+										</div>
+										<div class="form-group ">
+											<label for="cname" class="control-label col-lg-2">Role<span
+												class="required">*</span>
+											</label>
+											<div class="col-lg-10">
+												<select th:field="*{role}">
+													<option value="ROLE_GIANG_VIEN">Giang Vien</option>
+												</select>
+
+											</div>
+										</div>
+
+
+										<div class="form-group ">
+											<label for="cname" class="control-label col-lg-2">Họ
+												và tên <span class="required">*</span>
+											</label>
+											<div class="col-lg-10">
+												<input class="form-control" id="cname" th:field="*{ten}"
+													minlength="5" type="text" required />
+											</div>
+										</div>
+										<div class="form-group ">
+											<label for="Mobile" class="control-label col-lg-2">Số
+												điện thoại <span class="required">*</span>
+											</label>
+											<div class="col-lg-10">
+												<input class=" form-control" id="Mobile" type="text"
+													th:field="*{soDienThoai}" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-lg-2">Ngày sinh</label>
+											<div class="col-lg-10">
+												<input id="dp1" type="date" th:field="*{namSinh}" size="16"
+													class="form-control">
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-lg-offset-2 col-lg-10">
+												<button class="btn btn-primary" type="submit">Save</button>
+												<button class="btn btn-default" type="button">Cancel</button>
+											</div>
+										</div>
+									</form>
+								</div>
+
+							</div>
+						</section>
+					</div>
+				</div>
+				<!-- page end-->
+			</section>
+		</section>
+		<!--main content end-->
+
+	</section>
+
+
+
+</body>
+
+</html>

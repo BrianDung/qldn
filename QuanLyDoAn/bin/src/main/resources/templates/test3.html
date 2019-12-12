@@ -1,31 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-	<formth:action ="@{/taikhoan}"th:object="${newtaikhoan}" method="post">
+	<form th:action="@{/trangchu_quanly/taikhoan}" th:object="${taikhoan}"
+		method="post">
+
 		<p>
-			title:
-			<inputtype ="text"th:field="*{id}" />
+			Email: <input type="email" th:field="*{email}" />
 		</p>
 		<p>
-			title:
-			<inputtype ="text"th:field="*{email}" />
+			password: <input type="password" th:field="*{password}" />
 		</p>
 		<p>
-			title:
-			<inputtype ="text"th:field="*{password}" />
+			Role: <select th:field="*{role}">
+				<option value="ROLE_GIANG_VIEN">Giang Vien</option>
+			</select>
+		</p>
+		 <p>
+			Ten: <input type="text" th:field="*{ten}" />
 		</p>
 		<p>
-			title:
-			<inputtype ="text"th:field="*{role}" />
+			SDT: <input type="tel" th:field="*{soDienThoai}" />
 		</p>
 		<p>
-			<buttontype ="submit"class="btn btn-success">Add
-			</button>
+			Nam sinh: <input type="date" th:field="*{namSinh}" />
+		</p> 
+		<p>
+			<button type="submit" class="btn btn-success">Add</button>
 		</p>
-		</form>
+	</form>
 </body>
 </html>

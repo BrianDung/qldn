@@ -6867,9 +6867,9 @@ ul.inbox-pagination li {
 
 .bio-row p span {
 
-    width: 100px;
-
-    display: inline-block;
+    width: 200px;
+	font-weight: bold;
+    display: contents;
 
 }
 
