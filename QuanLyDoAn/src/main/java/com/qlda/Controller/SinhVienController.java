@@ -54,7 +54,7 @@ public class SinhVienController {
 		String email = principal.getName();
 		model.addAttribute("sinhvien", quanlyservice.getInfoSVbyEmail(email));
 		model.addAttribute("listnhiemvu", quanlyservice.getAllBaiTapSV(email));
-		
+
 		return "sinhvien/index-SinhVien";
 	}
 
@@ -71,15 +71,15 @@ public class SinhVienController {
 	@RequestMapping(value = { "/nhiemvu" }) // Nhiem vu cua sinh vien
 	public String giangViens(Model model, Principal principal) {
 		String email = principal.getName();
-		model.addAttribute("sinhvien", quanlyservice.getInfoSVbyEmail(email)); // Thong tin sinh vien 
+		model.addAttribute("sinhvien", quanlyservice.getInfoSVbyEmail(email)); // Thong tin sinh vien
 		model.addAttribute("listnhiemvu", quanlyservice.getAllBaiTapSV(email));
 		return "sinhvien/NhiemVu";
 	}
 
-	@RequestMapping(value = { "/nhiemvu/{id}" }) // lay ra chi tiet bai tap va danh gia 
+	@RequestMapping(value = { "/nhiemvu/{id}" }) // lay ra chi tiet bai tap va danh gia
 	public String baiTapDetail(Model model, @PathVariable("id") Long id) {
 		model.addAttribute("baitapdanhgia", quanlyservice.getBaiTapDanhGia(id));
-		
+
 		return "sinhvien/ChiTietDanhGia";
 	}
 
@@ -104,11 +104,12 @@ public class SinhVienController {
 	@RequestMapping(value = { "/thongke" }) // lay ra chi tiet thong ke
 	public String thongKeDetail(Model model, Principal principal) {
 		String email = principal.getName();
-		Long id = quanlyservice.getInfoSVbyEmail(email).getId();
-		model.addAttribute("sinhvien", giangvienservice.getSinhVien(id)); // lay ra thong tin cua sinh vien
+		Long id = quanlyservice.getInfoSVbyEmail(email).getIdSv();
+		model.addAttribute("sinhvien", sinhvienservice.getOne(id)); // lay ra thong tin cua sinh vien
+		model.addAttribute("detai", detaiservice.getDoanbyEmailSv(email));
 		model.addAttribute("thongke", giangvienservice.hoanThanh(id)); // show ra so luong nhiem vu hoan thanh/ tong
 																		// nhiem vu
-		model.addAttribute("listdanhgiahoanthanhsv", giangvienservice.getAllNhiemVuDuocDanhGiaSinhVien(id));
+		model.addAttribute("list", giangvienservice.getAllNhiemVuDuocDanhGiaSinhVien(id));
 		return "sinhvien/thongke";
 
 	}

@@ -54,20 +54,19 @@
 										<h1>Thống kê</h1>
 									</div>
 									<div class="col-lg-4">
-										<span class="profile-ava pull-right"> <img alt=""
-											class="simple" src="img/profile-avatar-duc.jpg">
-											SV:Trần Tiến Dũng
-										</span>
+										<span class="profile-ava pull-right"><img
+											src="/img/avatar.jpg" alt="avatar"> <span
+											th:utext="${sinhvien.getTen()}"></span> </span>
 									</div>
 								</div>
 							</div>
 							<table class="table table-hover personal-task">
 								<tbody>
 									<tr>
-										<td>Họ và tên :</td>
-										<td>Tên đề tài :</td>
-										<td><span class="badge bg-success">Hoàn thành :
-												x/y nhiệm vụ</span></td>
+										<td>Họ và tên :<span th:utext="${sinhvien.getTen()}"></span></td>
+										<td>Tên đề tài :<span th:utext="${detai.getTenDeTai()}"></span></td>
+										<td>Hoàn thành<span class="badge bg-success"
+											th:utext="${thongke}">> </span></td>
 
 									</tr>
 
@@ -88,58 +87,32 @@
 										<h1>Nhiệm vụ hoàn thành</h1>
 									</div>
 									<div class="col-lg-4">
-										<span class="profile-ava pull-right"> <img alt=""
-											class="simple" src="img/profile-avatar-duc.jpg"> Trần
-											Khánh Đức
-										</span>
+										<span class="profile-ava pull-right"><img
+											src="/img/avatar.jpg" alt="avatar"> Trần Khánh Đức </span>
 									</div>
 								</div>
 							</div>
 							<table class="table table-hover personal-task">
 								<tbody>
 									<tr>
-										<td>Hôm nay</td>
-										<td>Giao diện hệ thống cho Sinh viên</td>
-										<td><span class="badge bg-success">Hoàn thành</span></td>
-										<td>Dealine</td>
-
-										<td><a href="ThongTinSinhVien.html">Trần Tiến Dũng</a></td>
-										<td><a href="ChiTietBaiTap.html">Xem chi tiết</a></td>
+										<td>Ngày tạo</td>
+										<td>Tên nhiệm vụ</td>
+										<td>Trạng thái</td>
+										<td>Hạn nộp</td>
+										<td>Chi tiết</td>
 									</tr>
+									<div th:each="list : ${list}">
 									<tr>
-										<td>Hôm qua</td>
-										<td>Phân tích thiết kế hệ thống</td>
-										<td><span class="badge bg-success">Hoàn thành</span></td>
-										<td>xxx</td>
-										<td><a href="#">Trần Tiến Dũng</a></td>
-										<td><a href="#">Xem chi tiết</a></td>
+										<td><span th:utext="${list.getNgayTao()}"></span></td>
+										<td><span th:utext="${list.getTenNhiemVu()}"></span></td>
+										<td><span class="badge bg-success"
+											th:utext="${list.getTrangThai()}"></span></td>
+										<td><span th:utext="${list.getHanNop()}"></span></td>
+										<td><a
+											th:href="@{|/trangchu_sinhvien/nhiemvu/${list.getIdNhiemVu()}|}">Xem
+												chi tiết bài tập và đánh giá</a></td>
 									</tr>
-									<tr>
-										<td>21-10-19</td>
-										<td>Đề cương</td>
-										<td><span class="badge bg-success">Hoàn thành</span></td>
-										<td>xxx</td>
-										<td><a href="#">Trần Tiến Dũng</a></td>
-										<td><a href="#">Xem chi tiết</a></td>
-									</tr>
-									<tr>
-										<td>22-10-19</td>
-										<td>Nghiên cứu các hệ thống liên quan</td>
-										<td><span class="badge bg-primary">Chưa hoàn thành</span>
-										</td>
-										<td>xxx</td>
-										<td><a href="#">Trần Tiến Dũng</a></td>
-										<td><a href="#">Xem chi tiết</a></td>
-									</tr>
-									<tr>
-										<td>24-10-14</td>
-										<td>Giao diện demo</td>
-										<td><span class="badge bg-primary">Chưa hoàn thành</span>
-										</td>
-										<td>xxx</td>
-										<td><a href="#">Trần Tiến Dũng</a></td>
-										<td><a href="#">Xem chi tiết</a></td>
-									</tr>
+									</div>
 								</tbody>
 							</table>
 						</section>

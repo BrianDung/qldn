@@ -19,14 +19,14 @@ public class DoAnDetail {
 	private String tenSv;
 	private Long idtkSv;
 	private String emailSv;
-	
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngayTao;
 	private String moTa;
 	private String noiDung;
 	private String thongTin;
 	private String trangThai;
-	private MultipartFile  file;
+	private MultipartFile file;
 
 	public DoAnDetail() {
 		super();
@@ -45,14 +45,15 @@ public class DoAnDetail {
 		this.trangThai = trangThai;
 	}
 
-	public DoAnDetail(Long idDeTai, Long idSv, String tenSv, Long idtkSv, String emailSv) {
+	public DoAnDetail(Long idDeTai, Long idSv, String tenSv, Long idtkSv, String emailSv, String tenDeTai) {
 		super();
 		this.idDeTai = idDeTai;
-		
+
 		this.idSv = idSv;
 		this.tenSv = tenSv;
 		this.idtkSv = idtkSv;
 		this.emailSv = emailSv;
+		this.tenDeTai = tenDeTai;
 	}
 
 }
