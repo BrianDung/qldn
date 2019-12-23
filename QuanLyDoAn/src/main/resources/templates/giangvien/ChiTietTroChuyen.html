@@ -23,6 +23,10 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <body>
     <!-- container section start -->
+ <!-- Comment facebook --> 
+ <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v5.0&appId=587876165375299&autoLogAppEvents=1"></script>
+ <!-- end comment facebook -->
   
  	<th:block th:include="/giangvien/head"></th:block>
   <!-- container section start -->
@@ -83,51 +87,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                 <div class="tab-content">
                                     <div id="recent-activity" class="tab-pane active">
                                         <div class="profile-activity">
-                                            <div class="act-time">
-                                                <div class="activity-body act-in">
-                                                    <span class="arrow"></span>
-                                                    <div class="text">
-                                                        <a href="#" class="activity-img"><img class="avatar"
-                                                                src="img/profile-avatar-dung.jpg" alt=""></a>
-                                                        <p class="attribution"><a href="#">Tran Tien Dung</a> at 4:25pm,
-                                                            30th Octmber 2019</p>
-                                                        <p>Truy cập hệ thống</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="act-time">
-                                                <div class="activity-body act-in">
-                                                    <span class="arrow"></span>
-                                                    <div class="text">
-                                                        <a href="#" class="activity-img"><img class="avatar"
-                                                                src="img/profile-avatar-dung.jpg" alt=""></a>
-                                                        <p class="attribution"><a href="#">Tran Tien Dung</a> at 5:25am,
-                                                            30th Octmber 2019</p>
-                                                        <p>Thay đổi thông tin cá nhân.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="act-time">
-                                                <div class="activity-body act-in">
-                                                    <span class="arrow"></span>
-                                                    <div class="text">
-                                                        <a href="#" class="activity-img"><img class="avatar"
-                                                                src="img/profile-avatar-dung.jpg" alt=""></a>
-                                                        <p class="attribution"><a href="#">Tran Tien Dung</a> at 5:25am,
-                                                            30th Octmber 2019</p>
-                                                        <p>Truy cập hệ thống.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="widget-foot">
-                                                <form class="form-inline">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Type your message here...">
-                                                    </div>
-                                                    <button type="submit" class="btn btn-info">Gửi</button>
-                                                </form>
-                                            </div>
+                                            <div class="fb-comments" th:data-href="@{|https://quanlydoan.com/commentId/${trochuyen.getId()}|}" data-width="550" data-numposts="5"></div>
                                         </div>
                                     </div>
                                     <!-- edit-profile -->

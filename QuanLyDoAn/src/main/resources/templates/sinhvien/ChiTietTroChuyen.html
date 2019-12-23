@@ -21,6 +21,12 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 </head>
 
 <body>
+
+<!-- Comment Facebook -->
+	<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v5.0&appId=587876165375299&autoLogAppEvents=1"></script>
+	<!-- end Comment facebook -->
+
     <th:block th:include="sinhvien/head"></th:block>
   <!-- container section start -->
   <section id="container" class="">
@@ -72,17 +78,28 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                         <section class="panel">
                             <header class="panel-heading tab-bg-info">
                                 <ul class="nav nav-tabs">
+                                <li class="active">
+                                        <a data-toggle="tab" href="#recent-activity">
+                                            <i class="icon-home"></i>
+                                            Phản hồi
+                                        </a>
+                                    </li>
                                     <li class="">
                                         <a data-toggle="tab" href="#edit-profile">
                                             <i class="icon-envelope"></i>
                                             Chi tiết bài đăng
                                         </a>
                                     </li>
+                                    
                                 </ul>
                             </header>
                             <div class="panel-body">
                                 <div class="tab-content">
-                                  
+                                  <div id="recent-activity" class="tab-pane active">
+                                        <div class="profile-activity">
+                                            <div class="fb-comments" th:data-href="@{|https://quanlydoan.com/commentId/${baidang.getId()}|}" data-width="" data-numposts="5"></div>
+                                        </div>
+                                    </div>
                                     <!-- edit-profile -->
                                     <div id="edit-profile" class="tab-pane">
                                         <section class="panel">

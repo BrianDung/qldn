@@ -33,7 +33,7 @@ import com.qlda.Service.TaiKhoanService;
 @RequestMapping("/trangchu_quanly")
 public class QuanLyController {
 
-	private static String UPLOADED_FOLDER_baitap = "..//QuanLyDoAn//src//main//resources//File//baitap//";
+	private static String UPLOADED_FOLDER_doan = "..//QuanLyDoAn//src//main//resources//File//doan//";
 
 	@Autowired
 	QuanLyService quanlyservice;
@@ -171,11 +171,11 @@ public class QuanLyController {
 			MultipartFile file = detaidetail.getFile();
 			 byte[] bytes = file.getBytes();
 			// Get the file and save it somewhere byte[] bytes = file.getBytes(); Path
-			Path path = Paths.get(UPLOADED_FOLDER_baitap + file.getOriginalFilename());
+			Path path = Paths.get(UPLOADED_FOLDER_doan + file.getOriginalFilename());
 			Files.write(path, bytes);
 			String filename = file.getOriginalFilename();
 			System.out.println(filename);
-			detai.setFile(UPLOADED_FOLDER_baitap + filename);
+			detai.setFile(UPLOADED_FOLDER_doan + filename);
 			redirectAttributes.addFlashAttribute("message",
 					"You successfully uploaded '" + file.getOriginalFilename() + "'");
 

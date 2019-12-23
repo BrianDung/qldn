@@ -17,6 +17,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 </head>
 
 <body>
+<th:block th:include="giaovu/head"></th:block>
 	<!-- container section start -->
 	<section id="container" class="">
 		<!-- header -->
@@ -148,8 +149,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 	</section>
 	<!-- container section end -->
-
-
+<!-- nice scroll -->
+  <script th:src="@{/js/jquery.scrollTo.min.js}"></script>
+  <script th:src="@{/js/jquery.nicescroll.js}" type="text/javascript"></script>
 </body>
 
 </html>
