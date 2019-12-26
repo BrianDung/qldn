@@ -112,7 +112,7 @@ public class QuanLyService {
 
 	public List<BaiTapDetail> getAllBaiTapDetail(Long id) {
 		List<BaiTapDetail> list = new ArrayList<BaiTapDetail>();
-		for (BaiTapDetail bt : quanlyrepository.getAllBaiTapDetail()) {
+		for (BaiTapDetail bt : quanlyrepository.getAllBaiTap()) {
 			if (bt.getIdDeTai() == id) {
 				list.add(bt);
 			}
@@ -120,12 +120,13 @@ public class QuanLyService {
 		return list;
 
 	}
+	
 
 	public List<BaiTapDetail> getAllBaiTapSV(String email) {
 
 		Long idDetai = this.getInfoSVbyEmail(email).getIdDeTai();
 		List<BaiTapDetail> list = new ArrayList<BaiTapDetail>();
-		for (BaiTapDetail bt : quanlyrepository.getAllBaiTapDetail()) {
+		for (BaiTapDetail bt : quanlyrepository.getAllBaiTap()) {
 			if (bt.getIdDeTai() == idDetai) {
 				list.add(bt);
 			}

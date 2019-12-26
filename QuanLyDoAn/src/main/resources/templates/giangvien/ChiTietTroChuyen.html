@@ -123,7 +123,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                                     <div class="form-group">
                                                         <label class="col-lg-2 control-label">File</label>
                                                         <div class="col-lg-6">
-                                                            <p><span th:utext="${trochuyen.getFile()}"></span></p>
+                                                            
+                                                            <p><span ><a target="_blank" th:href="@{|${trochuyen.getFile()}|}">View or Download File</a></span></p>
                                                         </div>
                                                     </div>
                                                     

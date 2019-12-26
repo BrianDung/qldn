@@ -16,15 +16,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.api.services.drive.model.File;
 import com.qlda.Entity.BaiDang;
 import com.qlda.Entity.DeTai;
+import com.qlda.Entity.NhiemVu;
 import com.qlda.Entity.TaiKhoan;
 import com.qlda.Model.BaiTapDetail;
 import com.qlda.Model.DoAnDetail;
+import com.qlda.Model.NhiemVuDetail;
 import com.qlda.Model.TroChuyenDetail;
 import com.qlda.Service.BaiDangService;
 import com.qlda.Service.DeTaiService;
 import com.qlda.Service.GiangVienService;
+import com.qlda.Service.GoogleDrive;
+import com.qlda.Service.NhiemVuService;
 import com.qlda.Service.QuanLyService;
 import com.qlda.Service.SinhVienService;
 import com.qlda.Service.TaiKhoanService;
@@ -47,7 +52,8 @@ public class SinhVienController {
 	TaiKhoanService taikhoanservice;
 	@Autowired
 	GiangVienService giangvienservice;
-
+	@Autowired
+	NhiemVuService nhiemvuservice;
 	// GET: Hiển thị trang login
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String index(Model model, Principal principal) {
@@ -73,6 +79,7 @@ public class SinhVienController {
 		String email = principal.getName();
 		model.addAttribute("sinhvien", quanlyservice.getInfoSVbyEmail(email)); // Thong tin sinh vien
 		model.addAttribute("listnhiemvu", quanlyservice.getAllBaiTapSV(email));
+		model.addAttribute("nhiemvu", new NhiemVuDetail());
 		return "sinhvien/NhiemVu";
 	}
 
@@ -81,6 +88,37 @@ public class SinhVienController {
 		model.addAttribute("baitapdanhgia", quanlyservice.getBaiTapDanhGia(id));
 
 		return "sinhvien/ChiTietDanhGia";
+	}
+	
+	@RequestMapping(value= {"/nopbai"})
+	public String nopbai(Model model, @ModelAttribute NhiemVuDetail nhiemvudetail,RedirectAttributes redirectAttributes ) {
+		NhiemVu nhiemvu = nhiemvuservice.GetNhiemVu(nhiemvudetail.getIdNhiemVu());
+		
+		try {
+			MultipartFile file = nhiemvudetail.getFileBt();
+			 byte[] bytes = file.getBytes();
+			 
+			// Get the file and save it somewhere byte[] bytes = file.getBytes(); Path
+
+			String filename = file.getOriginalFilename();
+			File googleFile = GoogleDrive.createGoogleFile(null, "text/plain", filename, bytes);
+			System.out.println("Created Google file!");
+	        //System.out.println("WebContentLink: " + googleFile.getWebContentLink() );
+	        //System.out.println("WebViewLink: " + googleFile.getWebViewLink() );
+			System.out.println(filename);
+			nhiemvu.setFilebt(googleFile.getWebViewLink());
+			redirectAttributes.addFlashAttribute("message",
+					"You successfully uploaded '" + file.getOriginalFilename() + "'");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		nhiemvu.setTrangthai("HOAN_THANH");
+		nhiemvuservice.save(nhiemvu);
+		
+		
+		return "redirect:/trangchu_sinhvien/nhiemvu";
 	}
 
 	@RequestMapping(value = { "/giangvien/{id}" }) // lay ra chi tiet giang vien

@@ -83,7 +83,9 @@
 											<td><span th:utext="${nhiemvu.getTenNhiemVu()}"></span></td>
 
 											<!-- File -->
-											<td><span th:utext="${nhiemvu.getFileHuongDan()}"></span></td>
+											<td><span><a target="_blank"
+													th:href="@{|${nhiemvu.getFileHuongDan()}|}">View or
+														Download File</a></span></td>
 
 											<!-- Ten Sinh Vien -->
 											<td><span th:utext="${nhiemvu.getTenSinhVien()}"></span></td>
@@ -134,36 +136,28 @@
 
 									<div class="form quick-post">
 										<!-- Edit profile form (not working)-->
-										<form class="form-horizontal">
-											<!-- Title -->
-											<div class="form-group">
-												<label class="control-label col-lg-2" for="title">Tiêu
-													đề</label>
-												<div class="col-lg-10">
-													<input type="text" class="form-control" id="title">
-												</div>
-											</div>
-											<!-- Content -->
-											<div class="form-group">
-												<label class="control-label col-lg-2" for="content">Nội
-													dung</label>
-												<div class="col-lg-10">
-													<textarea class="form-control" id="content"></textarea>
-												</div>
-											</div>
+										<form th:action="@{/trangchu_sinhvien/nopbai}"
+											th:object="${nhiemvu}" method="post" class="form-horizontal" enctype="multipart/form-data">
+
+
 
 											<div class="form-group">
 												<label class="control-label col-lg-2" for="tags">Tags</label>
 												<div class="col-lg-10">
-													<input type="text" class="form-control" id="tags">
+													<select th:field="*{idNhiemVu}">
+														<option th:each="nhiemvu : ${listnhiemvu}"
+															th:value="${nhiemvu.getIdNhiemVu()}" th:text="${nhiemvu.getTenNhiemVu()}"></option>
+													</select>
 												</div>
 											</div>
+											
 											<!-- Upload -->
 											<div class="form-group">
 												<label class="control-label col-lg-2" for="tags">Upload
 													File</label>
 												<div class="col-lg-10">
-													<input type="file" class="form-control" id="upload">
+													<input type="file" class="form-control" id="upload"
+														th:field="*{fileBt}">
 												</div>
 											</div>
 											<!-- Buttons -->

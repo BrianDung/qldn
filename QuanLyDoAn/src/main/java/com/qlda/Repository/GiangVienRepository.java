@@ -40,6 +40,11 @@ public interface GiangVienRepository extends JpaRepository<GiangVien, Long> {
 			+ "FROM DanhGia dg INNER JOIN dg.nhiemvu nv INNER JOIN nv.detai dt INNER JOIN dt.sinhvien sv INNER JOIN sv.giangvien gv")
 	List<BaiTapDetail> getAllBaiTapDetail(); // thêm nv.id
 
+	//Lấy tất cả các bài tập 
+		@Query("SELECT new com.qlda.Model.BaiTapDetail(nv.id, dt.id, nv.ten, nv.filebt, nv.filehd,\r\n" + 
+				"			sv.ten, nv.ngaytao, nv.hannop, nv.noidung, gv.id)"
+				+ "FROM NhiemVu nv INNER JOIN nv.detai dt INNER JOIN dt.sinhvien sv INNER JOIN sv.giangvien gv")
+		List<BaiTapDetail> getAllBaiTap(); // thêm nv.id
 	@Query("SELECT new com.qlda.Model.TroChuyenDetail(bd.ngaytao, bd.ten, dt.id, bd.id, sv.id,"
 			+ "			gv.id, tk.id) "
 			+ "FROM BaiDang bd INNER JOIN bd.detai dt INNER JOIN dt.sinhvien sv INNER JOIN sv.giangvien gv INNER JOIN gv.taikhoan tk")

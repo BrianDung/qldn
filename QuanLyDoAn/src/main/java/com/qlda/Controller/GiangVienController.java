@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.api.services.drive.model.File;
 import com.qlda.Entity.BaiDang;
 import com.qlda.Entity.DanhGia;
 import com.qlda.Entity.DeTai;
@@ -31,6 +32,7 @@ import com.qlda.Repository.GiangVienRepository;
 import com.qlda.Service.DanhGiaService;
 import com.qlda.Service.DeTaiService;
 import com.qlda.Service.GiangVienService;
+import com.qlda.Service.GoogleDrive;
 import com.qlda.Service.NhiemVuService;
 import com.qlda.Service.QuanLyService;
 import com.qlda.Service.TaiKhoanService;
@@ -58,7 +60,10 @@ public class GiangVienController {
 	TaiKhoanService taikhoanservice;
 
 	@GetMapping("/trangchu_giangvien")
-	public String home() {
+	public String home(Model model, Principal principal) {
+		String email = principal.getName();// Email GV
+		Long idGv = taikhoanservice.getIdTaiKhoanGiangVien(email);
+		model.addAttribute("listnhiemvu", giangvienservice.getAllNhiemVuSinhVienOfGiangVien(idGv));
 		return "giangvien/TrangChu";
 		
 	}
@@ -165,12 +170,17 @@ public class GiangVienController {
 		try {
 			MultipartFile file = nhiemvudetail.getFileHd();
 			 byte[] bytes = file.getBytes();
+			 
 			// Get the file and save it somewhere byte[] bytes = file.getBytes(); Path
 			Path path = Paths.get(UPLOADED_FOLDER_baitap + file.getOriginalFilename());
 			Files.write(path, bytes);
 			String filename = file.getOriginalFilename();
+			File googleFile = GoogleDrive.createGoogleFile(null, "text/plain", filename, bytes);
+			System.out.println("Created Google file!");
+	        System.out.println("WebContentLink: " + googleFile.getWebContentLink() );
+	        System.out.println("WebViewLink: " + googleFile.getWebViewLink() );
 			System.out.println(filename);
-			nhiemvu.setFilehd(UPLOADED_FOLDER_baitap + filename);
+			nhiemvu.setFilehd(googleFile.getWebViewLink());
 			redirectAttributes.addFlashAttribute("message",
 					"You successfully uploaded '" + file.getOriginalFilename() + "'");
 

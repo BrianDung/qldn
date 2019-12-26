@@ -81,59 +81,52 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
               <header class="panel-heading">
                 Danh sách bài tập
               </header>
+						<table class="table table-striped table-advance table-hover">
+								<tbody>
+									<tr>
 
-              <table class="table table-striped table-advance table-hover">
-                <tbody>
-                  <tr>
-                    <th> #</th>
-                    <th><i class="icon_info_alt"></i> Tên bài</th>
-                    <th><i class="icon_folder-alt"></i> File</th>
-                    <th><i class="icon_profile"></i> Sinh viên</th>
-                    <th><i class="icon_clock_alt"></i> Thời gian</th>
-                    <th><i class="icon_star_alt"></i> Đánh giá</th>
-                    <th><i class="icon_datareport"></i> Thông tin chi tiết</th>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Báo cáo đề cương</td>
-                    <td>decuong.docx</td>
-                    <td>Trần Tiến Dũng</td>
-                    <td>31/10/2019</td>
-                    <td>8/10</td>
+										<th><i class="icon_info_alt"></i> Tên bài</th>
+										<th><i class="icon_folder-alt"></i> File</th>
+										<th><i class="icon_profile"></i> Sinh viên</th>
+										<th><i class="icon_clock_alt"></i> Hạn nộp</th>
+										<th><i class="icon_star_alt"></i> Đánh giá</th>
+										<th><i class="icon_datareport"></i> Thông tin chi tiết</th>
+									</tr>
+									<div th:each="nhiemvu : ${listnhiemvu}">
+										<tr>
 
-                    <td>
-                      <li class="dropdown">
-                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">Xem thêm<b
-                            class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="ChiTietBaiTap.html">Xem chi tiết bài tập và đánh giá</a></li>
-                          <li><a href="#">another action</a></li>
+											<!-- Ten bai -->
+											<td><span th:utext="${nhiemvu.getTenNhiemVu()}"></span></td>
 
-                        </ul>
-                      </li>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Báo cáo đề cương</td>
-                    <td>decuong.docx</td>
-                    <td>Trần Phúc Hậu</td>
-                    <td>31/10/2019</td>
-                    <td>8/10</td>
+											<!-- File -->
+											<td><span><a target="_blank" th:href="@{|${nhiemvu.getFileHuongDan()}|}">View or Download File</a></span></td>
 
-                    <td>
-                      <li class="dropdown">
-                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">Xem thêm<b
-                            class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="ChiTietBaiTap.html">Xem chi tiết bài tập và đánh giá</a></li>
-                          <li><a href="#">another action</a></li>
-                        </ul>
-                      </li>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+											<!-- Ten Sinh Vien -->
+											<td><span th:utext="${nhiemvu.getTenSinhVien()}"></span></td>
+
+											<!-- Thoi gian -->
+											<td><span th:utext="${nhiemvu.getHanNop()}"></span></td>
+
+											<!-- Danh gia -->
+											<td><span th:utext="${nhiemvu.getTieuChi1()}"></span>/10</td>
+
+											<td>
+												<li class="dropdown"><a href="javascript:;"
+													class="dropdown-toggle" data-toggle="dropdown">Xem thêm<b
+														class="caret"></b></a>
+													<ul class="dropdown-menu">
+														<li><a
+															th:href="@{|/trangchu_giangvien/baitap/${nhiemvu.getIdNhiemVu()}|}">Xem
+																chi tiết bài tập và đánh giá</a></li>
+														<li><a href="#">another action</a></li>
+
+													</ul></li>
+											</td>
+										</tr>
+									</div>
+								</tbody>
+							</table>
+             
             </section>
           </div>
         </div>

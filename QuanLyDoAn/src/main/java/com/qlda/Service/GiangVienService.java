@@ -71,7 +71,7 @@ public class GiangVienService {
 
 	public List<BaiTapDetail> getAllNhiemVuSinhVienOfGiangVien(Long id) {
 		List<BaiTapDetail> list = new ArrayList<BaiTapDetail>();
-		for (BaiTapDetail bt : giangVienRepository.getAllBaiTapDetail()) {
+		for (BaiTapDetail bt : giangVienRepository.getAllBaiTap()) {
 			if (bt.getIdGv() == id) {
 				list.add(bt);
 			}

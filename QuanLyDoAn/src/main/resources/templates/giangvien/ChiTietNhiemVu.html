@@ -103,7 +103,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                                    
                                                     <div class="bio-row">
                                                         <p>
-                                                        	<span>File </span>:<span th:utext="${baitapdanhgia.getFileHuongDan()}"></span>
+                                                        	
+                                                        	<span>File </span>: <a target="_blank" th:href="@{|${baitapdanhgia.getFileHuongDan()}|}">View or Download File</a>
+                                                        	
                                                         </p>
                                                     </div>
 

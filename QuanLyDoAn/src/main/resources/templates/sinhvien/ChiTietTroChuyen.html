@@ -107,7 +107,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                                 <h1>Chi tiết bài đăng</h1>
                                                 <form class="form-horizontal" role="form">
                                                     <div class="form-group">
-                                                        <label class="col-lg-2 control-label">Title</label>
+                                                        
                                                         <div class="col-lg-6">
                                                             <p><span th:utext="${baidang.ten}"></span></p>
                                                         </div>
@@ -128,7 +128,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                                     <div class="form-group">
                                                         <label class="col-lg-2 control-label">File</label>
                                                         <div class="col-lg-6">
-                                                            <p><span th:utext="${baidang.file}"></span></p>
+                                                            <p><span ><a target="_blank" th:href="@{|${baidang.file}|}">View or Download File</a></span></p>
                                                         </div>
                                                     </div>
                                                     

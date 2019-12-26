@@ -59,7 +59,13 @@ public interface QuanLyRepository extends JpaRepository<QuanLy, Long> {
 	@Query("SELECT new com.qlda.Model.BaiTapDetail(dt.id,nv.ten , nv.filebt , nv.filehd , sv.ten , nv.ngaytao ,dg.tieuchi1, dg.tieuchi2, dg.tieuchi3, dg.id,nv.id )"
 			+ "FROM DanhGia dg INNER JOIN dg.nhiemvu nv INNER JOIN nv.detai dt INNER JOIN dt.sinhvien sv")
 	List<BaiTapDetail> getAllBaiTapDetail(); // thêm nv.id
-
+	
+	//Lấy tất cả các bài tập 
+	@Query("SELECT new com.qlda.Model.BaiTapDetail(nv.id, dt.id, nv.ten, nv.filebt, nv.filehd,\r\n" + 
+			"			sv.ten, nv.ngaytao, nv.hannop, nv.noidung, gv.id)"
+			+ "FROM NhiemVu nv INNER JOIN nv.detai dt INNER JOIN dt.sinhvien sv INNER JOIN sv.giangvien gv")
+	List<BaiTapDetail> getAllBaiTap(); // thêm nv.id
+	
 	@Query("SELECT new com.qlda.Model.BaiTapDetail(nv.id , nv.ten , nv.filehd , nv.hannop , nv.noidung , dg.noidung , dg.file , dg.tieuchi1 , dg.tieuchi2 , dg.tieuchi3 )"
 			+ "FROM DanhGia dg INNER JOIN dg.nhiemvu nv ")
 	List<BaiTapDetail> getAllDanhGiaBaiTap();
