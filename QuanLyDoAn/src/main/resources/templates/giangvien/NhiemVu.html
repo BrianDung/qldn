@@ -66,51 +66,49 @@
 									</div>
 								</div>
 							</div>
-							<table class="table table-hover personal-task">
+							<table class="table table-striped table-advance table-hover">
 								<tbody>
 									<tr>
-										<td>Hôm nay</td>
-										<td>Giao diện hệ thống cho Sinh viên</td>
-										<td><span class="badge bg-success">Hoàn thành</span></td>
-										<td>Dealine</td>
 
-										<td><a href="ThongTinSinhVien.html">Trần Tiến Dũng</a></td>
-										<td><a href="ChiTietBaiTap.html">Xem chi tiết</a></td>
+										<th><i class="icon_info_alt"></i> Tên bài</th>
+										<th><i class="icon_folder-alt"></i> File</th>
+										<th><i class="icon_profile"></i> Sinh viên</th>
+										<th><i class="icon_clock_alt"></i> Thời gian</th>
+										<th><i class="icon_star_alt"></i> Đánh giá</th>
+										<th><i class="icon_datareport"></i> Thông tin chi tiết</th>
 									</tr>
-									<tr>
-										<td>Hôm qua</td>
-										<td>Phân tích thiết kế hệ thống</td>
-										<td><span class="badge bg-success">Hoàn thành</span></td>
-										<td>xxx</td>
-										<td><a href="#">Trần Tiến Dũng</a></td>
-										<td><a href="#">Xem chi tiết</a></td>
-									</tr>
-									<tr>
-										<td>21-10-19</td>
-										<td>Đề cương</td>
-										<td><span class="badge bg-success">Hoàn thành</span></td>
-										<td>xxx</td>
-										<td><a href="#">Trần Tiến Dũng</a></td>
-										<td><a href="#">Xem chi tiết</a></td>
-									</tr>
-									<tr>
-										<td>22-10-19</td>
-										<td>Nghiên cứu các hệ thống liên quan</td>
-										<td><span class="badge bg-primary">Chưa hoàn thành</span>
-										</td>
-										<td>xxx</td>
-										<td><a href="#">Trần Tiến Dũng</a></td>
-										<td><a href="#">Xem chi tiết</a></td>
-									</tr>
-									<tr>
-										<td>24-10-14</td>
-										<td>Giao diện demo</td>
-										<td><span class="badge bg-primary">Chưa hoàn thành</span>
-										</td>
-										<td>xxx</td>
-										<td><a href="#">Trần Tiến Dũng</a></td>
-										<td><a href="#">Xem chi tiết</a></td>
-									</tr>
+									<div th:each="nhiemvu : ${listnhiemvu}">
+										<tr>
+
+											<!-- Ten bai -->
+											<td><span th:utext="${nhiemvu.getTenNhiemVu()}"></span></td>
+
+											<!-- File -->
+											<td><span><a target="_blank" th:href="@{|${nhiemvu.getFileHuongDan()}|}">View or Download File</a></span></td>
+
+											<!-- Ten Sinh Vien -->
+											<td><span th:utext="${nhiemvu.getTenSinhVien()}"></span></td>
+
+											<!-- Thoi gian -->
+											<td><span th:utext="${nhiemvu.getNgayTao()}"></span></td>
+
+											<!-- Danh gia -->
+											<td><span th:utext="${nhiemvu.getTieuChi1()}"></span>/10</td>
+
+											<td>
+												<li class="dropdown"><a href="javascript:;"
+													class="dropdown-toggle" data-toggle="dropdown">Xem thêm<b
+														class="caret"></b></a>
+													<ul class="dropdown-menu">
+														<li><a
+															th:href="@{|/trangchu_giangvien/baitap/${nhiemvu.getIdNhiemVu()}|}">Xem
+																chi tiết bài tập và đánh giá</a></li>
+														<li><a href="#">another action</a></li>
+
+													</ul></li>
+											</td>
+										</tr>
+									</div>
 								</tbody>
 							</table>
 						</section>
@@ -188,7 +186,7 @@
 												<label class="control-label col-lg-2" for="tags">Trạng thái</label>
 												<div class="col-lg-10">
 													<select th:field="*{trangThai}">
-													<option value="HOAN_THANH">Hoan Thanh</option>
+													
 													<option value="CHUA_HOAN_THANH">Chua Hoan Thanh</option>
 												</select>
 												</div>
@@ -224,7 +222,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-6 portlets">
+					<!-- <div class="col-md-6 portlets">
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h2>
@@ -238,15 +236,15 @@
 							</div>
 							<br> <br> <br>
 							<div class="panel-body">
-								<!-- Widget content -->
+								Widget content
 
-								<!-- Below line produces calendar. I am using FullCalendar plugin. -->
+								Below line produces calendar. I am using FullCalendar plugin.
 								<div id="calendar"></div>
 
 							</div>
 						</div>
 
-					</div>
+					</div> -->
 				</div>
 				<!-- project team & activity end -->
 

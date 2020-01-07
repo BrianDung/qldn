@@ -35,6 +35,7 @@ import com.qlda.Service.GiangVienService;
 import com.qlda.Service.GoogleDrive;
 import com.qlda.Service.NhiemVuService;
 import com.qlda.Service.QuanLyService;
+import com.qlda.Service.SinhVienService;
 import com.qlda.Service.TaiKhoanService;
 import com.qlda.Service.TroChuyenService;
 
@@ -58,6 +59,9 @@ public class GiangVienController {
 	TroChuyenService trochuyenservice;
 	@Autowired
 	TaiKhoanService taikhoanservice;
+	@Autowired
+	SinhVienService sinhvienservice;
+	
 
 	@GetMapping("/trangchu_giangvien")
 	public String home(Model model, Principal principal) {
@@ -147,7 +151,10 @@ public class GiangVienController {
 
 	// View tao nhiem vu
 	@GetMapping("trangchu_giangvien/nhiemvu")
-	public String formNhiemVu(Model model) {
+	public String formNhiemVu(Model model,Principal principal) {
+		String email = principal.getName();// Email GV
+		Long idGv = taikhoanservice.getIdTaiKhoanGiangVien(email);
+		model.addAttribute("listnhiemvu", giangvienservice.getAllNhiemVuSinhVienOfGiangVien(idGv));
 		model.addAttribute("listdetai", detaiservice.getAllDeTai()); //bug !!! list detai phải chỉ của gv, ở đây là tất cả đề tài
 		model.addAttribute("nhiemvu", new NhiemVuDetail());
 		return "giangvien/NhiemVu";
@@ -255,13 +262,15 @@ public class GiangVienController {
 	}
 
 	// View danh sach cuoc tro chuyen
-	@GetMapping("trangchu_giangvien/listtrochuyen")
-	public String listTroChuyen(Model model, Principal principal) {
-		String email = principal.getName();// Email GV
-		Long idGv = taikhoanservice.getIdTaiKhoanGiangVien(email);
-		model.addAttribute("listtrochuyen", giangvienservice.getAllTroChuyenSinhVienOfGiangVien(idGv));
-		return "DanhSachTroChuyen_GiangVien";
-	}
+	/*
+	 * @GetMapping("trangchu_giangvien/listtrochuyen") public String
+	 * listTroChuyen(Model model, Principal principal) { String email =
+	 * principal.getName();// Email GV Long idGv =
+	 * taikhoanservice.getIdTaiKhoanGiangVien(email);
+	 * model.addAttribute("listtrochuyen",
+	 * giangvienservice.getAllTroChuyenSinhVienOfGiangVien(idGv)); return
+	 * "DanhSachTroChuyen_GiangVien"; }
+	 */
 
 	// View chi tiet tro chuyen
 	@GetMapping("trangchu_giangvien/trochuyen/{id}")
@@ -273,11 +282,12 @@ public class GiangVienController {
 	// View Thong ke tong quan cua 1 sinh vien
 	@GetMapping("trangchu_giangvien/thongke/{id}")
 	public String listThongKe(Model model, @PathVariable Long id) {
-		model.addAttribute("sinhvien", giangvienservice.getSinhVien(id)); // lay ra thong tin cua sinh vien
+		model.addAttribute("sinhvien", sinhvienservice.getOne(id)); // lay ra thong tin cua sinh vien
+		model.addAttribute("detai", detaiservice.getDoanbyIdSv(id));
 		model.addAttribute("thongke", giangvienservice.hoanThanh(id)); // show ra so luong nhiem vu hoan thanh/ tong
 																		// nhiem vu
-		model.addAttribute("listdanhgiahoanthanhsv", giangvienservice.getAllNhiemVuDuocDanhGiaSinhVien(id));
-		return "DanhSachThongKe_GiangVien";
+		model.addAttribute("list", giangvienservice.getAllNhiemVuDuocDanhGiaSinhVien(id));
+		return "giangvien/thongke";
 	}
 
 	// Chi tiet danh gia

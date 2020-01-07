@@ -19,12 +19,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.api.services.drive.model.File;
 import com.qlda.Entity.DeTai;
 import com.qlda.Entity.SinhVien;
 import com.qlda.Entity.TaiKhoan;
 import com.qlda.Model.DoAnDetail;
 import com.qlda.Model.DoAnDetail;
 import com.qlda.Service.DeTaiService;
+import com.qlda.Service.GoogleDrive;
 import com.qlda.Service.QuanLyService;
 import com.qlda.Service.SinhVienService;
 import com.qlda.Service.TaiKhoanService;
@@ -80,6 +82,7 @@ public class QuanLyController {
 	@GetMapping("/doan/{id}")
 	public String doanDetail(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("detai", quanlyservice.getInfDeTai(id));
+		model.addAttribute("doan", new DoAnDetail());
 		return "giaovu/ChiTietDoAn";
 	}
 
@@ -148,6 +151,35 @@ public class QuanLyController {
 		return "giaovu/TaoMoiDoAn";
 	}
 
+	@PostMapping("/commit")
+	public String commit(@ModelAttribute DoAnDetail detaidetail, RedirectAttributes redirectAttributes, Model model) {
+		DeTai detai = detaiservice.getOne(detaidetail.getIdDeTai());
+		try {
+			MultipartFile file = detaidetail.getFile();
+			 byte[] bytes = file.getBytes();
+			// Get the file and save it somewhere byte[] bytes = file.getBytes(); Path
+		
+			
+
+			String filename = file.getOriginalFilename();
+			File googleFile = GoogleDrive.createGoogleFile(null, "text/plain", filename, bytes);
+			System.out.println("Created Google file!");
+	        //System.out.println("WebContentLink: " + googleFile.getWebContentLink() );
+	        //System.out.println("WebViewLink: " + googleFile.getWebViewLink() );
+			System.out.println(filename);
+			detai.setFile(googleFile.getWebViewLink());
+			detai.setTrangthai("Hoàn Thành");
+			redirectAttributes.addFlashAttribute("message",
+					"You successfully uploaded '" + file.getOriginalFilename() + "'");
+
+			
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		detaiservice.save(detai);
+		return "redirect:/trangchu_quanly/doan";
+	}
 	// Luu 1 de tai
 	@PostMapping("/doan")
 	public String taoDoAn(@ModelAttribute DoAnDetail detaidetail,
@@ -171,14 +203,21 @@ public class QuanLyController {
 			MultipartFile file = detaidetail.getFile();
 			 byte[] bytes = file.getBytes();
 			// Get the file and save it somewhere byte[] bytes = file.getBytes(); Path
-			Path path = Paths.get(UPLOADED_FOLDER_doan + file.getOriginalFilename());
-			Files.write(path, bytes);
+		
+			
+
 			String filename = file.getOriginalFilename();
+			File googleFile = GoogleDrive.createGoogleFile(null, "text/plain", filename, bytes);
+			System.out.println("Created Google file!");
+	        //System.out.println("WebContentLink: " + googleFile.getWebContentLink() );
+	        //System.out.println("WebViewLink: " + googleFile.getWebViewLink() );
 			System.out.println(filename);
-			detai.setFile(UPLOADED_FOLDER_doan + filename);
+			detai.setFile(googleFile.getWebViewLink());
 			redirectAttributes.addFlashAttribute("message",
 					"You successfully uploaded '" + file.getOriginalFilename() + "'");
 
+			
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

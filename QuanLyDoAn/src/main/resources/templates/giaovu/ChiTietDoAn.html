@@ -1,107 +1,175 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-  <meta name="author" content="GeeksLabs">
-  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-  <link rel="shortcut icon" href="img/favicon.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+	content="Creative - Bootstrap 3 Responsive Admin Template">
+<meta name="author" content="GeeksLabs">
+<meta name="keyword"
+	content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+<link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Thông tin chi tiết đề tài</title>
- 
+<title>Thông tin chi tiết đề tài</title>
+
 </head>
 
 <body>
 
 
-  <section id="container" class="">
-    <!-- header -->
-    	<th:block th:include="giaovu/header"></th:block>
-    <!--header end-->
+	<section id="container" class="">
+		<!-- header -->
+		<th:block th:include="giaovu/header"></th:block>
+		<!--header end-->
 
-    <!--sidebar start-->
-     	<th:block th:include="giaovu/sidebar"></th:block>
-    <!--sidebar end-->
+		<!--sidebar start-->
+		<th:block th:include="giaovu/sidebar"></th:block>
+		<!--sidebar end-->
 
 
-    <!--main content start-->
-    <section id="main-content">
-      <section class="wrapper">
-        <div class="row">
-          <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-table"></i> Chi tiết đồ án</h3>
-            <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i><a href="index.html">Danh sách sinh viên</a></li>
-              <li><i class="fa fa-table"></i> <span th:utext="${detai.getTen()}"></span> </li>
+		<!--main content start-->
+		<section id="main-content">
+			<section class="wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+						<h3 class="page-header">
+							<i class="fa fa-table"></i> Chi tiết đồ án
+						</h3>
+						<ol class="breadcrumb">
+							<li><i class="fa fa-home"></i><a
+								th:href="@{|/trangchu_quanly/doan|}">Danh sách đề tài</a></li>
+							<li><i class="fa fa-table"></i> <span
+								th:utext="${detai.getTen()}"></span></li>
+							<li><span th:utext="${detai.trangthai}"></span></li>
+						</ol>
+					</div>
+				</div>
+				<div class="row">
 
-            </ol>
-          </div>
-        </div>
-        <div class="row">
+					<div class="col-lg-12">
+						<!--collapse start-->
+						<div class="panel-group m-bot20" id="accordion">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a class="accordion-toggle" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseOne"> Mô tả chung
+										</a>
+									</h4>
+								</div>
+								<div id="collapseOne" class="panel-collapse collapse in">
+									<div class="panel-body">
 
-          <div class="col-lg-12">
-            <!--collapse start-->
-            <div class="panel-group m-bot20" id="accordion">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                      Mô tả chung
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapseOne" class="panel-collapse collapse in">
-                  <div class="panel-body">
-                  
-					<span th:utext="${detai.getMota()}"></span>
-					
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                      Nội dung
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse">
-                  <div class="panel-body">
-                   
-                  	<span th:utext="${detai.noidung}"></span>
-                  
+										<span th:utext="${detai.getMota()}"></span>
 
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                      Thông tin liên quan
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapseThree" class="panel-collapse collapse">
-                  <div class="panel-body">
-                  
-                  <span th:utext="${detai.thongtin}"></span>
-                  
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!--collapse end-->
-          </div>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a class="accordion-toggle" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseTwo"> Nội dung </a>
+									</h4>
+								</div>
+								<div id="collapseTwo" class="panel-collapse collapse">
+									<div class="panel-body">
 
-        </div>
-      </section>
-    </section>
-  </section>
-  <!-- container section end -->
+										<span th:utext="${detai.noidung}"></span>
+
+
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a class="accordion-toggle" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseThree"> Thông tin
+											liên quan </a>
+									</h4>
+								</div>
+								<div id="collapseThree" class="panel-collapse collapse">
+									<div class="panel-body">
+
+										<span th:utext="${detai.thongtin}"></span>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!--collapse end-->
+					</div>
+
+				</div>
+
+				<td>
+					<div th:if="${detai.trangthai == 'Chưa Hoàn Thành'}"
+						class="panel-body">
+						<div class="padd">
+
+							<div class="form quick-post">
+								<!-- Edit profile form (not working)-->
+								<form th:action="@{/trangchu_quanly/commit}"
+									th:object="${doan}" method="post" class="form-horizontal"
+									enctype="multipart/form-data">
+
+
+
+									<div class="form-group">
+										<label class="control-label col-lg-2" for="tags">Tags</label>
+										<div class="col-lg-10">
+
+											<select th:field="*{idDeTai}">
+												<option th:value="${detai.getId()}"
+													th:text="${detai.getTen()}"></option>
+											</select>
+										</div>
+									</div>
+
+									<!-- Upload -->
+									<div class="form-group">
+										<label class="control-label col-lg-2" for="tags">Upload
+											File</label>
+										<div class="col-lg-10">
+											<input type="file" class="form-control" id="upload"
+												th:field="*{file}">
+										</div>
+									</div>
+									<!-- Buttons -->
+									<div class="form-group">
+										<!-- Buttons -->
+										<div class="col-lg-offset-2 col-lg-9">
+											<button type="submit" class="btn btn-primary">Đăng</button>
+											<button type="reset" class="btn btn-default">Làm mới</button>
+										</div>
+									</div>
+								</form>
+							</div>
+
+
+						</div>
+						<div class="widget-foot">
+							<!-- Footer goes here -->
+						</div>
+					</div>
+
+					<div th:unless="${detai.trangthai == 'Chưa Hoàn Thành'}"
+						class="panel panel-default">
+						<div>
+							<span>File hoàn tất : </span><a target="_blank" th:href="@{|${detai.file}|}">View or download</a>
+						</div>
+
+					</div>
+				</td>
+			</section>
+
+		</section>
+
+	</section>
+	<!-- container section end -->
 
 
 

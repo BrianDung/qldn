@@ -19,21 +19,32 @@ public class DeTaiService {
 		return detairepository.save(detai);
 	}
 
-	
 	public DeTai getOne(Long id) {
 		return detairepository.getOne(id);
 	}
-	
+
 	public DoAnDetail getDoanbyEmailSv(String email) {
-		
-		for(DoAnDetail da : detairepository.getAllDoAnDetail()) {
-			if(da.getEmailSv().equals(email)) {
+
+		for (DoAnDetail da : detairepository.getAllDoAnDetail()) {
+			if (da.getEmailSv().equals(email)) {
 				return da;
 			}
-			
+
 		}
 		return null;
 	}
+
+	public DoAnDetail getDoanbyIdSv(Long id) {
+
+		for (DoAnDetail da : detairepository.getAllDoAnDetail()) {
+			if (da.getIdSv().equals(id)) {
+				return da;
+			}
+
+		}
+		return null;
+	}
+
 	public List<DeTai> getAllDeTai() {
 		return detairepository.findAll();
 
