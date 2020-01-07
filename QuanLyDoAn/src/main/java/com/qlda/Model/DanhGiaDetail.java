@@ -3,6 +3,7 @@ package com.qlda.Model;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
@@ -10,13 +11,13 @@ import lombok.Data;
 public class DanhGiaDetail {
 	private String tenDanhGia;
 	private String noiDung;
-
+	
 	private int tieuChi1;
 	private int tieuChi2;
 	private int tieuChi3;
 	private String file;
 	private String trangThai;
-
+	private MultipartFile filedg;
 	private Long idNhiemVu;
 	private Long idSinhVien;
 	private Long idGiangVien;

@@ -25,6 +25,7 @@ import com.qlda.Entity.DeTai;
 import com.qlda.Entity.GiangVien;
 import com.qlda.Entity.NhiemVu;
 import com.qlda.Entity.TaiKhoan;
+import com.qlda.Model.BaiTapDetail;
 import com.qlda.Model.DanhGiaDetail;
 import com.qlda.Model.NhiemVuDetail;
 import com.qlda.Model.TroChuyenDetail;
@@ -118,22 +119,51 @@ public class GiangVienController {
 	// CHi tiet bai tap cua sinh vien
 	@GetMapping("trangchu_giangvien/baitap/{id}")
 	public String getBaiTap(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("baitapdanhgia", quanlyservice.getBaiTapDanhGia(id));
-		return "giangvien/ChiTietNhiemVu";
+		BaiTapDetail baitapdanhgia = quanlyservice.getBaiTapDanhGia(id);
+		
+		String danhgiachung = null;
+		if(baitapdanhgia!=null) {
+			float tb = (baitapdanhgia.getTieuChi1()+baitapdanhgia.getTieuChi2()+baitapdanhgia.getTieuChi3())/3;
+			if(tb<=4) {
+				danhgiachung = "Yếu";
+			}else
+			if(tb>4 && tb<=6.5) {
+				danhgiachung = "Trung bình";	
+			}else
+			if(tb>6.5 && tb<=8.5) {
+				danhgiachung = "Khá";
+			}else
+			if(tb>8.5 && tb<=10) {
+				danhgiachung = "Tốt";
+			}
+			
+			model.addAttribute("danhgiachung",danhgiachung);
+			model.addAttribute("tb", tb);
+			model.addAttribute("baitapdanhgia", baitapdanhgia);
+			
+			return "giangvien/ChiTietNhiemVu";
+			
+		}else {
+			return "redirect:/trangchu_giangvien/formdanhgia/"+id;
+		}
 
 	}
 
 	// View cua form danh gia
-	@GetMapping("trangchu_giangvien/formdanhgia")
-	public String formDanhGia(Model model) {
-		model.addAttribute("listnhiemvu", nhiemvuservice.getAllNhiemVu());
-		model.addAttribute("danhgia", new DanhGiaDetail());
-		return "FormDanhGia_GiangVien";
+	@GetMapping("trangchu_giangvien/formdanhgia/{id}")
+	public String formDanhGia(@PathVariable("id") Long id, Model model) {
+		DanhGiaDetail danhgia = new DanhGiaDetail();
+		danhgia.setIdNhiemVu(id);
+		NhiemVu nv = nhiemvuservice.getNhiemVu(id);
+		model.addAttribute("nhiemvu", nv);
+		model.addAttribute("danhgia", danhgia);
+		
+		return "giangvien/danhgia";
 	}
 
 	// Luu danh gia cho bai tap
 	@PostMapping("trangchu_giangvien/danhgia")
-	public String danhGia(Model model, @ModelAttribute DanhGiaDetail danhgia) {
+	public String danhGia(Model model, @ModelAttribute DanhGiaDetail danhgia, RedirectAttributes redirectAttributes) {
 		DanhGia dg = new DanhGia();
 		dg.setTen(danhgia.getTenDanhGia());
 		dg.setNoidung(danhgia.getNoiDung());
@@ -141,11 +171,33 @@ public class GiangVienController {
 		dg.setTieuchi2(danhgia.getTieuChi2());
 		dg.setTieuchi3(danhgia.getTieuChi3());
 		dg.setTrangthai(danhgia.getTrangThai());
-		NhiemVu nv = new NhiemVu();
-		nv.setId(danhgia.getIdNhiemVu());
+		NhiemVu nv = nhiemvuservice.getNhiemVu(danhgia.getIdNhiemVu());
 		dg.setNhiemvu(nv);
+		
+		try {
+			MultipartFile file = danhgia.getFiledg();
+			 byte[] bytes = file.getBytes();
+			 
+			// Get the file and save it somewhere byte[] bytes = file.getBytes(); Path
+			
+			String filename = file.getOriginalFilename();
+			File googleFile = GoogleDrive.createGoogleFile(null, "text/plain", filename, bytes);
+			System.out.println("Created Google file!");
+	        System.out.println("WebContentLink: " + googleFile.getWebContentLink() );
+	        System.out.println("WebViewLink: " + googleFile.getWebViewLink() );
+			System.out.println(filename);
+			dg.setFile(googleFile.getWebViewLink());
+			redirectAttributes.addFlashAttribute("message",
+					"You successfully uploaded '" + file.getOriginalFilename() + "'");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
 		model.addAttribute("danhgia", danhgiaservice.save(dg));
-		return "ThongBaoDanhGia_GiangVien";
+		return "redirect:/trangchu_giangvien/nhiemvu";
 
 	}
 
@@ -257,7 +309,7 @@ public class GiangVienController {
 	// View chi tiet nhiem vu
 	@GetMapping("trangchu_giangvien/nhiemvu/{id}")
 	public String nhiemVu(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("nhiemvu", nhiemvuservice.GetNhiemVu(id));
+		model.addAttribute("nhiemvu", nhiemvuservice.getNhiemVu(id));
 		return "ChiTietNhiemVu_GiangVien";
 	}
 

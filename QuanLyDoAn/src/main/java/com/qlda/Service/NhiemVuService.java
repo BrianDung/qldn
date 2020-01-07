@@ -13,7 +13,7 @@ public class NhiemVuService {
 	@Autowired
 	NhiemVuRepository nhiemvurepository;
 
-	public NhiemVu GetNhiemVu(Long id) {
+	public NhiemVu getNhiemVu(Long id) {
 		return nhiemvurepository.getOne(id);
 	}
 

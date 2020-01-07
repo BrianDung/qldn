@@ -92,7 +92,7 @@ public class SinhVienController {
 	
 	@RequestMapping(value= {"/nopbai"})
 	public String nopbai(Model model, @ModelAttribute NhiemVuDetail nhiemvudetail,RedirectAttributes redirectAttributes ) {
-		NhiemVu nhiemvu = nhiemvuservice.GetNhiemVu(nhiemvudetail.getIdNhiemVu());
+		NhiemVu nhiemvu = nhiemvuservice.getNhiemVu(nhiemvudetail.getIdNhiemVu());
 		
 		try {
 			MultipartFile file = nhiemvudetail.getFileBt();

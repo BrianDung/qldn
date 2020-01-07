@@ -41,8 +41,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<h3 class="page-header">
-							<i class="fa fa-table"></i> Danh sách bài tập sinh viên Trần Tiến
-							Dũng
+							<i class="fa fa-table"></i> Danh sách bài tập 
 						</h3>
 						<ol class="breadcrumb">
 							<li><i class="fa fa-home"></i><a href="index-GiangVien.html">Trang
@@ -68,7 +67,7 @@
 										<th><i class="icon_folder-alt"></i> File</th>
 										<th><i class="icon_profile"></i> Sinh viên</th>
 										<th><i class="icon_clock_alt"></i> Thời gian</th>
-										<th><i class="icon_star_alt"></i> Đánh giá</th>
+										
 										<th><i class="icon_datareport"></i> Thông tin chi tiết</th>
 									</tr>
 									<div th:each="nhiemvu : ${listnhiemvu}">
@@ -78,7 +77,9 @@
 											<td><span th:utext="${nhiemvu.getTenNhiemVu()}"></span></td>
 
 											<!-- File -->
-											<td><span><a target="_blank" th:href="@{|${nhiemvu.getFileHuongDan()}|}">View or Download File</a></span></td>
+											<td><span><a target="_blank"
+													th:href="@{|${nhiemvu.getFileHuongDan()}|}">View or
+														Download File</a></span></td>
 
 											<!-- Ten Sinh Vien -->
 											<td><span th:utext="${nhiemvu.getTenSinhVien()}"></span></td>
@@ -86,8 +87,7 @@
 											<!-- Thoi gian -->
 											<td><span th:utext="${nhiemvu.getNgayTao()}"></span></td>
 
-											<!-- Danh gia -->
-											<td><span th:utext="${nhiemvu.getTieuChi1()}"></span>/10</td>
+											
 
 											<td>
 												<li class="dropdown"><a href="javascript:;"
@@ -97,9 +97,11 @@
 														<li><a
 															th:href="@{|/trangchu_giangvien/baitap/${nhiemvu.getIdNhiemVu()}|}">Xem
 																chi tiết bài tập và đánh giá</a></li>
-														<li><a href="#">another action</a></li>
-
-													</ul></li>
+														
+															
+														
+													</ul>
+												</li>
 											</td>
 										</tr>
 									</div>
