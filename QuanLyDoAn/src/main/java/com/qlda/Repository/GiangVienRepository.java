@@ -54,4 +54,9 @@ public interface GiangVienRepository extends JpaRepository<GiangVien, Long> {
 			+ "	dt.ten, sv.ten,dg.trangthai,dg.file,dg.tieuchi1,dg.tieuchi2,dg.tieuchi3,nv.hannop,nv.ngaytao,nv.ten)"
 			+ "FROM DanhGia dg INNER JOIN dg.nhiemvu nv INNER JOIN nv.detai dt INNER JOIN dt.sinhvien sv INNER JOIN sv.giangvien gv ")
 	List<DanhGiaDetail> getAllSinhVienDanhGia();
+	
+	@Query("SELECT new com.qlda.Model.DanhGiaDetail(nv.id, sv.id, gv.id, dt.id,\r\n"
+			+ "	dt.ten, sv.ten,nv.hannop,nv.ngaytao,nv.ten)"
+			+ "FROM NhiemVu nv INNER JOIN nv.detai dt INNER JOIN dt.sinhvien sv INNER JOIN sv.giangvien gv ")
+	List<DanhGiaDetail> getSinhVienDanhGia();
 }

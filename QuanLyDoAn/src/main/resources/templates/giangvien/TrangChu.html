@@ -89,7 +89,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 										<th><i class="icon_folder-alt"></i> File</th>
 										<th><i class="icon_profile"></i> Sinh viên</th>
 										<th><i class="icon_clock_alt"></i> Hạn nộp</th>
-										<th><i class="icon_star_alt"></i> Đánh giá</th>
+										
 										<th><i class="icon_datareport"></i> Thông tin chi tiết</th>
 									</tr>
 									<div th:each="nhiemvu : ${listnhiemvu}">
@@ -107,8 +107,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 											<!-- Thoi gian -->
 											<td><span th:utext="${nhiemvu.getHanNop()}"></span></td>
 
-											<!-- Danh gia -->
-											<td><span th:utext="${nhiemvu.getTieuChi1()}"></span>/10</td>
+											
 
 											<td>
 												<li class="dropdown"><a href="javascript:;"

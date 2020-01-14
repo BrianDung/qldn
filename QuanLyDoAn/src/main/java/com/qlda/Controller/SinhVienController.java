@@ -85,9 +85,37 @@ public class SinhVienController {
 
 	@RequestMapping(value = { "/nhiemvu/{id}" }) // lay ra chi tiet bai tap va danh gia
 	public String baiTapDetail(Model model, @PathVariable("id") Long id) {
-		model.addAttribute("baitapdanhgia", quanlyservice.getBaiTapDanhGia(id));
-
-		return "sinhvien/ChiTietDanhGia";
+		
+		BaiTapDetail baitapdanhgia = quanlyservice.getBaiTapDanhGia(id);
+		
+		String danhgiachung = null;
+		if(baitapdanhgia!=null) {
+			float tb = (baitapdanhgia.getTieuChi1()+baitapdanhgia.getTieuChi2()+baitapdanhgia.getTieuChi3())/3;
+			if(tb<=4) {
+				danhgiachung = "Yếu";
+			}else
+			if(tb>4 && tb<=6.5) {
+				danhgiachung = "Trung bình";	
+			}else
+			if(tb>6.5 && tb<=8.5) {
+				danhgiachung = "Khá";
+			}else
+			if(tb>8.5 && tb<=10) {
+				danhgiachung = "Tốt";
+			}
+			
+			model.addAttribute("danhgiachung",danhgiachung);
+			model.addAttribute("tb", tb);
+			model.addAttribute("baitapdanhgia", baitapdanhgia);
+			
+			return "sinhvien/ChiTietBaiTapDanhGia";
+			
+		}else {
+			
+			model.addAttribute("baitapdanhgia", nhiemvuservice.getNhiemVu(id));
+			return "sinhvien/ChiTietBaiTapchuaDanhGia";
+		}
+//		return "sinhvien/ChiTietDanhGia";
 	}
 	
 	@RequestMapping(value= {"/nopbai"})

@@ -24,4 +24,5 @@ public class NhiemVuService {
 	public NhiemVu save(NhiemVu nhiemvu) {
 		return nhiemvurepository.save(nhiemvu);
 	}
+
 }

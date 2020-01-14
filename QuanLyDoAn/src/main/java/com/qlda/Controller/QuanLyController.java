@@ -23,10 +23,13 @@ import com.google.api.services.drive.model.File;
 import com.qlda.Entity.DeTai;
 import com.qlda.Entity.SinhVien;
 import com.qlda.Entity.TaiKhoan;
+import com.qlda.Model.BaiTapDetail;
 import com.qlda.Model.DoAnDetail;
 import com.qlda.Model.DoAnDetail;
 import com.qlda.Service.DeTaiService;
+import com.qlda.Service.GiangVienService;
 import com.qlda.Service.GoogleDrive;
+import com.qlda.Service.NhiemVuService;
 import com.qlda.Service.QuanLyService;
 import com.qlda.Service.SinhVienService;
 import com.qlda.Service.TaiKhoanService;
@@ -43,7 +46,10 @@ public class QuanLyController {
 	SinhVienService sinhvienservice;
 	@Autowired
 	DeTaiService detaiservice;
-
+	@Autowired
+	NhiemVuService nhiemvuservice;
+	@Autowired
+	GiangVienService giangvienservice;
 	@GetMapping("/")
 	public String index() {
 		return "giaovu/index";
@@ -125,8 +131,38 @@ public class QuanLyController {
 	// Giao dien xem chi tiet va danh gia bai tap
 	@GetMapping("/baitap/{id}")
 	public String baiTapDetail(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("baitapdanhgia", quanlyservice.getBaiTapDanhGia(id));
-		return "giaovu/taskDetail";
+//		model.addAttribute("baitapdanhgia", quanlyservice.getBaiTapDanhGia(id));
+		BaiTapDetail baitapdanhgia = quanlyservice.getBaiTapDanhGia(id);
+		
+		String danhgiachung = null;
+		if(baitapdanhgia!=null) {
+			float tb = (baitapdanhgia.getTieuChi1()+baitapdanhgia.getTieuChi2()+baitapdanhgia.getTieuChi3())/3;
+			if(tb<=4) {
+				danhgiachung = "Yếu";
+			}else
+			if(tb>4 && tb<=6.5) {
+				danhgiachung = "Trung bình";	
+			}else
+			if(tb>6.5 && tb<=8.5) {
+				danhgiachung = "Khá";
+			}else
+			if(tb>8.5 && tb<=10) {
+				danhgiachung = "Tốt";
+			}
+			
+			model.addAttribute("danhgiachung",danhgiachung);
+			model.addAttribute("tb", tb);
+			model.addAttribute("baitapdanhgia", baitapdanhgia);
+			
+			return "giaovu/ChiTietBaiTapDanhGia";
+			
+		}else {
+			
+			
+			model.addAttribute("baitapdanhgia", nhiemvuservice.getNhiemVu(id));
+			return "giaovu/taskDetail";
+		}
+		
 	}
 
 	// View danh sach tro chuyen cua 1 sinh vien
@@ -231,5 +267,14 @@ public class QuanLyController {
 
 		return "redirect:/trangchu_quanly/doan";
 	}
-
+	@GetMapping("/thongke/{id}")
+	public String listThongKe(Model model, @PathVariable Long id) {
+		model.addAttribute("sinhvien", sinhvienservice.getOne(id)); // lay ra thong tin cua sinh vien
+		model.addAttribute("detai", detaiservice.getDoanbyIdSv(id));
+		
+		model.addAttribute("thongke", giangvienservice.hoanThanh(id)); // show ra so luong nhiem vu hoan thanh/ tong
+																		// nhiem vu
+		model.addAttribute("list", giangvienservice.getAllNhiemVuDuocDanhGiaSinhVien(id));
+		return "giaovu/thongke";
+	}
 }

@@ -46,8 +46,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                     <div class="col-lg-12">
                         <h3 class="page-header"><i class="icon_chat_alt"></i> Chi tiết trò chuyện</h3>
                         <ol class="breadcrumb">
-                            <li><i class="fa fa-home"></i><a href="index-SinhVien.html">Trang chủ</a></li>
-                            <li><i class="icon_chat_alt"></i>Trò chuyện</li>
+                            <li><i class="fa fa-home"></i><a th:href="@{/trangchu_sinhvien/}">Trang chủ</a></li>
+                            <li><i class="icon_chat_alt"></i>
+                            <a th:href="@{/trangchu_sinhvien/trochuyen}">Trò chuyện</a></li>
                             <li><i class="icon_info"></i>Chi tiết</li>
                         </ol>
                     </div>
@@ -60,13 +61,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                             <div class="panel-body">
                                 
                                 <div class="col-lg-4 col-sm-4 follow-info">
-                                    <p>Tittle :<span th:utext="${baidang.ten}"></span> </p>
-                                    <p>Nội Dung :<span th:utext="${baidang.noidung}"></span> </p>
-                                    <h6>
-                                        <span><i class="icon_clock_alt"></i>11:05 AM</span>
-                                        <span><i class="icon_calendar"></i>30.10.19</span>
-                                        <span><i class="icon_pin_alt"></i>VN</span>
-                                    </h6>
+                                    <h1><span th:utext="${baidang.ten}"></span> </h1>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -104,7 +100,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                     <div id="edit-profile" class="tab-pane">
                                         <section class="panel">
                                             <div class="panel-body bio-graph-info">
-                                                <h1>Chi tiết bài đăng</h1>
+                                                
                                                 <form class="form-horizontal" role="form">
                                                     <div class="form-group">
                                                         

@@ -57,4 +57,21 @@ public class DanhGiaDetail {
 		this.tenNhiemVu = tenNhiemVu;
 
 	}
+	
+	public DanhGiaDetail(Long idNhiemVu, Long idSinhVien, Long idGiangVien, Long idDeTai,
+			String tenDeTai, String tenSinhVien, Date hanNop, Date ngayTao, String tenNhiemVu) {
+		super();
+		this.idNhiemVu = idNhiemVu;
+		this.idSinhVien = idSinhVien;
+		this.idGiangVien = idGiangVien;
+		
+		this.idDeTai = idDeTai;
+		this.tenDeTai = tenDeTai;
+		this.tenSinhVien = tenSinhVien;
+		
+		this.hanNop = hanNop;
+		this.ngayTao = ngayTao;
+		this.tenNhiemVu = tenNhiemVu;
+
+	}
 }

@@ -54,7 +54,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
                                         <th><i class="icon_folder-alt"></i> File</th>
                                         <th><i class="icon_profile"></i> Sinh viên</th>
                                         <th><i class="icon_clock_alt"></i> Thời gian</th>
-                                        <th><i class="icon_star_alt"></i> Đánh giá</th>
+                                        
                                         <th><i class="icon_datareport"></i> Thông tin chi tiết</th>
                                     </tr>
                                     <div th:each="nhiemvu : ${listnhiemvu}">
@@ -64,7 +64,10 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	                                        <td><span th:utext="${nhiemvu.getTenNhiemVu()}"></span></td>
 	                                        
 	                                        <!-- File -->
-	                                        <td><span th:utext="${nhiemvu.getFileHuongDan()}"></span></td>
+	                                        <td><span><a target="_blank"
+													th:href="@{|${nhiemvu.getFileHuongDan()}|}">View or
+														Download File</a></span></td>
+
 	                                        
 	                                        <!-- Ten Sinh Vien -->
 	                                        <td><span th:utext="${nhiemvu.getTenSinhVien()}"></span></td>
@@ -72,8 +75,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	                                        <!-- Thoi gian -->
 	                                        <td><span th:utext="${nhiemvu.getNgayTao()}"></span></td>
 	                                        
-	                                        <!-- Danh gia -->
-	                                        <td><span th:utext="${nhiemvu.getTieuChi1()}"></span>/10</td>
+	                                       
 	 
 	                                        <td>
 	                                            <li class="dropdown">

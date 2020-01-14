@@ -29,7 +29,8 @@ public class GiangVienService {
 	GiangVienRepository giangVienRepository;
 	@Autowired
 	DeTaiRepository detairepository;
-
+	@Autowired
+	NhiemVuService nhiemvuservice;
 	public GiangVien addGiangVien(GiangVien giangvien) { // Them 1 gv
 		return giangVienRepository.save(giangvien);
 	}
@@ -91,7 +92,7 @@ public class GiangVienService {
 
 	public int tongNhiemVuSinhVien(Long id) {
 		int count = 0;
-		for (DanhGiaDetail dg : giangVienRepository.getAllSinhVienDanhGia()) {
+		for (DanhGiaDetail dg : giangVienRepository.getSinhVienDanhGia()) {
 			if (dg.getIdSinhVien() == id) {
 				count++;
 			}
