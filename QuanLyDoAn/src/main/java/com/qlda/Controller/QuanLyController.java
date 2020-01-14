@@ -212,7 +212,7 @@ public class QuanLyController {
 	        //System.out.println("WebContentLink: " + googleFile.getWebContentLink() );
 	        //System.out.println("WebViewLink: " + googleFile.getWebViewLink() );
 			System.out.println(filename);
-			detai.setFile(googleFile.getWebViewLink());
+			detai.setFile(googleFile.getWebContentLink());
 			redirectAttributes.addFlashAttribute("message",
 					"You successfully uploaded '" + file.getOriginalFilename() + "'");
 

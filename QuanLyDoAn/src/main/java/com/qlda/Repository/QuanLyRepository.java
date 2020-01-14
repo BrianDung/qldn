@@ -52,7 +52,7 @@ public interface QuanLyRepository extends JpaRepository<QuanLy, Long> {
 			+ "FROM QuanLy ql INNER JOIN ql.taikhoan tk")
 	List<QuanLyDetail> getAllQuanLy();
 
-	@Query("SELECT new com.qlda.Model.DoAnDetail(dt.id, dt.ten, gv.id, gv.ten, sv.id, sv.ten, dt.ngaytao,dt.trangthai)"
+	@Query("SELECT new com.qlda.Model.DoAnDetail(dt.id, dt.ten, gv.id, gv.ten, sv.id, sv.ten, dt.ngaytao,dt.trangthai,dt.file)"
 			+ "FROM DeTai dt INNER JOIN dt.sinhvien sv INNER JOIN sv.giangvien gv ")
 	List<DoAnDetail> getAllDoAnDetail();
 

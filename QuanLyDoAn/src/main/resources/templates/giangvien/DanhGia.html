@@ -77,6 +77,11 @@
 										th:object="${danhgia}" method="post"
 										enctype="multipart/form-data" class="form-horizontal">
 										<!-- Title -->
+										<div class="col-lg-10">
+										<label class="control-label col-lg-2" for="title">Mã nhiệm vụ</label>
+										<input type="text" th:field="*{idNhiemVu}" value="nhiemvu.id" />
+										</div>
+										
 										<div class="form-group">
 											<label class="control-label col-lg-2" for="title">Tiêu
 												đề đánh giá</label>
@@ -85,7 +90,6 @@
 											</div>
 										</div>
 										
-										<input type="text" th:field="*{idNhiemVu}" value="nhiemvu.id" />
 										<!-- Content -->
 										<div class="form-group">
 											<label class="control-label col-lg-2" for="content">Nội

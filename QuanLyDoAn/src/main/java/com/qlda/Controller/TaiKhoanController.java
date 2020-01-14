@@ -181,7 +181,7 @@ public class TaiKhoanController {
 		sv.setGiangvien(gv);
 
 		sinhVienService.save(sv);
-		return "giaovu/TaoMoiSinhVien";
+		return "redirect:/trangchu_quanly/formtaikhoansv";
 	}
 
 	@GetMapping("trangchu_quanly/update/{id}")

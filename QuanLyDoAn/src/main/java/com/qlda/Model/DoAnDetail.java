@@ -27,7 +27,7 @@ public class DoAnDetail {
 	private String thongTin;
 	private String trangThai;
 	private MultipartFile file;
-
+	private String link;
 	public DoAnDetail() {
 		super();
 	}
@@ -44,7 +44,19 @@ public class DoAnDetail {
 		this.ngayTao = ngayTao;
 		this.trangThai = trangThai;
 	}
-
+	public DoAnDetail(Long idDeTai, String tenDeTai, Long idGv, String tenGv, Long idSv, String tenSv, Date ngayTao,
+			String trangThai, String link) {
+		super();
+		this.idDeTai = idDeTai;
+		this.tenDeTai = tenDeTai;
+		this.idGv = idGv;
+		this.tenGv = tenGv;
+		this.idSv = idSv;
+		this.tenSv = tenSv;
+		this.ngayTao = ngayTao;
+		this.trangThai = trangThai;
+		this.link = link;
+	}
 	public DoAnDetail(Long idDeTai, Long idSv, String tenSv, Long idtkSv, String emailSv, String tenDeTai) {
 		super();
 		this.idDeTai = idDeTai;

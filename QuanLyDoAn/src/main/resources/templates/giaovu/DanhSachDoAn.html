@@ -79,7 +79,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	                                        <td><span th:utext="${dt.getTrangThai()}"></span></td>
 	                                        
 	                                      	<!-- File -->
-	                                        <td>final.zar</td>
+	                                        <td><span><a target="_blank"
+													th:href="@{|${dt.getLink()}|}">View or
+														Download File</a></span></td>
 	                                        
 	                                        <!-- Them sua xoa de tai -->
 	                                        <td>
